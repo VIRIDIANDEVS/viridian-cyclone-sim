@@ -663,7 +663,7 @@ ENV_DEFS[SIM_MODE_NORMAL].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_HYPER].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_WILD].SSTAnomaly = {
     modifiers: {
-        r: 5,
+        r: 6,
         bigBlobBase: 1.4,
         bigBlobExponentThreshold: 1.5
     }
@@ -723,9 +723,9 @@ ENV_DEFS.defaults.SST = {
     oceanic: true,
     modifiers: {
         offSeasonPolarTemp: -3,
-        peakSeasonPolarTemp: 10,
-        offSeasonTropicsTemp: 26,
-        peakSeasonTropicsTemp: 29
+        peakSeasonPolarTemp: 9,
+        offSeasonTropicsTemp: 27,
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
