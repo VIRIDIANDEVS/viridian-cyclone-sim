@@ -411,8 +411,8 @@ ENV_DEFS.defaults.LLSteering = {
         westerlyNoiseRange: 0.35,
         westerlyJetstreamEffectRange: 0.5,
         westerlyMax: 5,
-        ridgingJetstreamEffectRange: 0.25,
-        tradesRidgingEffectRange: 0.2,
+        ridgingJetstreamEffectRange: 0.45,
+        tradesRidgingEffectRange: 0.4,
         tradesMax: 2.5,
         tradesAngleEquator: 17*Math.PI/16,
         tradesAngle: 511*Math.PI/512,
@@ -504,14 +504,14 @@ ENV_DEFS.defaults.ULSteering = {
     modifiers: {
         jetstreamDeltaX: 15,
         jetstreamHalfDecay: 30,
-        jetstreamOverpowerBase: 0.8,
+        jetstreamOverpowerBase: 0.6,
         jetstreamInwardAngle: Math.PI/4,
-        troughBase: 2,
+        troughBase: 1.3,
         troughExponentMin: -6,
         troughExponentMax: 4,
         troughAngle: -Math.PI/16,
-        hadleyUpperBound: 5.5,
-        hadleyLowerBound: 1.5,
+        hadleyUpperBound: 5,
+        hadleyLowerBound: 2,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
@@ -664,8 +664,8 @@ ENV_DEFS[SIM_MODE_HYPER].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_WILD].SSTAnomaly = {
     modifiers: {
         r: 5,
-        bigBlobBase: 2.5,
-        bigBlobExponentThreshold: 1.5
+        bigBlobBase: 1.2,
+        bigBlobExponentThreshold: 2
     }
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].SSTAnomaly = {
