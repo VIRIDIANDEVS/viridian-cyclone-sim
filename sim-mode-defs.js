@@ -794,9 +794,9 @@ ENV_DEFS.defaults.moisture = {
         return c;
     },
     modifiers: {
-        polarMoisture: 0.37,
-        tropicalMoisture: 0.55,
-        mountainMoisture: 0.13
+        polarMoisture: 0.30,
+        tropicalMoisture: 0.60,
+        mountainMoisture: 0.15
     },
     noiseChannels: [
         [4,0.5,120,120,0.3,2]
