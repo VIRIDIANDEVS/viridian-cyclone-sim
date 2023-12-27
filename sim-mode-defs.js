@@ -329,9 +329,9 @@ ENV_DEFS.defaults.jetstream = {
         [4,0.5,160,300,1,2]
     ],
     modifiers: {
-        peakLat: 0.25,
+        peakLat: 0.30,
         antiPeakLat: 0.55,
-        peakRange: 0.4,
+        peakRange: 0.45,
         antiPeakRange: 0.60
     }
 };
@@ -410,10 +410,10 @@ ENV_DEFS.defaults.LLSteering = {
     modifiers: {
         westerlyNoiseRange: 0.35,
         westerlyJetstreamEffectRange: 0.5,
-        westerlyMax: 5,
+        westerlyMax: 10,
         ridgingJetstreamEffectRange: 0.45,
         tradesRidgingEffectRange: 0.4,
-        tradesMax: 3.5,
+        tradesMax: 4.5,
         tradesAngleEquator: 17*Math.PI/16,
         tradesAngle: 511*Math.PI/512,
         noiseBase: 1.6,
