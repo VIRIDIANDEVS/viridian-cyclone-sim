@@ -504,7 +504,7 @@ ENV_DEFS.defaults.ULSteering = {
     modifiers: {
         jetstreamDeltaX: 12,
         jetstreamHalfDecay: 60,
-        jetstreamOverpowerBase: 1,
+        jetstreamOverpowerBase: 0.75,
         jetstreamInwardAngle: Math.PI/4,
         troughBase: 1.5,
         troughExponentMin: -4,
