@@ -110,7 +110,7 @@ SPAWN_RULES.defaults.archetypes = {
     '1': {
         inherit: 'tc',
         pressure: 990,
-        windSpeed: 70
+        windSpeed: 75
     },
     '2': {
         inherit: 'tc',
@@ -408,12 +408,12 @@ ENV_DEFS.defaults.LLSteering = {
         [4,0.5,170,300,1,3]
     ],
     modifiers: {
-        westerlyNoiseRange: 0.3,
-        westerlyJetstreamEffectRange: 0.4,
+        westerlyNoiseRange: 0.37,
+        westerlyJetstreamEffectRange: 0.5,
         westerlyMax: 5,
-        ridgingJetstreamEffectRange: 0.45,
-        tradesRidgingEffectRange: 0.3,
-        tradesMax: 3.5,
+        ridgingJetstreamEffectRange: 0.65,
+        tradesRidgingEffectRange: 0.2,
+        tradesMax: 2.5,
         tradesAngleEquator: 17*Math.PI/16,
         tradesAngle: 511*Math.PI/512,
         noiseBase: 1.6,
@@ -502,11 +502,11 @@ ENV_DEFS.defaults.ULSteering = {
     vector: true,
     magMap: [0,8,0,25],
     modifiers: {
-        jetstreamDeltaX: 12,
-        jetstreamHalfDecay: 60,
+        jetstreamDeltaX: 15,
+        jetstreamHalfDecay: 30,
         jetstreamOverpowerBase: 0.8,
         jetstreamInwardAngle: Math.PI/4,
-        troughBase: 1.9,
+        troughBase: 2,
         troughExponentMin: -5,
         troughExponentMax: 5,
         troughAngle: -Math.PI/16,
@@ -725,7 +725,7 @@ ENV_DEFS.defaults.SST = {
         offSeasonPolarTemp: -3,
         peakSeasonPolarTemp: 13,
         offSeasonTropicsTemp: 27.2,
-        peakSeasonTropicsTemp: 30
+        peakSeasonTropicsTemp: 29.6
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
