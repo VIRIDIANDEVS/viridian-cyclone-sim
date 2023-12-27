@@ -330,8 +330,8 @@ ENV_DEFS.defaults.jetstream = {
     ],
     modifiers: {
         peakLat: 0.15,
-        antiPeakLat: 0.50,
-        peakRange: 0.25,
+        antiPeakLat: 0.60,
+        peakRange: 0.3,
         antiPeakRange: 0.6
     }
 };
@@ -502,16 +502,16 @@ ENV_DEFS.defaults.ULSteering = {
     vector: true,
     magMap: [0,8,0,25],
     modifiers: {
-        jetstreamDeltaX: 10,
-        jetstreamHalfDecay: 40,
+        jetstreamDeltaX: 12,
+        jetstreamHalfDecay: 60,
         jetstreamOverpowerBase: 0.8,
         jetstreamInwardAngle: Math.PI/4,
-        troughBase: 1.7,
+        troughBase: 1.9,
         troughExponentMin: -5,
         troughExponentMax: 5,
         troughAngle: -Math.PI/16,
-        hadleyUpperBound: 6,
-        hadleyLowerBound: 1,
+        hadleyUpperBound: 5.5,
+        hadleyLowerBound: 1.5,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
