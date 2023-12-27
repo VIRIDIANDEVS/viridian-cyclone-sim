@@ -410,7 +410,7 @@ ENV_DEFS.defaults.LLSteering = {
     modifiers: {
         westerlyNoiseRange: 0.35,
         westerlyJetstreamEffectRange: 0.5,
-        westerlyMax: 5,
+        westerlyMax: 10,
         ridgingJetstreamEffectRange: 0.35,
         tradesRidgingEffectRange: 0.4,
         tradesMax: 3.5,
@@ -502,7 +502,7 @@ ENV_DEFS.defaults.ULSteering = {
     vector: true,
     magMap: [0,8,0,25],
     modifiers: {
-        jetstreamDeltaX: 12,
+        jetstreamDeltaX: 20,
         jetstreamHalfDecay: 60,
         jetstreamOverpowerBase: 0.7,
         jetstreamInwardAngle: Math.PI/4,
