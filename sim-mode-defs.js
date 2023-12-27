@@ -49,7 +49,7 @@ SPAWN_RULES.defaults.archetypes = {
         pressure: [1005, 1012],
         windSpeed: [15, 35],
         type: TROPWAVE,
-        organization: [0,0.9],
+        organization: [0,0.7],
         lowerWarmCore: 1,
         upperWarmCore: 1,
         depth: 0
@@ -331,7 +331,7 @@ ENV_DEFS.defaults.jetstream = {
     modifiers: {
         peakLat: 0.30,
         antiPeakLat: 0.55,
-        peakRange: 0.45,
+        peakRange: 0.25,
         antiPeakRange: 0.60
     }
 };
@@ -411,9 +411,9 @@ ENV_DEFS.defaults.LLSteering = {
         westerlyNoiseRange: 0.35,
         westerlyJetstreamEffectRange: 0.5,
         westerlyMax: 10,
-        ridgingJetstreamEffectRange: 0.45,
+        ridgingJetstreamEffectRange: 0.75,
         tradesRidgingEffectRange: 0.4,
-        tradesMax: 4.5,
+        tradesMax: 5,
         tradesAngleEquator: 17*Math.PI/16,
         tradesAngle: 511*Math.PI/512,
         noiseBase: 1.6,
@@ -502,7 +502,7 @@ ENV_DEFS.defaults.ULSteering = {
     vector: true,
     magMap: [0,8,0,25],
     modifiers: {
-        jetstreamDeltaX: 8,
+        jetstreamDeltaX: 16,
         jetstreamHalfDecay: 64,
         jetstreamOverpowerBase: 0.5,
         jetstreamInwardAngle: Math.PI/4,
@@ -510,8 +510,8 @@ ENV_DEFS.defaults.ULSteering = {
         troughExponentMin: -6,
         troughExponentMax: 4,
         troughAngle: -Math.PI/16,
-        hadleyUpperBound: 5,
-        hadleyLowerBound: 2,
+        hadleyUpperBound: 6,
+        hadleyLowerBound: 1,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
@@ -664,7 +664,7 @@ ENV_DEFS[SIM_MODE_HYPER].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_WILD].SSTAnomaly = {
     modifiers: {
         r: 5,
-        bigBlobBase: 1.2,
+        bigBlobBase: 1.8,
         bigBlobExponentThreshold: 2
     }
 };
@@ -724,8 +724,8 @@ ENV_DEFS.defaults.SST = {
     modifiers: {
         offSeasonPolarTemp: -4,
         peakSeasonPolarTemp: 12,
-        offSeasonTropicsTemp: 26.5,
-        peakSeasonTropicsTemp: 29.5
+        offSeasonTropicsTemp: 26.2,
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
@@ -794,9 +794,9 @@ ENV_DEFS.defaults.moisture = {
         return c;
     },
     modifiers: {
-        polarMoisture: 0.40,
-        tropicalMoisture: 0.60,
-        mountainMoisture: 0.25
+        polarMoisture: 0.50,
+        tropicalMoisture: 0.70,
+        mountainMoisture: 0.15
     },
     noiseChannels: [
         [4,0.5,120,120,0.3,2]
