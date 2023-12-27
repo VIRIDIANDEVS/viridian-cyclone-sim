@@ -409,9 +409,9 @@ ENV_DEFS.defaults.LLSteering = {
     ],
     modifiers: {
         westerlyNoiseRange: 0.35,
-        westerlyJetstreamEffectRange: 0.6,
+        westerlyJetstreamEffectRange: 0.5,
         westerlyMax: 5,
-        ridgingJetstreamEffectRange: 0.65,
+        ridgingJetstreamEffectRange: 0.25,
         tradesRidgingEffectRange: 0.2,
         tradesMax: 2.5,
         tradesAngleEquator: 17*Math.PI/16,
@@ -794,9 +794,9 @@ ENV_DEFS.defaults.moisture = {
         return c;
     },
     modifiers: {
-        polarMoisture: 0.33,
-        tropicalMoisture: 0.77,
-        mountainMoisture: 0.1
+        polarMoisture: 0.45,
+        tropicalMoisture: 0.60,
+        mountainMoisture: 0.05
     },
     noiseChannels: [
         [4,0.5,120,120,0.3,2]
