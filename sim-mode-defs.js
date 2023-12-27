@@ -331,8 +331,8 @@ ENV_DEFS.defaults.jetstream = {
     modifiers: {
         peakLat: 0.20,
         antiPeakLat: 0.50,
-        peakRange: 0.3,
-        antiPeakRange: 0.42
+        peakRange: 0.15,
+        antiPeakRange: 0.40
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].jetstream = {};
