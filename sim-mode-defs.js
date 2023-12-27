@@ -331,8 +331,8 @@ ENV_DEFS.defaults.jetstream = {
     modifiers: {
         peakLat: 0.30,
         antiPeakLat: 0.50,
-        peakRange: 0.25,
-        antiPeakRange: 0.5
+        peakRange: 0.30,
+        antiPeakRange: 0.50
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].jetstream = {};
@@ -356,9 +356,9 @@ ENV_DEFS[SIM_MODE_WILD].jetstream = {
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].jetstream = {
     modifiers: {
-        peakLat: 0.25,
+        peakLat: 0.15,
         antiPeakLat: 0.47,
-        peakRange: 0.25,
+        peakRange: 0.60,
         antiPeakRange: 0.45
     }
 };
@@ -502,11 +502,11 @@ ENV_DEFS.defaults.ULSteering = {
     vector: true,
     magMap: [0,8,0,25],
     modifiers: {
-        jetstreamDeltaX: 15,
-        jetstreamHalfDecay: 30,
-        jetstreamOverpowerBase: 0.6,
+        jetstreamDeltaX: 8,
+        jetstreamHalfDecay: 64,
+        jetstreamOverpowerBase: 0.5,
         jetstreamInwardAngle: Math.PI/4,
-        troughBase: 1.3,
+        troughBase: 1.4,
         troughExponentMin: -6,
         troughExponentMax: 4,
         troughAngle: -Math.PI/16,
@@ -723,9 +723,9 @@ ENV_DEFS.defaults.SST = {
     oceanic: true,
     modifiers: {
         offSeasonPolarTemp: -4,
-        peakSeasonPolarTemp: 14,
-        offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 29.5
+        peakSeasonPolarTemp: 12,
+        offSeasonTropicsTemp: 27.5,
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
@@ -794,9 +794,9 @@ ENV_DEFS.defaults.moisture = {
         return c;
     },
     modifiers: {
-        polarMoisture: 0.45,
+        polarMoisture: 0.40,
         tropicalMoisture: 0.60,
-        mountainMoisture: 0.05
+        mountainMoisture: 0.25
     },
     noiseChannels: [
         [4,0.5,120,120,0.3,2]
