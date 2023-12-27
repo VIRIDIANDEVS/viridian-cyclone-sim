@@ -329,9 +329,9 @@ ENV_DEFS.defaults.jetstream = {
         [4,0.5,160,300,1,2]
     ],
     modifiers: {
-        peakLat: 0.30,
-        antiPeakLat: 0.55,
-        peakRange: 0.25,
+        peakLat: 0.20,
+        antiPeakLat: 0.50,
+        peakRange: 0.40,
         antiPeakRange: 0.60
     }
 };
