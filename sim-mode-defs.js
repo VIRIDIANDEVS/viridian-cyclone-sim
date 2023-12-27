@@ -503,15 +503,15 @@ ENV_DEFS.defaults.ULSteering = {
     magMap: [0,8,0,25],
     modifiers: {
         jetstreamDeltaX: 12,
-        jetstreamHalfDecay: 50,
-        jetstreamOverpowerBase: 0.5,
+        jetstreamHalfDecay: 60,
+        jetstreamOverpowerBase: 2.5,
         jetstreamInwardAngle: Math.PI/4,
-        troughBase: 1.4,
+        troughBase: 1.5,
         troughExponentMin: -4,
         troughExponentMax: 4,
         troughAngle: -Math.PI/16,
-        hadleyUpperBound: 7,
-        hadleyLowerBound: 1,
+        hadleyUpperBound: 5.5,
+        hadleyLowerBound: 2,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
@@ -724,7 +724,7 @@ ENV_DEFS.defaults.SST = {
     modifiers: {
         offSeasonPolarTemp: -4,
         peakSeasonPolarTemp: 10,
-        offSeasonTropicsTemp: 26.2,
+        offSeasonTropicsTemp: 27.2,
         peakSeasonTropicsTemp: 29.6
     }
 };
