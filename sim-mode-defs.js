@@ -507,7 +507,7 @@ ENV_DEFS.defaults.ULSteering = {
         jetstreamOverpowerBase: 0.5,
         jetstreamInwardAngle: Math.PI/4,
         troughBase: 1.4,
-        troughExponentMin: -6,
+        troughExponentMin: -4,
         troughExponentMax: 4,
         troughAngle: -Math.PI/16,
         hadleyUpperBound: 7,
@@ -723,9 +723,9 @@ ENV_DEFS.defaults.SST = {
     oceanic: true,
     modifiers: {
         offSeasonPolarTemp: -4,
-        peakSeasonPolarTemp: 12,
+        peakSeasonPolarTemp: 10,
         offSeasonTropicsTemp: 26.2,
-        peakSeasonTropicsTemp: 30
+        peakSeasonTropicsTemp: 29.6
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
@@ -794,9 +794,9 @@ ENV_DEFS.defaults.moisture = {
         return c;
     },
     modifiers: {
-        polarMoisture: 0.50,
-        tropicalMoisture: 0.70,
-        mountainMoisture: 0.15
+        polarMoisture: 0.40,
+        tropicalMoisture: 0.60,
+        mountainMoisture: 0.20
     },
     noiseChannels: [
         [4,0.5,120,120,0.3,2]
