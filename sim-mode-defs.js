@@ -329,7 +329,7 @@ ENV_DEFS.defaults.jetstream = {
         [4,0.5,160,300,1,2]
     ],
     modifiers: {
-        peakLat: 0.30,
+        peakLat: 0.20,
         antiPeakLat: 0.50,
         peakRange: 0.30,
         antiPeakRange: 0.50
@@ -725,7 +725,7 @@ ENV_DEFS.defaults.SST = {
         offSeasonPolarTemp: -4,
         peakSeasonPolarTemp: 12,
         offSeasonTropicsTemp: 26.5,
-        peakSeasonTropicsTemp: 30
+        peakSeasonTropicsTemp: 29.5
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
