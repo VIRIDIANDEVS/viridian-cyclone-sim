@@ -49,7 +49,7 @@ SPAWN_RULES.defaults.archetypes = {
         pressure: [1005, 1012],
         windSpeed: [15, 35],
         type: TROPWAVE,
-        organization: [0,0.3],
+        organization: [0,0.9],
         lowerWarmCore: 1,
         upperWarmCore: 1,
         depth: 0
@@ -193,7 +193,7 @@ SPAWN_RULES[SIM_MODE_WILD].archetypes = {
         pressure: [1000, 1020],
         windSpeed: [15, 35],
         type: TROPWAVE,
-        organization: [0,0.9],
+        organization: [0,0.6],
         lowerWarmCore: 1,
         upperWarmCore: 1,
         depth: 0
@@ -329,10 +329,10 @@ ENV_DEFS.defaults.jetstream = {
         [4,0.5,160,300,1,2]
     ],
     modifiers: {
-        peakLat: 0.20,
+        peakLat: 0.30,
         antiPeakLat: 0.50,
-        peakRange: 0.50,
-        antiPeakRange: 0.2
+        peakRange: 0.25,
+        antiPeakRange: 0.5
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].jetstream = {};
@@ -408,8 +408,8 @@ ENV_DEFS.defaults.LLSteering = {
         [4,0.5,170,300,1,3]
     ],
     modifiers: {
-        westerlyNoiseRange: 0.37,
-        westerlyJetstreamEffectRange: 0.5,
+        westerlyNoiseRange: 0.35,
+        westerlyJetstreamEffectRange: 0.6,
         westerlyMax: 5,
         ridgingJetstreamEffectRange: 0.65,
         tradesRidgingEffectRange: 0.2,
@@ -503,12 +503,12 @@ ENV_DEFS.defaults.ULSteering = {
     magMap: [0,8,0,25],
     modifiers: {
         jetstreamDeltaX: 15,
-        jetstreamHalfDecay: 60,
+        jetstreamHalfDecay: 30,
         jetstreamOverpowerBase: 0.8,
         jetstreamInwardAngle: Math.PI/4,
         troughBase: 2,
-        troughExponentMin: -5,
-        troughExponentMax: 5,
+        troughExponentMin: -6,
+        troughExponentMax: 4,
         troughAngle: -Math.PI/16,
         hadleyUpperBound: 5.5,
         hadleyLowerBound: 1.5,
