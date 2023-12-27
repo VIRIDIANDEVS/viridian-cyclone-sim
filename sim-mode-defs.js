@@ -663,7 +663,7 @@ ENV_DEFS[SIM_MODE_NORMAL].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_HYPER].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_WILD].SSTAnomaly = {
     modifiers: {
-        r: 5,
+        r: 10,
         bigBlobBase: 1.8,
         bigBlobExponentThreshold: 2
     }
@@ -794,9 +794,9 @@ ENV_DEFS.defaults.moisture = {
         return c;
     },
     modifiers: {
-        polarMoisture: 0.40,
-        tropicalMoisture: 0.60,
-        mountainMoisture: 0.20
+        polarMoisture: 0.44,
+        tropicalMoisture: 0.66,
+        mountainMoisture: 0.22
     },
     noiseChannels: [
         [4,0.5,120,120,0.3,2]
