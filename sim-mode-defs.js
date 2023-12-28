@@ -329,9 +329,9 @@ ENV_DEFS.defaults.jetstream = {
         [4,0.5,160,300,1,2]
     ],
     modifiers: {
-        peakLat: 0.28,
-        antiPeakLat: 0.61,
-        peakRange: 0.44,
+        peakLat: 0.27,
+        antiPeakLat: 0.51,
+        peakRange: 0.47,
         antiPeakRange: 0.60
     }
 };
@@ -663,8 +663,8 @@ ENV_DEFS[SIM_MODE_NORMAL].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_HYPER].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_WILD].SSTAnomaly = {
     modifiers: {
-        r: 10,
-        bigBlobBase: 1.5,
+        r: 9,
+        bigBlobBase: 2.5,
         bigBlobExponentThreshold: 1.5
     }
 };
@@ -722,8 +722,8 @@ ENV_DEFS.defaults.SST = {
     },
     oceanic: true,
     modifiers: {
-        offSeasonPolarTemp: -4,
-        peakSeasonPolarTemp: 10,
+        offSeasonPolarTemp: -8.5,
+        peakSeasonPolarTemp: 8.5,
         offSeasonTropicsTemp: 27.2,
         peakSeasonTropicsTemp: 29.6
     }
