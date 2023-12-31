@@ -229,7 +229,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 		label: "Entire Southern Hemisphere",
         form: 'earth',
         west: -77.29,
-        east: -77.28,
+        east: -77.30,
         north: 0,
         south: -90,
         mainSubBasin: EARTH_SB_IDS.satl,
