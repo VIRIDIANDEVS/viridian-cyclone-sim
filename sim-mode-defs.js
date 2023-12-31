@@ -329,8 +329,8 @@ ENV_DEFS.defaults.jetstream = {
         [4,0.5,160,300,1,2]
     ],
     modifiers: {
-        peakLat: 0.32,
-        antiPeakLat: 0.50,
+        peakLat: 0.34,
+        antiPeakLat: 0.52,
         peakRange: 0.35,
         antiPeakRange: 0.60
     }
@@ -723,8 +723,8 @@ ENV_DEFS.defaults.SST = {
     oceanic: true,
     modifiers: {
         offSeasonPolarTemp: -15,
-        peakSeasonPolarTemp: -2.5,
-        offSeasonTropicsTemp: 27,
+        peakSeasonPolarTemp: -3.5,
+        offSeasonTropicsTemp: 26.5,
         peakSeasonTropicsTemp: 29.5
     }
 };
