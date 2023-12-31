@@ -128,10 +128,10 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         }
     },
     {   
-		label: "Atlantic",
+		label: "Entire Northern Hemisphere",
         form: 'earth',
-        west: -102.67,
-        east: 15,
+        west: -110,
+        east: -110.01,
         north: 90,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.atl,
