@@ -722,7 +722,7 @@ ENV_DEFS.defaults.SST = {
     },
     oceanic: true,
     modifiers: {
-        offSeasonPolarTemp: -9,
+        offSeasonPolarTemp: -15,
         peakSeasonPolarTemp: -2.5,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 29.5
@@ -794,9 +794,9 @@ ENV_DEFS.defaults.moisture = {
         return c;
     },
     modifiers: {
-        polarMoisture: 0.48,
+        polarMoisture: 0.45,
         tropicalMoisture: 0.60,
-        mountainMoisture: 0.36
+        mountainMoisture: 0.40
     },
     noiseChannels: [
         [4,0.5,120,120,0.3,2]
