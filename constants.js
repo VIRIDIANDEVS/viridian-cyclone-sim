@@ -159,7 +159,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 		label: "Western Pacific",
         form: 'earth',
         west: 94.42,
-        east: -159.91,
+        east: -74.33,
         north: 90,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.wpac,
@@ -183,21 +183,6 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 5
         }
     },
-{   
-		label: "Entire North Pacific",
-        form: 'earth',
-        west: 94.42,
-        east: -74.33,
-        north: 90,
-        south: 0,
-        mainSubBasin: EARTH_SB_IDS.nhempac,
-        optionPresets: {
-            hem: 1,
-            scale: 3,
-            designations: 3
-        }
-    },
-
     {   
 		label: "Australian Region",
         form: 'earth',
