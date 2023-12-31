@@ -193,7 +193,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         mainSubBasin: EARTH_SB_IDS.nhempac,
         optionPresets: {
             hem: 1,
-            scale: 0,
+            scale: 3,
             designations: 3
         }
     },
