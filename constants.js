@@ -156,7 +156,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         }
     },
     {   
-		label: "Western Pacific",
+		label: "Entire North Pacific",
         form: 'earth',
         west: 94.42,
         east: -77.67,
@@ -187,7 +187,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 		label: "Australian Region",
         form: 'earth',
         west: 82.03,
-        east: -172.29,
+        east: -77.29,
         north: 0,
         south: -90,
         mainSubBasin: EARTH_SB_IDS.aus,
@@ -198,10 +198,10 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         }
     },
     {   
-		label: "South Pacific",
+		label: "Entire South Pacific",
         form: 'earth',
         west: 138.2,
-        east: -75.13,
+        east: -77.29,
         north: 0,
         south: -90,
         mainSubBasin: EARTH_SB_IDS.spac,
@@ -215,7 +215,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 		label: "South-West Indian Ocean",
         form: 'earth',
         west: 17.25,
-        east: 122.93,
+        east: -77.29,
         north: 0,
         south: -90,
         mainSubBasin: EARTH_SB_IDS.swio,
@@ -226,10 +226,10 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         }
     },
     {   
-		label: "South Atlantic",
+		label: "Entire Southern Hemisphere",
         form: 'earth',
-        west: -81.48,
-        east: 24.19,
+        west: -180,
+        east: 180,
         north: 0,
         south: -90,
         mainSubBasin: EARTH_SB_IDS.satl,
