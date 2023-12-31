@@ -200,7 +200,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
     {   
 		label: "South Pacific",
         form: 'earth',
-        west: 147.2,
+        west: 143.2,
         east: -130.13,
         north: 0,
         south: -90,
