@@ -32,6 +32,7 @@ const EARTH_SB_IDS = {
     arb: 10,
     nioland: 11,
     medi: 12,
+nhempac: 13, 
     shem: 128,
     aus: 129,
     jakarta: 130,
@@ -182,6 +183,21 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 5
         }
     },
+{   
+		label: "Entire North Pacific",
+        form: 'earth',
+        west: 94.42,
+        east: -74.33,
+        north: 90,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nhempac,
+        optionPresets: {
+            hem: 1,
+            scale: 0,
+            designations: 3
+        }
+    },
+
     {   
 		label: "Australian Region",
         form: 'earth',
