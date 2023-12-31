@@ -130,8 +130,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 		label: "Atlantic",
         form: 'earth',
         west: -102.67,
-        east: 3,
-        north: 60,
+        east: 43,
+        north: 80,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.atl,
         optionPresets: {
@@ -145,7 +145,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         form: 'earth',
         west: -180,
         east: -74.33,
-        north: 60,
+        north: 80,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.epac,
         optionPresets: {
@@ -159,7 +159,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         form: 'earth',
         west: 94.42,
         east: -159.91,
-        north: 60,
+        north: 80,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.wpac,
         optionPresets: {
@@ -188,7 +188,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         west: 82.03,
         east: -172.29,
         north: 0,
-        south: -60,
+        south: -80,
         mainSubBasin: EARTH_SB_IDS.aus,
         optionPresets: {
             hem: 2,
@@ -202,7 +202,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         west: 147.2,
         east: -107.13,
         north: 0,
-        south: -60,
+        south: -80,
         mainSubBasin: EARTH_SB_IDS.spac,
         optionPresets: {
             hem: 2,
@@ -216,7 +216,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         west: 17.25,
         east: 122.93,
         north: 0,
-        south: -60,
+        south: -80,
         mainSubBasin: EARTH_SB_IDS.swio,
         optionPresets: {
             hem: 2,
@@ -230,7 +230,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         west: -81.48,
         east: 24.19,
         north: 0,
-        south: -60,
+        south: -80,
         mainSubBasin: EARTH_SB_IDS.satl,
         optionPresets: {
             hem: 2,
