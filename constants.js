@@ -159,7 +159,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 		label: "Western Pacific",
         form: 'earth',
         west: 94.42,
-        east: -108.67,
+        east: -128.67,
         north: 90,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.wpac,
