@@ -510,7 +510,7 @@ ENV_DEFS.defaults.ULSteering = {
         troughExponentMin: -4,
         troughExponentMax: 4,
         troughAngle: -Math.PI/16,
-        hadleyUpperBound: 4.5,
+        hadleyUpperBound: 3.4,
         hadleyLowerBound: 1,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
