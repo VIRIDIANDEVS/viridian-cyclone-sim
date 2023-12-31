@@ -510,8 +510,8 @@ ENV_DEFS.defaults.ULSteering = {
         troughExponentMin: -4,
         troughExponentMax: 4,
         troughAngle: -Math.PI/16,
-        hadleyUpperBound: 5.5,
-        hadleyLowerBound: 2,
+        hadleyUpperBound: 4.5,
+        hadleyLowerBound: 1,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
@@ -722,9 +722,9 @@ ENV_DEFS.defaults.SST = {
     },
     oceanic: true,
     modifiers: {
-        offSeasonPolarTemp: -5.9,
-        peakSeasonPolarTemp: 13.4,
-        offSeasonTropicsTemp: 27.5,
+        offSeasonPolarTemp: -6.9,
+        peakSeasonPolarTemp: 4,
+        offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 29.5
     }
 };
