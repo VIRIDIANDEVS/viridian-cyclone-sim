@@ -32,7 +32,7 @@ const EARTH_SB_IDS = {
     arb: 10,
     nioland: 11,
     medi: 12,
-nhempac: 13, 
+    npac: 13, 
     shem: 128,
     aus: 129,
     jakarta: 130,
@@ -128,11 +128,11 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         }
     },
     {   
-		label: "Entire Northern Hemisphere",
+		label: "Atlantic Ocean",
         form: 'earth',
         west: -110,
-        east: -110.01,
-        north: 90,
+        east: 15,
+        north: 60,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.atl,
         optionPresets: {
@@ -146,7 +146,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         form: 'earth',
         west: -180,
         east: -74.33,
-        north: 90,
+        north: 60,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.epac,
         optionPresets: {
@@ -156,13 +156,41 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         }
     },
     {   
+		label: "Western Pacific",
+        form: 'earth',
+        west: 94.42,
+        east: -140,
+        north: 60,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.wpac,
+        optionPresets: {
+            hem: 1,
+            scale: 3,
+            designations: 3
+        }
+    },
+ {   
+		label: "Central Pacific",
+        form: 'earth',
+        west: 180,
+        east: -140,
+        north: 60,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.cpac,
+        optionPresets: {
+            hem: 1,
+            scale: 0,
+            designations: 2
+        }
+    },
+ {   
 		label: "Entire North Pacific",
         form: 'earth',
         west: 94.42,
-        east: -77.67,
-        north: 90,
+        east: -77.29,
+        north: 70,
         south: 0,
-        mainSubBasin: EARTH_SB_IDS.wpac,
+        mainSubBasin: EARTH_SB_IDS.npac,
         optionPresets: {
             hem: 1,
             scale: 3,
@@ -174,7 +202,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         form: 'earth',
         west: 25.95,
         east: 131.62,
-        north: 90,
+        north: 60,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.nio,
         optionPresets: {
@@ -183,13 +211,28 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 5
         }
     },
+ {   
+		label: "Earth Northern Hemisphere",
+        form: 'earth',
+        west: -180,
+        east: 180,
+        north: 90,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nhem,
+        optionPresets: {
+            hem: 1,
+            scale: 3,
+            designations: 3
+        }
+    },
+
     {   
 		label: "Australian Region",
         form: 'earth',
         west: 82.03,
-        east: -77.29,
+        east: 180,
         north: 0,
-        south: -90,
+        south: -60,
         mainSubBasin: EARTH_SB_IDS.aus,
         optionPresets: {
             hem: 2,
@@ -203,7 +246,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         west: 138.2,
         east: -77.29,
         north: 0,
-        south: -90,
+        south: -70,
         mainSubBasin: EARTH_SB_IDS.spac,
         optionPresets: {
             hem: 2,
@@ -215,9 +258,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 		label: "South-West Indian Ocean",
         form: 'earth',
         west: 17.25,
-        east: -77.29,
+        east: 136.59,
         north: 0,
-        south: -90,
+        south: -60,
         mainSubBasin: EARTH_SB_IDS.swio,
         optionPresets: {
             hem: 2,
@@ -226,12 +269,12 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         }
     },
     {   
-		label: "Entire Southern Hemisphere",
+		label: "South Atlantic",
         form: 'earth',
-        west: -77.29,
-        east: -77.30,
+        west: -180,
+        east: 180,
         north: 0,
-        south: -90,
+        south: -60,
         mainSubBasin: EARTH_SB_IDS.satl,
         optionPresets: {
             hem: 2,
@@ -239,6 +282,21 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 9
         }
     },
+ {   
+		label: "Earth Southern Hemisphere",
+        form: 'earth',
+        west: -180,
+        east: 180,
+        north: 0,
+        south: -90,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 0,
+            designations: 9
+        }
+    },
+
     {   
 		label: "Mediterranean",
         form: 'earth',
