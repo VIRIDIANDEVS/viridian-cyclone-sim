@@ -1,11 +1,42 @@
 // ---- Simulation Modes ---- //
 
-const SIMULATION_MODES = ['Normal','Hyper','Wild','Megablobs','Experimental']; // Labels for sim mode selector UI
+const SIMULATION_MODES = ['Normal','Hyper','Wild','Megablobs','Experimental','Northern Hemisphere','Southern Hemisphere', 'Western Hemisphere', 'Eastern Hemisphere', 'North Atlantic','South Atlantic','Mediterranean','Eastern Pacific','Central Pacific','Western Pacific', 'North Pacific','South Pacific', 'North Indian Ocean', 'South Indian Ocean','Australia Region', '2C Warmed Earth', 'PreIndustrial','Mini Ice Age', '4C Warmed Earth','Snowball Earth', 'Drought','Deluge' ]; // Labels for sim mode selector UI
 const SIM_MODE_NORMAL = 0;
 const SIM_MODE_HYPER = 1;
 const SIM_MODE_WILD = 2;
 const SIM_MODE_MEGABLOBS = 3;
 const SIM_MODE_EXPERIMENTAL = 4;
+const SIM_MODE_NorthernHemisphere = 5;
+const SIM_Mode_SouthernHemisphere = 6;
+const SIM_MODE_WesternHemisphere = 7;
+const SIM_Mode_EasternHemisphere = 8;
+const SIM_MODE_NorthAtlantic = 9;
+const SIM_MODE_SouthAtlantic = 10;
+const SIM_MODE_Mediterranean = 11;
+const SIM_MODE_EasternPacific = 12;
+const SIM_MODE_CentralPacific = 13;
+const SIM_MODE_WesternPacific = 14;
+const SIM_MODE_NorthPacific = 15;
+const SIM_MODE_SouthPacific = 16;
+const SIM_MODE_NorthIndianOcean = 17;
+const SIM_MODE_SouthIndianOcean = 18;
+const SIM_MODE_Australian = 19;
+const SIM_MODE_WarmerEarth2C = 20;
+const SIM_MODE_PreIndustrial = 21; 
+const SIM_MODE_MiniIceAge = 22;
+const SIM_MODE_4C = 23;
+const SIM_MODE_SnowballEarth = 24;
+const SIM_MODE_GlobalDrought = 25;
+const SIM_MODE_Deluge = 26;
+
+
+
+
+
+
+
+
+
 
 // ---- Active Attributes ---- //
 
@@ -722,9 +753,9 @@ ENV_DEFS.defaults.SST = {
     },
     oceanic: true,
     modifiers: {
-        offSeasonPolarTemp: -15,
-        peakSeasonPolarTemp: -3.5,
-        offSeasonTropicsTemp: 26.5,
+        offSeasonPolarTemp: -6,
+        peakSeasonPolarTemp: 11,
+        offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 29.5
     }
 };
@@ -1079,3 +1110,5 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].upgrade = function(sys,data,oldVersion){
         sys.kaboom = 0;
     }
 };
+
+
