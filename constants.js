@@ -215,7 +215,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         form: 'earth',
         west: -180,
         east: 180,
-        north: 90,
+        north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.nhem,
         optionPresets: {
@@ -287,7 +287,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         west: -180,
         east: 180,
         north: 0,
-        south: -90,
+        south: -70,
         mainSubBasin: EARTH_SB_IDS.shem,
         optionPresets: {
             hem: 2,
