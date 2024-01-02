@@ -154,11 +154,26 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 1
         }
     },
+{   
+		label: "Northeast Pacific North Atlantic Combo",
+        form: 'earth',
+        west: -180,
+        east: 15,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nhem,
+        optionPresets: {
+            hem: 1,
+            scale: 0,
+            designations: 0
+        }
+    },
+
     {   
 		label: "Western Pacific",
         form: 'earth',
         west: 94.42,
-        east: -140,
+        east: 180,
         north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.wpac,
@@ -182,6 +197,21 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 2
         }
     },
+{   
+		label: "Western Pacific and Central Pacific",
+        form: 'earth',
+        west: 94.42,
+        east: -140,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nhem,
+        optionPresets: {
+            hem: 1,
+            scale: 3,
+            designations: 3
+        }
+    },
+
  {   
 		label: "Entire North Pacific",
         form: 'earth',
@@ -210,6 +240,21 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 5
         }
     },
+ {   
+		label: "Northern Indian Ocean and Western Pacific",
+        form: 'earth',
+        west: 25.95,
+        east: 180,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nio,
+        optionPresets: {
+            hem: 1,
+            scale: 4,
+            designations: 5
+        }
+    },
+
  {   
 		label: "Earth Northern Hemisphere",
         form: 'earth',
@@ -267,11 +312,39 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 8
         }
     },
+ {   
+		label: "Australian and Southwest Indian Ocean",
+        form: 'earth',
+        west: 17.25,
+        east: 180,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 5,
+            designations: 8
+        }
+    },
+{   
+		label: "South Pacific and Southern Indian Ocean",
+        form: 'earth',
+        west: 17.25,
+        east: -120,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 5,
+            designations: 8
+        }
+    },
     {   
 		label: "South Atlantic",
         form: 'earth',
-        west: -180,
-        east: 180,
+        west: -81.48,
+        east: 24.2,
         north: 0,
         south: -70,
         mainSubBasin: EARTH_SB_IDS.satl,
@@ -281,6 +354,21 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 9
         }
     },
+{   
+		label: "South Atlantic and Indian Oceans",
+        form: 'earth',
+        west: -81.48,
+        east: 136.59,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 0,
+            designations: 9
+        }
+    },
+
  {   
 		label: "Earth Southern Hemisphere",
         form: 'earth',
