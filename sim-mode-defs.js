@@ -360,7 +360,7 @@ ENV_DEFS.defaults.jetstream = {
         [4,0.5,160,300,1,2]
     ],
     modifiers: {
-        peakLat: 0.34,
+        peakLat: 0.30,
         antiPeakLat: 0.52,
         peakRange: 0.35,
         antiPeakRange: 0.60
@@ -541,8 +541,8 @@ ENV_DEFS.defaults.ULSteering = {
         troughExponentMin: -4,
         troughExponentMax: 4,
         troughAngle: -Math.PI/16,
-        hadleyUpperBound: 2,
-        hadleyLowerBound: 1,
+        hadleyUpperBound: 5,
+        hadleyLowerBound: 2,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
