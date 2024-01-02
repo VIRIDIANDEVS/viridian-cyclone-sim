@@ -1,11 +1,42 @@
 // ---- Simulation Modes ---- //
 
-const SIMULATION_MODES = ['Normal','Hyper','Wild','Megablobs','Experimental']; // Labels for sim mode selector UI
+const SIMULATION_MODES = ['Normal','Hyper','Wild','Megablobs','Experimental','Northern Hemisphere','Southern Hemisphere', 'Western Hemisphere', 'Eastern Hemisphere', 'North Atlantic','South Atlantic','Mediterranean','Eastern Pacific','Central Pacific','Western Pacific', 'North Pacific','South Pacific', 'North Indian Ocean', 'South Indian Ocean','Australia Region', '2C Warmed Earth', 'PreIndustrial','Mini Ice Age', '4C Warmed Earth','Snowball Earth', 'Drought','Deluge' ]; // Labels for sim mode selector UI
 const SIM_MODE_NORMAL = 0;
 const SIM_MODE_HYPER = 1;
 const SIM_MODE_WILD = 2;
 const SIM_MODE_MEGABLOBS = 3;
 const SIM_MODE_EXPERIMENTAL = 4;
+const SIM_MODE_NorthernHemisphere = 5;
+const SIM_Mode_SouthernHemisphere = 6;
+const SIM_MODE_WesternHemisphere = 7;
+const SIM_Mode_EasternHemisphere = 8;
+const SIM_MODE_NorthAtlantic = 9;
+const SIM_MODE_SouthAtlantic = 10;
+const SIM_MODE_Mediterranean = 11;
+const SIM_MODE_EasternPacific = 12;
+const SIM_MODE_CentralPacific = 13;
+const SIM_MODE_WesternPacific = 14;
+const SIM_MODE_NorthPacific = 15;
+const SIM_MODE_SouthPacific = 16;
+const SIM_MODE_NorthIndianOcean = 17;
+const SIM_MODE_SouthIndianOcean = 18;
+const SIM_MODE_Australian = 19;
+const SIM_MODE_WarmerEarth2C = 20;
+const SIM_MODE_PreIndustrial = 21; 
+const SIM_MODE_MiniIceAge = 22;
+const SIM_MODE_4C = 23;
+const SIM_MODE_SnowballEarth = 24;
+const SIM_MODE_GlobalDrought = 25;
+const SIM_MODE_Deluge = 26;
+
+
+
+
+
+
+
+
+
 
 // ---- Active Attributes ---- //
 
@@ -46,10 +77,10 @@ SPAWN_RULES.defaults.archetypes = {
     'tw': {
         x: ()=>random(0,WIDTH-1),
         y: (b)=>b.hemY(random(HEIGHT*0.7,HEIGHT*0.9)),
-        pressure: [1000, 1020],
+        pressure: [1005, 1012],
         windSpeed: [15, 35],
         type: TROPWAVE,
-        organization: [0,0.3],
+        organization: [0,0.7],
         lowerWarmCore: 1,
         upperWarmCore: 1,
         depth: 0
@@ -57,7 +88,7 @@ SPAWN_RULES.defaults.archetypes = {
     'ex': {
         x: ()=>random(0,WIDTH-1),
         y: (b,x)=>b.hemY(b.env.get("jetstream",x,0,b.tick)+random(-75,75)),
-        pressure: [1000, 1020],
+        pressure: [1000, 1009],
         windSpeed: [15, 35],
         type: EXTROP,
         organization: 0,
@@ -67,18 +98,18 @@ SPAWN_RULES.defaults.archetypes = {
     },
     'l': {
         inherit: 'tw',
-        pressure: 1015,
-        windSpeed: 15,
+        pressure: 1012,
+        windSpeed: 20,
         organization: 0.2
     },
     'x': {
         inherit: 'ex',
         pressure: 1005,
-        windSpeed: 15
+        windSpeed: 25
     },
     'tc': {
         pressure: 1005,
-        windSpeed: 25,
+        windSpeed: 30,
         type: TROP,
         organization: 1,
         lowerWarmCore: 1,
@@ -99,22 +130,22 @@ SPAWN_RULES.defaults.archetypes = {
     },
     's': {
         inherit: 'tc',
-        pressure: 995,
-        windSpeed: 45
+        pressure: 1000,
+        windSpeed: 40
     },
     'S': {
         inherit: 'stc',
-        pressure: 995,
-        windSpeed: 45
+        pressure: 1000,
+        windSpeed: 40
     },
     '1': {
         inherit: 'tc',
-        pressure: 985,
-        windSpeed: 70
+        pressure: 990,
+        windSpeed: 75
     },
     '2': {
         inherit: 'tc',
-        pressure: 975,
+        pressure: 980,
         windSpeed: 90
     },
     '3': {
@@ -125,21 +156,21 @@ SPAWN_RULES.defaults.archetypes = {
     '4': {
         inherit: 'tc',
         pressure: 945,
-        windSpeed: 125
+        windSpeed: 130
     },
     '5': {
         inherit: 'tc',
         pressure: 925,
-        windSpeed: 145
+        windSpeed: 150
     },
     '6': {
         inherit: 'tc',
-        pressure: 890,
+        pressure: 910,
         windSpeed: 170
     },
     '7': {
         inherit: 'tc',
-        pressure: 840,
+        pressure: 890,
         windSpeed: 210
     },
     '8': {
@@ -193,7 +224,7 @@ SPAWN_RULES[SIM_MODE_WILD].archetypes = {
         pressure: [1000, 1020],
         windSpeed: [15, 35],
         type: TROPWAVE,
-        organization: [0,0.3],
+        organization: [0,0.6],
         lowerWarmCore: 1,
         upperWarmCore: 1,
         depth: 0
@@ -329,10 +360,10 @@ ENV_DEFS.defaults.jetstream = {
         [4,0.5,160,300,1,2]
     ],
     modifiers: {
-        peakLat: 0.35,
-        antiPeakLat: 0.55,
+        peakLat: 0.34,
+        antiPeakLat: 0.52,
         peakRange: 0.35,
-        antiPeakRange: 0.5
+        antiPeakRange: 0.60
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].jetstream = {};
@@ -356,9 +387,9 @@ ENV_DEFS[SIM_MODE_WILD].jetstream = {
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].jetstream = {
     modifiers: {
-        peakLat: 0.25,
+        peakLat: 0.15,
         antiPeakLat: 0.47,
-        peakRange: 0.25,
+        peakRange: 0.60,
         antiPeakRange: 0.45
     }
 };
@@ -408,15 +439,15 @@ ENV_DEFS.defaults.LLSteering = {
         [4,0.5,170,300,1,3]
     ],
     modifiers: {
-        westerlyNoiseRange: 0.3,
-        westerlyJetstreamEffectRange: 0.4,
-        westerlyMax: 4,
-        ridgingJetstreamEffectRange: 0.3,
-        tradesRidgingEffectRange: 0.3,
-        tradesMax: 3,
+        westerlyNoiseRange: 0.35,
+        westerlyJetstreamEffectRange: 0.5,
+        westerlyMax: 10,
+        ridgingJetstreamEffectRange: 0.35,
+        tradesRidgingEffectRange: 0.4,
+        tradesMax: 3.5,
         tradesAngleEquator: 17*Math.PI/16,
         tradesAngle: 511*Math.PI/512,
-        noiseBase: 1.5,
+        noiseBase: 1.6,
         noiseExponentMin: -8,
         noiseExponentMax: 4
     }
@@ -442,8 +473,8 @@ ENV_DEFS[SIM_MODE_WILD].LLSteering = {
         return u.vec;
     },
     modifiers: {
-        noiseExponentMin: -3,
-        noiseExponentMax: 4
+        noiseExponentMin: -6,
+        noiseExponentMax: 6
     }
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].LLSteering = {};
@@ -502,16 +533,16 @@ ENV_DEFS.defaults.ULSteering = {
     vector: true,
     magMap: [0,8,0,25],
     modifiers: {
-        jetstreamDeltaX: 10,
-        jetstreamHalfDecay: 40,
+        jetstreamDeltaX: 20,
+        jetstreamHalfDecay: 60,
         jetstreamOverpowerBase: 0.7,
         jetstreamInwardAngle: Math.PI/4,
-        troughBase: 1.7,
-        troughExponentMin: -5,
-        troughExponentMax: 3,
+        troughBase: 1.5,
+        troughExponentMin: -4,
+        troughExponentMax: 4,
         troughAngle: -Math.PI/16,
-        hadleyUpperBound: 5,
-        hadleyLowerBound: 1.5,
+        hadleyUpperBound: 2,
+        hadleyLowerBound: 1,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
@@ -663,8 +694,8 @@ ENV_DEFS[SIM_MODE_NORMAL].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_HYPER].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_WILD].SSTAnomaly = {
     modifiers: {
-        r: 5,
-        bigBlobBase: 1.4,
+        r: 9,
+        bigBlobBase: 1.5,
         bigBlobExponentThreshold: 1.5
     }
 };
@@ -722,10 +753,10 @@ ENV_DEFS.defaults.SST = {
     },
     oceanic: true,
     modifiers: {
-        offSeasonPolarTemp: -3,
-        peakSeasonPolarTemp: 10,
-        offSeasonTropicsTemp: 26,
-        peakSeasonTropicsTemp: 29
+        offSeasonPolarTemp: -6,
+        peakSeasonPolarTemp: 11,
+        offSeasonTropicsTemp: 27,
+        peakSeasonTropicsTemp: 29.5
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
@@ -794,9 +825,9 @@ ENV_DEFS.defaults.moisture = {
         return c;
     },
     modifiers: {
-        polarMoisture: 0.43,
-        tropicalMoisture: 0.57,
-        mountainMoisture: 0.2
+        polarMoisture: 0.45,
+        tropicalMoisture: 0.60,
+        mountainMoisture: 0.40
     },
     noiseChannels: [
         [4,0.5,120,120,0.3,2]
@@ -1079,3 +1110,5 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].upgrade = function(sys,data,oldVersion){
         sys.kaboom = 0;
     }
 };
+
+
