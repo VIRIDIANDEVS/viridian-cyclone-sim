@@ -189,7 +189,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         east: -77.29,
         north: 70,
         south: 0,
-        mainSubBasin: EARTH_SB_IDS.npac,
+        mainSubBasin: EARTH_SB_IDS.nhem,
         optionPresets: {
             hem: 1,
             scale: 3,
