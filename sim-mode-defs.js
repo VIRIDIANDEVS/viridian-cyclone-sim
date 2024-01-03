@@ -441,10 +441,10 @@ ENV_DEFS.defaults.LLSteering = {
     modifiers: {
         westerlyNoiseRange: 0.35,
         westerlyJetstreamEffectRange: 0.5,
-        westerlyMax: 10,
+        westerlyMax: 20,
         ridgingJetstreamEffectRange: 0.35,
         tradesRidgingEffectRange: 0.4,
-        tradesMax: 3.5,
+        tradesMax: 2,
         tradesAngleEquator: 17*Math.PI/16,
         tradesAngle: 511*Math.PI/512,
         noiseBase: 1.6,
@@ -695,8 +695,8 @@ ENV_DEFS[SIM_MODE_HYPER].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_WILD].SSTAnomaly = {
     modifiers: {
         r: 9,
-        bigBlobBase: 1.5,
-        bigBlobExponentThreshold: 1.5
+        bigBlobBase: 1.3,
+        bigBlobExponentThreshold: 1.2
     }
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].SSTAnomaly = {
@@ -762,9 +762,9 @@ ENV_DEFS.defaults.SST = {
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
 ENV_DEFS[SIM_MODE_HYPER].SST = {
     modifiers: {
-        offSeasonPolarTemp: 5,
+        offSeasonPolarTemp: -5,
         peakSeasonPolarTemp: 20,
-        offSeasonTropicsTemp: 31,
+        offSeasonTropicsTemp: 28,
         peakSeasonTropicsTemp: 35
     }
 };
@@ -996,7 +996,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
         sys.organization = lerp(sys.organization,0,0.03);
     sys.organization = constrain(sys.organization,0,1);
 
-    let hardCeiling = map(SST,21,31,1015,880);
+    let hardCeiling = map(SST,21,31,1009,880);
     if(lnd)
         hardCeiling = 990;
     let softCeiling = map(sys.organization,0.93,0.98,lerp(1020,hardCeiling,0.7),hardCeiling,true);
