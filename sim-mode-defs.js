@@ -719,7 +719,7 @@ ENV_DEFS[SIM_MODE_Australian].SSTAnomaly = {
     modifiers: {
         r: 8,
         bigBlobBase: 1.6,
-        bigBlobExponentThreshold: 1.6
+        bigBlobExponentThreshold: 1.3
     }
 };
 // -- SST -- //
@@ -811,10 +811,10 @@ ENV_DEFS[SIM_MODE_EXPERIMENTAL].SST = {
 ENV_DEFS[SIM_MODE_Australian].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -24,
-        peakSeasonPolarTemp: -12,
+        offSeasonPolarTemp: -20,
+        peakSeasonPolarTemp: -15,
         offSeasonTropicsTemp: 26.5,
-        peakSeasonTropicsTemp: 30
+        peakSeasonTropicsTemp: 29.3
     }
 };
 // -- moisture -- //
