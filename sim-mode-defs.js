@@ -70,7 +70,7 @@ SPAWN_RULES[SIM_MODE_HYPER] = {};
 SPAWN_RULES[SIM_MODE_WILD] = {};
 SPAWN_RULES[SIM_MODE_MEGABLOBS] = {};
 SPAWN_RULES[SIM_MODE_EXPERIMENTAL] = {};
-
+SPAWN_RULES[SIM_MODE_Australian] = {};
 // -- Defaults -- //
 
 SPAWN_RULES.defaults.archetypes = {
@@ -297,7 +297,7 @@ SPAWN_RULES[SIM_MODE_EXPERIMENTAL].archetypes = {
 };
 
 SPAWN_RULES[SIM_MODE_EXPERIMENTAL].doSpawn = SPAWN_RULES[SIM_MODE_HYPER].doSpawn;
-
+SPAWN_RULES[SIM_MODE_Australian].doSpawn = SPAWN_RULES.defaults.doSpawn;
 
 // ---- Definitions of Environmental Fields ---- //
 
@@ -309,7 +309,7 @@ ENV_DEFS[SIM_MODE_HYPER] = {}; // Same for "Hyper" simulation mode
 ENV_DEFS[SIM_MODE_WILD] = {};  // "Wild" simulation mode
 ENV_DEFS[SIM_MODE_MEGABLOBS] = {}; // "Megablobs" simulation mode
 ENV_DEFS[SIM_MODE_EXPERIMENTAL] = {}; // "Experimental" simulation mode
-
+ENV_DEFS[SIM_MODE_Australian] = {}; // Australian Simulation mode
 // -- Sample Env Field -- //
 
 // ENV_DEFS.defaults.sample = {
@@ -394,6 +394,14 @@ ENV_DEFS[SIM_MODE_MEGABLOBS].jetstream = {
     }
 };
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].jetstream = {};
+ENV_DEFS[SIM_MODE_Australian].jetstream = {
+modifiers: {
+        peakLat: 0.29,
+        antiPeakLat: 0.48,
+        peakRange: 0.30,
+        antiPeakRange: 0.45
+    }
+};
 
 // -- LLSteering -- //
 
@@ -479,7 +487,7 @@ ENV_DEFS[SIM_MODE_WILD].LLSteering = {
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].LLSteering = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].LLSteering = {};
-
+ENV_DEFS[SIM_MODE_Australian].LLSteering = {};
 // -- ULSteering -- //
 
 ENV_DEFS.defaults.ULSteering = {
@@ -603,7 +611,7 @@ ENV_DEFS[SIM_MODE_WILD].ULSteering = {
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].ULSteering = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].ULSteering = {};
-
+ENV_DEFS[SIM_MODE_Australian].ULSteering = {};
 // -- shear -- //
 
 ENV_DEFS.defaults.shear = {
@@ -644,7 +652,7 @@ ENV_DEFS[SIM_MODE_HYPER].shear = {};
 ENV_DEFS[SIM_MODE_WILD].shear = {};
 ENV_DEFS[SIM_MODE_MEGABLOBS].shear = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].shear = {};
-
+ENV_DEFS[SIM_MODE_Australian].shear = {};
 // -- SSTAnomaly -- //
 
 ENV_DEFS.defaults.SSTAnomaly = {
@@ -707,7 +715,13 @@ ENV_DEFS[SIM_MODE_MEGABLOBS].SSTAnomaly = {
     }
 };
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].SSTAnomaly = {};
-
+ENV_DEFS[SIM_MODE_Australian].SSTAnomaly = {
+    modifiers: {
+        r: 8,
+        bigBlobBase: 1.6,
+        bigBlobExponentThreshold: 1.6
+    }
+};
 // -- SST -- //
 
 ENV_DEFS.defaults.SST = {
@@ -794,7 +808,15 @@ ENV_DEFS[SIM_MODE_EXPERIMENTAL].SST = {
         peakSeasonTropicsTemp: 28
     }
 };
-
+ENV_DEFS[SIM_MODE_Australian].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -24,
+        peakSeasonPolarTemp: -12,
+        offSeasonTropicsTemp: 26.5,
+        peakSeasonTropicsTemp: 30
+    }
+};
 // -- moisture -- //
 
 ENV_DEFS.defaults.moisture = {
@@ -858,7 +880,13 @@ ENV_DEFS[SIM_MODE_WILD].moisture = {
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].moisture = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].moisture = {};
-
+ENV_DEFS[SIM_MODE_HYPER].moisture = {
+    modifiers: {
+        polarMoisture: 0.35,
+        tropicalMoisture: 0.62,
+        mountainMoisture: 0.28
+    }
+};
 // ---- Active Storm System Algorithm ---- //
 
 const STORM_ALGORITHM = {};
@@ -869,7 +897,7 @@ STORM_ALGORITHM[SIM_MODE_HYPER] = {};
 STORM_ALGORITHM[SIM_MODE_WILD] = {};
 STORM_ALGORITHM[SIM_MODE_MEGABLOBS] = {};
 STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL] = {};
-
+STORM_ALGORITHM[SIM_MODE_Australian] = {};
 // -- Interaction -- //
 
 STORM_ALGORITHM.defaults.interactionInit = {
@@ -1081,7 +1109,7 @@ STORM_ALGORITHM[SIM_MODE_HYPER].version = 0;
 STORM_ALGORITHM[SIM_MODE_WILD].version = 0;
 STORM_ALGORITHM[SIM_MODE_MEGABLOBS].version = 0;
 STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].version = 1;
-
+STORM_ALGORITHM[SIM_MODE_Australian].version = 0;
 // -- Upgrade -- //
 // Converts active attributes in case an active system is loaded after an algorithm change breaks old values
 
