@@ -1,5 +1,5 @@
 const TITLE = "Cyclone Simulator";
-const VERSION_NUMBER = "0.5.27"
+const VERSION_NUMBER = "0.5.3"
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
 const EARLIEST_COMPATIBLE_FORMAT = 0;
 const ENVDATA_COMPATIBLE_FORMAT = 0;
@@ -129,8 +129,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
     {   
 		label: "Atlantic Ocean",
         form: 'earth',
-        west: -110,
-        east: 15,
+        west: -116,
+        east: 36,
         north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.atl,
