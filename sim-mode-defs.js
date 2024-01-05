@@ -1,33 +1,33 @@
 // ---- Simulation Modes ---- //
 
 const SIMULATION_MODES = ['Normal','Hyper','Wild','Megablobs','Experimental','Northern Hemisphere','Southern Hemisphere', 'Western Hemisphere', 'Eastern Hemisphere', 'North Atlantic','South Atlantic','Mediterranean','Eastern Pacific','Central Pacific','Western Pacific', 'North Pacific','South Pacific', 'North Indian Ocean', 'South Indian Ocean','Australia Region', '2C Warmed Earth', 'PreIndustrial','Mini Ice Age', '4C Warmed Earth','Snowball Earth', 'Drought','Deluge' ]; // Labels for sim mode selector UI
-const SIM_MODE_NORMAL = 0;
-const SIM_MODE_HYPER = 1;
-const SIM_MODE_WILD = 2;
-const SIM_MODE_MEGABLOBS = 3;
-const SIM_MODE_EXPERIMENTAL = 4;
-const SIM_MODE_NorthernHemisphere = 5;
-const SIM_Mode_SouthernHemisphere = 6;
-const SIM_MODE_WesternHemisphere = 7;
-const SIM_Mode_EasternHemisphere = 8;
-const SIM_MODE_NorthAtlantic = 9;
-const SIM_MODE_SouthAtlantic = 10;
-const SIM_MODE_Mediterranean = 11;
-const SIM_MODE_EasternPacific = 12;
-const SIM_MODE_CentralPacific = 13;
-const SIM_MODE_WesternPacific = 14;
-const SIM_MODE_NorthPacific = 15;
-const SIM_MODE_SouthPacific = 16;
-const SIM_MODE_NorthIndianOcean = 17;
-const SIM_MODE_SouthIndianOcean = 18;
-const SIM_MODE_Australian = 19;
-const SIM_MODE_WarmerEarth2C = 20;
-const SIM_MODE_PreIndustrial = 21; 
-const SIM_MODE_MiniIceAge = 22;
-const SIM_MODE_4C = 23;
-const SIM_MODE_SnowballEarth = 24;
-const SIM_MODE_GlobalDrought = 25;
-const SIM_MODE_Deluge = 26;
+const SIM_MODE_NORMAL = 0; // Base simulation mode
+const SIM_MODE_HYPER = 1; // Much more active seasonal simulation 
+const SIM_MODE_WILD = 2; // Highly Random fluctuations
+const SIM_MODE_MEGABLOBS = 3; // Large areas of extremes
+const SIM_MODE_EXPERIMENTAL = 4; // Experimental Simulation
+const SIM_MODE_NorthernHemisphere = 5; // The average conditions for any Northern Hemisphere basin
+const SIM_Mode_SouthernHemisphere = 6; // The average conditions for any Southern Hemisphere basin
+const SIM_MODE_WesternHemisphere = 7; // The average conditions for any Western Hemisphere basin
+const SIM_Mode_EasternHemisphere = 8; // The average conditions for any Eastern Hemisphere basin
+const SIM_MODE_NorthAtlantic = 9; // North Atlantic Climate
+const SIM_MODE_SouthAtlantic = 10; // South Atlantic Climate
+const SIM_MODE_Mediterranean = 11; // Mediterranean Climate
+const SIM_MODE_EasternPacific = 12; // Eastern Pacific Climate
+const SIM_MODE_CentralPacific = 13; // Central Pacific Climate
+const SIM_MODE_WesternPacific = 14; // Western Pacific Climate 
+const SIM_MODE_NorthPacific = 15; // North Pacific Climate for all basins. For the Entire North Pacific Map
+const SIM_MODE_SouthPacific = 16; // South Pacific Climate, for the South Pacific map and it incorporates the entire ocean.
+const SIM_MODE_NorthIndianOcean = 17; // North Indian Ocean Climate
+const SIM_MODE_SouthIndianOcean = 18; // South Indian Ocean Climate
+const SIM_MODE_Australian = 19; // Australian region climate defined as the normal basin for Australia
+const SIM_MODE_WarmerEarth2C = 20; // 2C warmer earth than pre industrial period
+const SIM_MODE_PreIndustrial = 21; // Earth Climate before Industrialization in the 1800s. 
+const SIM_MODE_MiniIceAge = 22; // Puts earth into a mini ice age, poles are much colder, tropics only slightly
+const SIM_MODE_4C = 23; // Earth 4C warmer than pre industrial period
+const SIM_MODE_SnowballEarth = 24; // All of earth wrapped in Ice
+const SIM_MODE_Drought = 25; // Greatly reduced global moisure 
+const SIM_MODE_Deluge = 26; // Greatly increased global moisture
 
 
 
@@ -70,7 +70,29 @@ SPAWN_RULES[SIM_MODE_HYPER] = {};
 SPAWN_RULES[SIM_MODE_WILD] = {};
 SPAWN_RULES[SIM_MODE_MEGABLOBS] = {};
 SPAWN_RULES[SIM_MODE_EXPERIMENTAL] = {};
+SPAWN_RULES[SIM_MODE_NorthernHemisphere] = {};
+SPAWN_RULES[SIM_MODE_SouthernHemisphere] = {};
+SPAWN_RULES[SIM_MODE_WesternHemisphere] = {};
+SPAWN_RULES[SIM_MODE_EasternHemisphere] = {};
+SPAWN_RULES[SIM_MODE_NorthAtlantic] = {};
+SPAWN_RULES[SIM_MODE_SouthAtlantic] = {};
+SPAWN_RULES[SIM_MODE_Mediterranean] = {};
+SPAWN_RULES[SIM_MODE_EasternPacific] = {};
+SPAWN_RULES[SIM_MODE_CentralPacific] = {};
+SPAWN_RULES[SIM_MODE_WesternPacific] = {};
+SPAWN_RULES[SIM_MODE_NorthPacific] = {};
+SPAWN_RULES[SIM_MODE_SouthPacific] = {};
+SPAWN_RULES[SIM_MODE_NorthIndianOcean] = {};
+SPAWN_RULES[SIM_MODE_SouthIndianOcean] = {};
 SPAWN_RULES[SIM_MODE_Australian] = {};
+SPAWN_RULES[SIM_MODE_WarmerEarth2C] = {};
+SPAWN_RULES[SIM_MODE_PreIndustrial] = {};
+SPAWN_RULES[SIM_MODE_MiniIceAge] = {};
+SPAWN_RULES[SIM_MODE_4C] = {};
+SPAWN_RULES[SIM_MODE_IceAge] = {};
+SPAWN_RULES[SIM_MODE_Drought] = {};
+SPAWN_RULES[SIM_MODE_Deluge] = {};
+
 // -- Defaults -- //
 
 SPAWN_RULES.defaults.archetypes = {
@@ -297,8 +319,28 @@ SPAWN_RULES[SIM_MODE_EXPERIMENTAL].archetypes = {
 };
 
 SPAWN_RULES[SIM_MODE_EXPERIMENTAL].doSpawn = SPAWN_RULES[SIM_MODE_HYPER].doSpawn;
+SPAWN_RULES[SIM_MODE_NorthernHemisphere].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_SouthernHemisphere].doSpawn =SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_WesternHemisphere].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_EasternHemisphere].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_NorthAtlantic].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_SouthAtlantic].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_Mediterranean].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_EasternPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_CentralPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_WesternPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_NorthPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_SouthPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_NorthIndianOcean].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_SouthIndianOcean].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_Australian].doSpawn = SPAWN_RULES.defaults.doSpawn;
-
+SPAWN_RULES[SIM_MODE_WarmerEarth2C].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_PreIndustrial].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_MiniIceAge].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_4C.doSpawn] = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_IceAge].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_Drought].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_Deluge].doSpawn = SPAWN_RULES.defaults.doSpawn;
 // ---- Definitions of Environmental Fields ---- //
 
 const ENV_DEFS = {};
@@ -309,7 +351,28 @@ ENV_DEFS[SIM_MODE_HYPER] = {}; // Same for "Hyper" simulation mode
 ENV_DEFS[SIM_MODE_WILD] = {};  // "Wild" simulation mode
 ENV_DEFS[SIM_MODE_MEGABLOBS] = {}; // "Megablobs" simulation mode
 ENV_DEFS[SIM_MODE_EXPERIMENTAL] = {}; // "Experimental" simulation mode
-ENV_DEFS[SIM_MODE_Australian] = {}; // Australian Simulation mode
+ENV_DEFS[SIM_MODE_NorthernHemisphere] = {}; // Every simulation below here was explained in a previous line comments above, they each have their own unique climates with ones named after real places being realistic to that.
+ENV_DEFS[SIM_MODE_SouthernHemisphere] = {};
+ENV_DEFS[SIM_MODE_WesternHemisphere] = {};
+ENV_DEFS[SIM_MODE_EasternHemisphere] = {};
+ENV_DEFS[SIM_MODE_NorthAtlantic] = {};
+ENV_DEFS[SIM_MODE_SouthAtlantic] = {};
+ENV_DEFS[SIM_MODE_Mediterranean] = {};
+ENV_DEFS[SIM_MODE_EasternPacific] = {};
+ENV_DEFS[SIM_MODE_CentralPacific] = {};
+ENV_DEFS[SIM_MODE_WesternPacific] = {};
+ENV_DEFS[SIM_MODE_NorthPacific] = {};
+ENV_DEFS[SIM_MODE_SouthPacific] = {};
+ENV_DEFS[SIM_MODE_NorthIndianOcean] = {};
+ENV_DEFS[SIM_MODE_SouthIndianOcean] = {};
+ENV_DEFS[SIM_MODE_Australian] = {};
+ENV_DEFS[SIM_MODE_WarmerEarth2C] = {};
+ENV_DEFS[SIM_MODE_PreIndustrial] = {};
+ENV_DEFS[SIM_MODE_MiniIceAge] = {};
+ENV_DEFS[SIM_MODE_4C] = {};
+ENV_DEFS[SIM_MODE_IceAge] = {};
+ENV_DEFS[SIM_MODE_Drought] = {};
+ENV_DEFS[SIM_MODE_Deluge] = {};
 // -- Sample Env Field -- //
 
 // ENV_DEFS.defaults.sample = {
@@ -394,12 +457,175 @@ ENV_DEFS[SIM_MODE_MEGABLOBS].jetstream = {
     }
 };
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].jetstream = {};
+
+ENV_DEFS[SIM_MODE_NorthernHemisphere].jetstream = {
+modifiers: {
+        peakLat: 0.26,
+        antiPeakLat: 0.53,
+        peakRange: 0.38,
+        antiPeakRange: 0.55
+    }
+};
+ENV_DEFS[SIM_MODE_SouthernHemisphere].jetstream = {
+modifiers: {
+        peakLat: 0.29,
+        antiPeakLat: 0.48,
+        peakRange: 0.27,
+        antiPeakRange: 0.45
+    }
+};
+
+ENV_DEFS[SIM_MODE_WesternHemisphere].jetstream = {
+modifiers: {
+        peakLat: 0.28,
+        antiPeakLat: 0.52,
+        peakRange: 0.4,
+        antiPeakRange: 0.55
+    }
+};
+
+ENV_DEFS[SIM_MODE_EasternHemisphere].jetstream = {
+modifiers: {
+        peakLat: 0.30,
+        antiPeakLat: 0.52,
+        peakRange: 0.35,
+        antiPeakRange: 0.45
+    }
+};
+ENV_DEFS[SIM_MODE_NorthAtlantic].jetstream = {
+modifiers: {
+        peakLat: 0.28,
+        antiPeakLat: 0.50,
+        peakRange: 0.38,
+        antiPeakRange: 0.50
+    }
+};
+ENV_DEFS[SIM_MODE_SouthAtlantic].jetstream = {
+modifiers: {
+        peakLat: 0.30,
+        antiPeakLat: 0.54,
+        peakRange: 0.42,
+        antiPeakRange: 0.55
+    }
+};
+ENV_DEFS[SIM_MODE_Mediterranean].jetstream = {
+modifiers: {
+        peakLat: 0.10,
+        antiPeakLat: 0.62,
+        peakRange: 0.40,
+        antiPeakRange: 0.85
+    }
+};
+ENV_DEFS[SIM_MODE_EasternPacific].jetstream = {
+modifiers: {
+        peakLat: 0.20,
+        antiPeakLat: 0.55,
+        peakRange: 0.15,
+        antiPeakRange: 0.65
+    }
+};
+ENV_DEFS[SIM_MODE_CentralPacific].jetstream = {
+modifiers: {
+        peakLat: 0.26,
+        antiPeakLat: 0.48,
+        peakRange: 0.30,
+        antiPeakRange: 0.55
+    }
+};
+ENV_DEFS[SIM_MODE_WesternPacific].jetstream = {
+modifiers: {
+        peakLat: 0.32,
+        antiPeakLat: 0.51,
+        peakRange: 0.29,
+        antiPeakRange: 0.46
+    }
+};
+ENV_DEFS[SIM_MODE_NorthPacific].jetstream = {
+modifiers: {
+        peakLat: 0.28,
+        antiPeakLat: 0.51,
+        peakRange: 0.25,
+        antiPeakRange: 0.40
+    }
+};
+ENV_DEFS[SIM_MODE_SouthPacific].jetstream = {
+modifiers: {
+        peakLat: 0.31,
+        antiPeakLat: 0.50,
+        peakRange: 0.32,
+        antiPeakRange: 0.51
+    }
+};
+ENV_DEFS[SIM_MODE_NorthIndianOcean].jetstream = {
+modifiers: {
+        peakLat: 0.25,
+        antiPeakLat: 0.55,
+        peakRange: 0.30,
+        antiPeakRange: 0.50
+    }
+};
+ENV_DEFS[SIM_MODE_SouthIndianOcean].jetstream = {
+modifiers: {
+        peakLat: 0.33,
+        antiPeakLat: 0.58,
+        peakRange: 0.34,
+        antiPeakRange: 0.52
+    }
+};
 ENV_DEFS[SIM_MODE_Australian].jetstream = {
 modifiers: {
         peakLat: 0.29,
         antiPeakLat: 0.48,
         peakRange: 0.30,
         antiPeakRange: 0.45
+    }
+};
+ENV_DEFS[SIM_MODE_WarmerEarth2C].jetstream = {
+modifiers: {
+        peakLat: 0.24,
+        antiPeakLat: 0.45,
+        peakRange: 0.45,
+        antiPeakRange: 0.60
+    }
+};
+ENV_DEFS[SIM_MODE_PreIndustrial].jetstream = {
+modifiers: {
+        peakLat: 0.37,
+        antiPeakLat: 0.55,
+        peakRange: 0.27,
+        antiPeakRange: 0.5
+    }
+};
+ENV_DEFS[SIM_MODE_MiniIceAge].jetstream = {
+modifiers: {
+        peakLat: 0.43,
+        antiPeakLat: 0.68,
+        peakRange: 0.20,
+        antiPeakRange: 0.42
+    }
+};
+ENV_DEFS[SIM_MODE_SnowballEarth].jetstream = {
+modifiers: {
+        peakLat: 0.50,
+        antiPeakLat: 0.68,
+        peakRange: 0.50,
+        antiPeakRange: 0.30
+    }
+};
+ENV_DEFS[SIM_MODE_Drought].jetstream = {
+modifiers: {
+        peakLat: 0.45,
+        antiPeakLat: 0.60,
+        peakRange: 0.2,
+        antiPeakRange: 0.46
+    }
+};
+ENV_DEFS[SIM_MODE_Deluge].jetstream = {
+modifiers: {
+        peakLat: 0.25,
+        antiPeakLat: 0.40,
+        peakRange: 0.4,
+        antiPeakRange: 0.64
     }
 };
 
@@ -487,7 +713,28 @@ ENV_DEFS[SIM_MODE_WILD].LLSteering = {
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].LLSteering = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].LLSteering = {};
+ENV_DEFS[SIM_MODE_NorthernHemisphere].LLSteering = {};
+ENV_DEFS[SIM_MODE_SouthernHemisphere].LLSteering = {};
+ENV_DEFS[SIM_MODE_WesternHemisphere].LLSteering = {};
+ENV_DEFS[SIM_MODE_EasternHemisphere].LLSteering = {};
+ENV_DEFS[SIM_MODE_NorthAtlantic].LLSteering = {};
+ENV_DEFS[SIM_MODE_SouthAtlantic].LLSteering = {};
+ENV_DEFS[SIM_MODE_Mediterranean].LLSteering = {};
+ENV_DEFS[SIM_MODE_EasternPacific].LLSteering = {};
+ENV_DEFS[SIM_MODE_CentralPacific].LLSteering = {};
+ENV_DEFS[SIM_MODE_WesternPacific].LLSteering = {};
+ENV_DEFS[SIM_MODE_NorthPacific].LLSteering = {};
+ENV_DEFS[SIM_MODE_SouthPacific].LLSteering = {};
+ENV_DEFS[SIM_MODE_NorthIndianOcean].LLSteering = {};
+ENV_DEFS[SIM_MODE_SouthIndianOcean].LLSteering = {};
 ENV_DEFS[SIM_MODE_Australian].LLSteering = {};
+ENV_DEFS[SIM_MODE_WarmerEarth2C].LLSteering = {};
+ENV_DEFS[SIM_MODE_PreIndustrial].LLSteering = {};
+ENV_DEFS[SIM_MODE_MiniIceAge].LLSteering = {};
+ENV_DEFS[SIM_MODE_4C].LLSteering = {};
+ENV_DEFS[SIM_MODE_SnowballEarth].LLSteering = {};
+ENV_DEFS[SIM_MODE_Drought].LLSteering = {};
+ENV_DEFS[SIM_MODE_Deluge].LLSteering = {};
 // -- ULSteering -- //
 
 ENV_DEFS.defaults.ULSteering = {
@@ -611,7 +858,28 @@ ENV_DEFS[SIM_MODE_WILD].ULSteering = {
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].ULSteering = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].ULSteering = {};
+ENV_DEFS[SIM_MODE_NorthernHemisphere].ULSteering = {};
+ENV_DEFS[SIM_MODE_SouthernHemisphere].ULSteering = {};
+ENV_DEFS[SIM_MODE_WesternHemisphere].ULSteering = {};
+ENV_DEFS[SIM_MODE_EasternHemisphere].ULSteering = {};
+ENV_DEFS[SIM_MODE_NorthAtlantic].ULSteering = {};
+ENV_DEFS[SIM_MODE_SouthAtlantic].ULSteering = {};
+ENV_DEFS[SIM_MODE_Mediterranean].ULSteering = {};
+ENV_DEFS[SIM_MODE_EasternPacific].ULSteering = {};
+ENV_DEFS[SIM_MODE_CentralPacific].ULSteering = {};
+ENV_DEFS[SIM_MODE_WesternPacific].ULSteering = {};
+ENV_DEFS[SIM_MODE_NorthPacific].ULSteering = {};
+ENV_DEFS[SIM_MODE_SouthPacific].ULSteering = {};
+ENV_DEFS[SIM_MODE_NorthIndianOcean].ULSteering = {};
+ENV_DEFS[SIM_MODE_SouthIndianOcean].ULSteering = {};
 ENV_DEFS[SIM_MODE_Australian].ULSteering = {};
+ENV_DEFS[SIM_MODE_WarmerEarth2C].ULSteering = {};
+ENV_DEFS[SIM_MODE_PreIndustrial].ULSteering = {};
+ENV_DEFS[SIM_MODE_MiniIceAge].ULSteering = {};
+ENV_DEFS[SIM_MODE_4C].ULSteering = {};
+ENV_DEFS[SIM_MODE_SnowballEarth].ULSteering = {};
+ENV_DEFS[SIM_MODE_Drought].ULSteering = {};
+ENV_DEFS[SIM_MODE_Deluge].ULSteering = {};
 // -- shear -- //
 
 ENV_DEFS.defaults.shear = {
@@ -652,7 +920,28 @@ ENV_DEFS[SIM_MODE_HYPER].shear = {};
 ENV_DEFS[SIM_MODE_WILD].shear = {};
 ENV_DEFS[SIM_MODE_MEGABLOBS].shear = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].shear = {};
+ENV_DEFS[SIM_MODE_NorthernHemisphere].shear = {};
+ENV_DEFS[SIM_MODE_SouthernHemisphere].shear = {};
+ENV_DEFS[SIM_MODE_WesternHemisphere].shear = {};
+ENV_DEFS[SIM_MODE_EasternHemisphere].shear = {};
+ENV_DEFS[SIM_MODE_NorthAtlantic].shear = {};
+ENV_DEFS[SIM_MODE_SouthAtlantic].shear = {};
+ENV_DEFS[SIM_MODE_Mediterranean].shear = {};
+ENV_DEFS[SIM_MODE_EasternPacific].shear = {};
+ENV_DEFS[SIM_MODE_CentralPacific].shear = {};
+ENV_DEFS[SIM_MODE_WesternPacific].shear = {};
+ENV_DEFS[SIM_MODE_NorthPacific].shear = {};
+ENV_DEFS[SIM_MODE_SouthPacific].shear = {};
+ENV_DEFS[SIM_MODE_NorthIndianOcean].shear = {};
+ENV_DEFS[SIM_MODE_SouthIndianOcean].shear = {};
 ENV_DEFS[SIM_MODE_Australian].shear = {};
+ENV_DEFS[SIM_MODE_WarmerEarth2C].shear = {};
+ENV_DEFS[SIM_MODE_PreIndustrial].shear = {};
+ENV_DEFS[SIM_MODE_MiniIceAge].shear = {};
+ENV_DEFS[SIM_MODE_4C].shear = {};
+ENV_DEFS[SIM_MODE_SnowballEarth].shear = {};
+ENV_DEFS[SIM_MODE_Drought].shear = {};
+ENV_DEFS[SIM_MODE_Deluge].shear = {};
 // -- SSTAnomaly -- //
 
 ENV_DEFS.defaults.SSTAnomaly = {
@@ -715,13 +1004,28 @@ ENV_DEFS[SIM_MODE_MEGABLOBS].SSTAnomaly = {
     }
 };
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].SSTAnomaly = {};
-ENV_DEFS[SIM_MODE_Australian].SSTAnomaly = {
-    modifiers: {
-        r: 8,
-        bigBlobBase: 1.6,
-        bigBlobExponentThreshold: 1.3
-    }
-};
+ENV_DEFS[SIM_MODE_NorthernHemisphere].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_SouthernHemisphere].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_WesternHemisphere].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_EasternHemisphere].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_NorthAtlantic].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_SouthAtlantic].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_Mediterranean].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_EasternPacific].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_CentralPacific].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_WesternPacific].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_NorthPacific].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_SouthPacific].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_NorthIndianOcean].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_SouthIndianOcean].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_Australian].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_WarmerEarth2C].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_PreIndustrial].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_MiniIceAge].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_4C].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_SnowballEarth].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_Drought].SSTAnomaly = {};
+ENV_DEFS[SIM_MODE_Deluge].SSTAnomaly = {};
 // -- SST -- //
 
 ENV_DEFS.defaults.SST = {
@@ -808,13 +1112,202 @@ ENV_DEFS[SIM_MODE_EXPERIMENTAL].SST = {
         peakSeasonTropicsTemp: 28
     }
 };
+ENV_DEFS[SIM_MODE_NorthernHemisphere].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -13,
+        peakSeasonPolarTemp: 3,
+        offSeasonTropicsTemp: 27.4,
+        peakSeasonTropicsTemp: 29.7
+    }
+};
+ENV_DEFS[SIM_MODE_SouthernHemisphere].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -13,
+        peakSeasonPolarTemp: -8,
+        offSeasonTropicsTemp: 26.8,
+        peakSeasonTropicsTemp: 29.4
+    }
+};
+ENV_DEFS[SIM_MODE_WesternHemisphere].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -10,
+        peakSeasonPolarTemp: 5,
+        offSeasonTropicsTemp: 27.2,
+        peakSeasonTropicsTemp: 29.4
+    }
+};
+ENV_DEFS[SIM_MODE_EasternHemisphere].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -13,
+        peakSeasonPolarTemp: 3,
+        offSeasonTropicsTemp: 27.7,
+        peakSeasonTropicsTemp: 29.8
+    }
+};
+ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -10,
+        peakSeasonPolarTemp: 4.5,
+        offSeasonTropicsTemp: 27,
+        peakSeasonTropicsTemp: 29.5
+    }
+};
+ENV_DEFS[SIM_MODE_SouthAtlantic].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -9,
+        peakSeasonPolarTemp: -3,
+        offSeasonTropicsTemp: 26.2,
+        peakSeasonTropicsTemp: 28.7
+    }
+};
+ENV_DEFS[SIM_MODE_Mediterranean].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: 8,
+        peakSeasonPolarTemp: 24,
+        offSeasonTropicsTemp: 19,
+        peakSeasonTropicsTemp: 29
+    }
+};
+ENV_DEFS[SIM_MODE_EasternPacific].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -9,
+        peakSeasonPolarTemp: 6,
+        offSeasonTropicsTemp: 26.5,
+        peakSeasonTropicsTemp: 29.3
+    }
+};
+ENV_DEFS[SIM_MODE_CentralPacific].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -13,
+        peakSeasonPolarTemp: 2,
+        offSeasonTropicsTemp: 27.4,
+        peakSeasonTropicsTemp: 29.4
+    }
+};
+ENV_DEFS[SIM_MODE_WesternPacific].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -10,
+        peakSeasonPolarTemp: 3,
+        offSeasonTropicsTemp: 28.1,
+        peakSeasonTropicsTemp: 29.9
+    }
+};
+ENV_DEFS[SIM_MODE_NorthPacific].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -13,
+        peakSeasonPolarTemp: 2,
+        offSeasonTropicsTemp: 27.3,
+        peakSeasonTropicsTemp: 29.7
+    }
+};
+ENV_DEFS[SIM_MODE_SouthPacific].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -12,
+        peakSeasonPolarTemp: -7,
+        offSeasonTropicsTemp: 26.8,
+        peakSeasonTropicsTemp: 29.2
+    }
+};
+ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -13,
+        peakSeasonPolarTemp: -8,
+        offSeasonTropicsTemp: 28,
+        peakSeasonTropicsTemp: 29.6
+    }
+};
+ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -13,
+        peakSeasonPolarTemp: -8,
+        offSeasonTropicsTemp: 27.5,
+        peakSeasonTropicsTemp: 29.4
+    }
+};
 ENV_DEFS[SIM_MODE_Australian].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -20,
-        peakSeasonPolarTemp: -15,
-        offSeasonTropicsTemp: 26.5,
+        offSeasonPolarTemp: -13,
+        peakSeasonPolarTemp: -8,
+        offSeasonTropicsTemp: 27.2,
         peakSeasonTropicsTemp: 29.3
+    }
+};
+ENV_DEFS[SIM_MODE_WarmerEarth2C].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -5.2,
+        peakSeasonPolarTemp: 14,
+        offSeasonTropicsTemp: 28.2,
+        peakSeasonTropicsTemp: 30.5
+    }
+};
+ENV_DEFS[SIM_MODE_PreIndustrial].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -13,
+        peakSeasonPolarTemp: -8,
+        offSeasonTropicsTemp: 26.5,
+        peakSeasonTropicsTemp: 29
+    }
+};
+ENV_DEFS[SIM_MODE_MiniIceAge].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -20,
+        peakSeasonPolarTemp: -10,
+        offSeasonTropicsTemp: 24,
+        peakSeasonTropicsTemp: 28.7
+    }
+};
+ENV_DEFS[SIM_MODE_4C].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -5,
+        peakSeasonPolarTemp: 17,
+        offSeasonTropicsTemp: 29,
+        peakSeasonTropicsTemp: 31.5
+    }
+};
+ENV_DEFS[SIM_MODE_SnowballEarth].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -50,
+        peakSeasonPolarTemp: -49,
+        offSeasonTropicsTemp: -16.5,
+        peakSeasonTropicsTemp: -12.5
+    }
+};
+ENV_DEFS[SIM_MODE_Drought].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -15,
+        peakSeasonPolarTemp: -3,
+        offSeasonTropicsTemp: 24,
+        peakSeasonTropicsTemp: 28
+    }
+};
+ENV_DEFS[SIM_MODE_Deluge].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: 3,
+        peakSeasonPolarTemp: 15,
+        offSeasonTropicsTemp: 28,
+        peakSeasonTropicsTemp: 30
     }
 };
 // -- moisture -- //
@@ -880,11 +1373,158 @@ ENV_DEFS[SIM_MODE_WILD].moisture = {
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].moisture = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].moisture = {};
-ENV_DEFS[SIM_MODE_HYPER].moisture = {
+ENV_DEFS[SIM_MODE_NorthernHemisphere].moisture = {
+    modifiers: {
+        polarMoisture: 0.38,
+        tropicalMoisture: 0.62,
+        mountainMoisture: 0.30
+    }
+};
+ENV_DEFS[SIM_MODE_SouthernHemisphere].moisture = {
+    modifiers: {
+        polarMoisture: 0.45,
+        tropicalMoisture: 0.62,
+        mountainMoisture: 0.41
+    }
+};
+ENV_DEFS[SIM_MODE_WesternHemisphere].moisture = {
+    modifiers: {
+        polarMoisture: 0.42,
+        tropicalMoisture: 0.62,
+        mountainMoisture: 0.36
+    }
+};
+ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
+    modifiers: {
+        polarMoisture: 0.39,
+        tropicalMoisture: 0.62,
+        mountainMoisture: 0.24
+    }
+};
+ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
+    modifiers: {
+        polarMoisture: 0.44,
+        tropicalMoisture: 0.57,
+        mountainMoisture: 0.40
+    }
+};
+ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
+    modifiers: {
+        polarMoisture: 0.52,
+        tropicalMoisture: 0.60,
+        mountainMoisture: 0.42
+    }
+};
+ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
+    modifiers: {
+        polarMoisture: 0.55,
+        tropicalMoisture: 0.45,
+        mountainMoisture: 0.21
+    }
+};
+ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
+    modifiers: {
+        polarMoisture: 0.37,
+        tropicalMoisture: 0.62,
+        mountainMoisture: 0.35
+    }
+};
+ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
+    modifiers: {
+        polarMoisture: 0.50,
+        tropicalMoisture: 0.54,
+        mountainMoisture: 0.32
+    }
+};
+ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
+    modifiers: {
+        polarMoisture: 0.42,
+        tropicalMoisture: 0.66,
+        mountainMoisture: 0.34
+    }
+};
+ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
+    modifiers: {
+        polarMoisture: 0.44,
+        tropicalMoisture: 0.6,
+        mountainMoisture: 0.35
+    }
+};
+ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
+    modifiers: {
+        polarMoisture: 0.48,
+        tropicalMoisture: 0.52,
+        mountainMoisture: 0.25
+    }
+};
+ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
+    modifiers: {
+        polarMoisture: 0.10,
+        tropicalMoisture: 0.68,
+        mountainMoisture: 0.37
+    }
+};
+ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
+    modifiers: {
+        polarMoisture: 0.43,
+        tropicalMoisture: 0.64,
+        mountainMoisture: 0.41
+    }
+};
+ENV_DEFS[SIM_MODE_Australian].moisture = {
     modifiers: {
         polarMoisture: 0.35,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.58,
         mountainMoisture: 0.28
+    }
+};
+ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
+    modifiers: {
+        polarMoisture: 0.55,
+        tropicalMoisture: 0.67,
+        mountainMoisture: 0.39
+    }
+};
+ENV_DEFS[SIM_MODE_PreIndustrial].moisture = {
+    modifiers: {
+        polarMoisture: 0.33,
+        tropicalMoisture: 0.55,
+        mountainMoisture: 0.22
+    }
+};
+ENV_DEFS[SIM_MODE_MiniIceAge].moisture = {
+    modifiers: {
+        polarMoisture: 0.26,
+        tropicalMoisture: 0.48,
+        mountainMoisture: 0.14
+    }
+};
+ENV_DEFS[SIM_MODE_4C].moisture = {
+    modifiers: {
+        polarMoisture: 0.66,
+        tropicalMoisture: 0.77,
+        mountainMoisture: 0.55
+    }
+};
+ENV_DEFS[SIM_MODE_SnowballEarth].moisture = {
+    modifiers: {
+        polarMoisture: 0.12,
+        tropicalMoisture: 0.32,
+        mountainMoisture: 0.01
+    }
+};
+ENV_DEFS[SIM_MODE_Drought].moisture = {
+    modifiers: {
+        polarMoisture: 0.29,
+        tropicalMoisture: 0.45,
+        mountainMoisture: 0.08
+    }
+};
+ENV_DEFS[SIM_MODE_Deluge].moisture = {
+    modifiers: {
+        polarMoisture: 0.58,
+        tropicalMoisture: 0.75,
+        mountainMoisture: 0.49
     }
 };
 // ---- Active Storm System Algorithm ---- //
@@ -897,7 +1537,28 @@ STORM_ALGORITHM[SIM_MODE_HYPER] = {};
 STORM_ALGORITHM[SIM_MODE_WILD] = {};
 STORM_ALGORITHM[SIM_MODE_MEGABLOBS] = {};
 STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL] = {};
+STORM_ALGORITHM[SIM_MODE_NorthernHemisphere] = {};
+STORM_ALGORITHM[SIM_MODE_SouthernHemisphere] = {};
+STORM_ALGORITHM[SIM_MODE_WesternHemisphere] = {};
+STORM_ALGORITHM[SIM_MODE_EasternHemisphere] = {};
+STORM_ALGORITHM[SIM_MODE_NorthAtlantic] = {};
+STORM_ALGORITHM[SIM_MODE_SouthAtlantic] = {};
+STORM_ALGORITHM[SIM_MODE_Mediterranean] = {};
+STORM_ALGORITHM[SIM_MODE_EasternPacific] = {};
+STORM_ALGORITHM[SIM_MODE_CentralPacific] = {};
+STORM_ALGORITHM[SIM_MODE_WesternPacific] = {};
+STORM_ALGORITHM[SIM_MODE_NorthPacific] = {};
+STORM_ALGORITHM[SIM_MODE_SouthPacific] = {};
+STORM_ALGORITHM[SIM_MODE_NorthIndianOcean] = {};
+STORM_ALGORITHM[SIM_MODE_SouthIndianOcean] = {};
 STORM_ALGORITHM[SIM_MODE_Australian] = {};
+STORM_ALGORITHM[SIM_MODE_PreIndustrial] = {};
+STORM_ALGORITHM[SIM_MODE_WarmerEarth2C] = {};
+STORM_ALGORITHM[SIM_MODE_MiniIceAge] = {};
+STORM_ALGORITHM[SIM_MODE_4C] = {};
+STORM_ALGORITHM[SIM_MODE_SnowballEarth] = {};
+STORM_ALGORITHM[SIM_MODE_Drought] = {};
+STORM_ALGORITHM[SIM_MODE_Deluge] = {};
 // -- Interaction -- //
 
 STORM_ALGORITHM.defaults.interactionInit = {
@@ -1109,7 +1770,28 @@ STORM_ALGORITHM[SIM_MODE_HYPER].version = 0;
 STORM_ALGORITHM[SIM_MODE_WILD].version = 0;
 STORM_ALGORITHM[SIM_MODE_MEGABLOBS].version = 0;
 STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].version = 1;
+STORM_ALGORITHM[SIM_MODE_NorthernHemisphere].version = 0;
+STORM_ALGORITHM[SIM_MODE_SouthernHemisphere].version = 0;
+STORM_ALGORITHM[SIM_MODE_WesternHemisphere].version = 0;
+STORM_ALGORITHM[SIM_MODE_EasternHemisphere].version = 0;
+STORM_ALGORITHM[SIM_MODE_NorthAtlantic].version = 0;
+STORM_ALGORITHM[SIM_MODE_SouthAtlantic].version = 0;
+STORM_ALGORITHM[SIM_MODE_Mediterranean].version = 0;
+STORM_ALGORITHM[SIM_MODE_EasternPacific].version = 0;
+STORM_ALGORITHM[SIM_MODE_CentralPacific].version = 0;
+STORM_ALGORITHM[SIM_MODE_WesternPacific].version = 0;
+STORM_ALGORITHM[SIM_MODE_NorthPacific].version = 0;
+STORM_ALGORITHM[SIM_MODE_SouthPacific].version = 0;
+STORM_ALGORITHM[SIM_MODE_NorthIndianOcean].version = 0;
+STORM_ALGORITHM[SIM_MODE_SouthIndianOcean].version = 0;
 STORM_ALGORITHM[SIM_MODE_Australian].version = 0;
+STORM_ALGORITHM[SIM_MODE_PreIndustrial].version = 0;
+STORM_ALGORITHM[SIM_MODE_WarmerEarth2C].version = 0;
+STORM_ALGORITHM[SIM_MODE_MiniIceAge].version = 0;
+STORM_ALGORITHM[SIM_MODE_4C].version = 0;
+STORM_ALGORITHM[SIM_MODE_SnowballEarth].version = 0;
+STORM_ALGORITHM[SIM_MODE_Drought].version = 0;
+STORM_ALGORITHM[SIM_MODE_Deluge].version = 0;
 // -- Upgrade -- //
 // Converts active attributes in case an active system is loaded after an algorithm change breaks old values
 
