@@ -89,7 +89,7 @@ SPAWN_RULES[SIM_MODE_WarmerEarth2C] = {};
 SPAWN_RULES[SIM_MODE_PreIndustrial] = {};
 SPAWN_RULES[SIM_MODE_MiniIceAge] = {};
 SPAWN_RULES[SIM_MODE_4C] = {};
-SPAWN_RULES[SIM_MODE_IceAge] = {};
+SPAWN_RULES[SIM_MODE_SnowballEarth] = {};
 SPAWN_RULES[SIM_MODE_Drought] = {};
 SPAWN_RULES[SIM_MODE_Deluge] = {};
 
@@ -338,7 +338,7 @@ SPAWN_RULES[SIM_MODE_WarmerEarth2C].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_PreIndustrial].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_MiniIceAge].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_4C].doSpawn = SPAWN_RULES.defaults.doSpawn;
-SPAWN_RULES[SIM_MODE_IceAge].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_SnowballEarth].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_Drought].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_Deluge].doSpawn = SPAWN_RULES.defaults.doSpawn;
 // ---- Definitions of Environmental Fields ---- //
