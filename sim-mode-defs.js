@@ -370,7 +370,7 @@ ENV_DEFS[SIM_MODE_WarmerEarth2C] = {};
 ENV_DEFS[SIM_MODE_PreIndustrial] = {};
 ENV_DEFS[SIM_MODE_MiniIceAge] = {};
 ENV_DEFS[SIM_MODE_4C] = {};
-ENV_DEFS[SIM_MODE_IceAge] = {};
+ENV_DEFS[SIM_MODE_SnowballEarth] = {};
 ENV_DEFS[SIM_MODE_Drought] = {};
 ENV_DEFS[SIM_MODE_Deluge] = {};
 // -- Sample Env Field -- //
