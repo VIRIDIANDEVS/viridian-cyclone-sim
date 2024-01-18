@@ -1169,8 +1169,8 @@ ENV_DEFS[SIM_MODE_SouthAtlantic].SST = {
 ENV_DEFS[SIM_MODE_Mediterranean].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -5,
-        peakSeasonPolarTemp: 9,
+        offSeasonPolarTemp: 3,
+        peakSeasonPolarTemp: 12,
         offSeasonTropicsTemp: 16,
         peakSeasonTropicsTemp: 28
     }
