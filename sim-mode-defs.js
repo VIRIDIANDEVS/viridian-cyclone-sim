@@ -1151,9 +1151,9 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].SST = {
 ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -10,
-        peakSeasonPolarTemp: 6,
-        offSeasonTropicsTemp: 27,
+        offSeasonPolarTemp: -1.6,
+        peakSeasonPolarTemp: 3.2,
+        offSeasonTropicsTemp: 27.1,
         peakSeasonTropicsTemp: 29.4
     }
 };
@@ -1172,41 +1172,41 @@ ENV_DEFS[SIM_MODE_Mediterranean].SST = {
         offSeasonPolarTemp: -5,
         peakSeasonPolarTemp: 9,
         offSeasonTropicsTemp: 16,
-        peakSeasonTropicsTemp: 28.6
+        peakSeasonTropicsTemp: 28
     }
 };
 ENV_DEFS[SIM_MODE_EasternPacific].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -9,
+        offSeasonPolarTemp: -4,
         peakSeasonPolarTemp: 6,
         offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 29
+        peakSeasonTropicsTemp: 29.53
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -5,
-        peakSeasonPolarTemp: 6,
+        offSeasonPolarTemp: -3,
+        peakSeasonPolarTemp: 2,
         offSeasonTropicsTemp: 27.4,
-        peakSeasonTropicsTemp: 28.7
+        peakSeasonTropicsTemp: 28.5
     }
 };
 ENV_DEFS[SIM_MODE_WesternPacific].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -8,
-        peakSeasonPolarTemp: 6,
+        offSeasonPolarTemp: -4,
+        peakSeasonPolarTemp: 2.7,
         offSeasonTropicsTemp: 28.1,
-        peakSeasonTropicsTemp: 29.7
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -8,
-        peakSeasonPolarTemp: 6,
+        offSeasonPolarTemp: -4.5,
+        peakSeasonPolarTemp: 3,
         offSeasonTropicsTemp: 27.3,
         peakSeasonTropicsTemp: 29.5
     }
@@ -1215,15 +1215,15 @@ ENV_DEFS[SIM_MODE_SouthPacific].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -10,
-        peakSeasonPolarTemp: -7,
+        peakSeasonPolarTemp: -4,
         offSeasonTropicsTemp: 26.4,
-        peakSeasonTropicsTemp: 28.8
+        peakSeasonTropicsTemp: 29.1
     }
 };
 ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -10,
+        offSeasonPolarTemp: -5,
         peakSeasonPolarTemp: 2,
         offSeasonTropicsTemp: 28.3,
         peakSeasonTropicsTemp: 29.6
@@ -1232,8 +1232,8 @@ ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
 ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -9,
-        peakSeasonPolarTemp: -5,
+        offSeasonPolarTemp: -8,
+        peakSeasonPolarTemp: -3.5,
         offSeasonTropicsTemp: 27.5,
         peakSeasonTropicsTemp: 29.4
     }
@@ -1259,8 +1259,8 @@ ENV_DEFS[SIM_MODE_WarmerEarth2C].SST = {
 ENV_DEFS[SIM_MODE_PreIndustrial].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -11,
-        peakSeasonPolarTemp: -7,
+        offSeasonPolarTemp: -9,
+        peakSeasonPolarTemp: 0.5,
         offSeasonTropicsTemp: 26.5,
         peakSeasonTropicsTemp: 29
     }
@@ -1268,8 +1268,8 @@ ENV_DEFS[SIM_MODE_PreIndustrial].SST = {
 ENV_DEFS[SIM_MODE_MiniIceAge].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -20,
-        peakSeasonPolarTemp: -10,
+        offSeasonPolarTemp: -13,
+        peakSeasonPolarTemp: -7,
         offSeasonTropicsTemp: 24,
         peakSeasonTropicsTemp: 28.7
     }
@@ -1277,7 +1277,7 @@ ENV_DEFS[SIM_MODE_MiniIceAge].SST = {
 ENV_DEFS[SIM_MODE_4C].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -5,
+        offSeasonPolarTemp: 4,
         peakSeasonPolarTemp: 17,
         offSeasonTropicsTemp: 29,
         peakSeasonTropicsTemp: 31.5
