@@ -1044,7 +1044,7 @@ ENV_DEFS.defaults.SST = {
         let pspt = u.modifiers.peakSeasonPolarTemp;
         let ostt = u.modifiers.offSeasonTropicsTemp;
         let pstt = u.modifiers.peakSeasonTropicsTemp;
-        let t = lerp(map(s,1,-1,ospt,pspt),map(s,1,-1,ostt,pstt),h);
+        let t = lerp(map(s,-1,1,ospt,pspt),map(s,-1,1,ostt,pstt),h);
         return t+anom;
     },
     displayFormat: v=>{
@@ -1685,7 +1685,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
         sys.organization = lerp(sys.organization,0,0.03);
     sys.organization = constrain(sys.organization,0,1);
 
-    let hardCeiling = map(SST,21,31,1009,880);
+    let hardCeiling = map(SST,21,31,1009,870);
     if(lnd)
         hardCeiling = 990;
     let softCeiling = map(sys.organization,0.93,0.98,lerp(1020,hardCeiling,0.7),hardCeiling,true);
