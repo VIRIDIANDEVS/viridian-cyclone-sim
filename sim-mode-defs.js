@@ -1028,25 +1028,58 @@ ENV_DEFS[SIM_MODE_Drought].SSTAnomaly = {};
 ENV_DEFS[SIM_MODE_Deluge].SSTAnomaly = {};
 // -- SST -- //
 
+// Generate random ocean currents data
+function generateOceanCurrents(width, height) {
+    let currents = [];
+    for (let x = 0; x < width; x++) {
+        currents[x] = [];
+        for (let y = 0; y < height; y++) {
+            currents[x][y] = Math.random() * 2 - 1; // Random strength between -1 and 1
+        }
+    }
+    return currents;
+}
+
+// Example usage: Generate ocean currents data
+let oceanCurrents = generateOceanCurrents(WIDTH, HEIGHT);
+
 ENV_DEFS.defaults.SST = {
     displayName: 'Sea surface temperature',
-    version: 0,
-    mapFunc: (u,x,y,z)=>{
-        if(y<0) return 0;
+    version: 1,
+    mapFunc: (u, x, y, z) => {
+        // Check if below the surface
+        if (y < 0) return 0;
+
+        // Original temperature calculation logic
         let anom = u.field('SSTAnomaly');
         let s = seasonalSine(z);
-        let w = map(cos(map(x,0,WIDTH,0,PI)),-1,1,0,1);
-        let h0 = y/HEIGHT;
-        let h1 = (sqrt(h0)+h0)/2;
+        let w = map(cos(map(x, 0, WIDTH, 0, PI)), -1, 1, 0, 1);
+        let h0 = y / HEIGHT;
+        let h1 = (sqrt(h0) + h0) / 2;
         let h2 = sqrt(sqrt(h0));
-        let h = map(cos(lerp(PI,0,lerp(h1,h2,sq(w)))),-1,1,0,1);
+        let h = map(cos(lerp(PI, 0, lerp(h1, h2, sq(w)))),-1,1,0,1);
         let ospt = u.modifiers.offSeasonPolarTemp;
         let pspt = u.modifiers.peakSeasonPolarTemp;
         let ostt = u.modifiers.offSeasonTropicsTemp;
         let pstt = u.modifiers.peakSeasonTropicsTemp;
-        let t = lerp(map(s,-1,1,ospt,pspt),map(s,-1,1,ostt,pstt),h);
-        return t+anom;
-    },
+        let t = lerp(map(s, -1, 1, ospt, pspt), map(s, -1, 1, ostt, pstt), h);
+        
+        // Retrieve ocean currents data
+        let oceanCurrents = generateOceanCurrents(WIDTH, HEIGHT); // Generate random ocean currents data
+
+        // Define parameters for ocean current influence
+        const oceanCurrentInfluence = 0.05; // Adjust as needed
+
+        // Consider ocean currents influence
+        if (oceanCurrents) {
+            // Adjust temperature based on ocean currents data
+            let currentStrength = oceanCurrents[x][y]; // Assuming ocean currents are represented as a 2D array
+            t += currentStrength * oceanCurrentInfluence;
+        }
+
+        return t + anom;
+    }
+};
     displayFormat: v=>{
         let str = '';
         str += round(v*10)/10;
