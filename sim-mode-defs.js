@@ -1078,8 +1078,7 @@ ENV_DEFS.defaults.SST = {
         }
 
         return t + anom;
-    }
-};
+    },
     displayFormat: v=>{
         let str = '';
         str += round(v*10)/10;
