@@ -903,14 +903,15 @@ ENV_DEFS.defaults.shear = {
     magMap: [0,8,0,25],
     hueMap: (v)=>{
         colorMode(HSB);
-        let strong = color(300,100,100);
-        let moderate = color(40,100,80);
-        let weak = color(220,100,60);
+let extreme = color(300,100,100) 
+        let strong = color(0,100,100);
+        let moderate = color(40,100,100);
+        let weak = color(200,100,100);
         let c;
         if(v < 2)
             c = lerpColor(weak, moderate, map(v,0.5,2,0,1));
         else
-            c = lerpColor(moderate, strong, map(v,2,3.5,0,1));
+            c = lerpColor(moderate, strong, extreme, map(v,2,3.5,5,0,1));
         colorMode(RGB);
         return c;
     }
@@ -972,8 +973,8 @@ ENV_DEFS.defaults.SSTAnomaly = {
     },
     hueMap: (v)=>{
         colorMode(HSB);
-        let cold = color(300,100,45);
-        let hot = color(5,100,45);
+        let cold = color(300,100,50);
+        let hot = color(0,100,50);
         let cNeutral = color(200,100,100);
         let hNeutral = color(65,100,100);
         let c;
