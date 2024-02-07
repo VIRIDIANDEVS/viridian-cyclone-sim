@@ -791,7 +791,7 @@ class Land{
                     let l = 1 - j / H;
                     if(SHem)
                         l = 1 - l;
-                    let h = 0.78 - eleCache[src[index]];
+                    let h = 0.83 - eleCache[src[index]];
                     let p = l > 0 ? Math.ceil((snowLayers / 0.3) * (h / l - 0.15)) : h < 0 ? 0 : snowLayers;
                     for(let k = 0; k < snowLayers; k++){
                         if(k >= p){
