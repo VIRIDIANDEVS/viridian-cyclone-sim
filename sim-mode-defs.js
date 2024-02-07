@@ -972,10 +972,10 @@ ENV_DEFS.defaults.SSTAnomaly = {
     },
     hueMap: (v)=>{
         colorMode(HSB);
-        let cold = color(240,100,70);
-        let hot = color(0,100,70);
-        let cNeutral = color(240,1,90);
-        let hNeutral = color(0,1,90);
+        let cold = color(299,100,24);
+        let hot = color(19,100,24);
+        let cNeutral = color(180,1,90);
+        let hNeutral = color(55,1,90);
         let c;
         if(v<0) c = lerpColor(cold,cNeutral,map(v,-5,0,0,1));
         else c = lerpColor(hNeutral,hot,map(v,0,5,0,1));
