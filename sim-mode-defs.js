@@ -910,8 +910,10 @@ let extreme = color(300,100,100)
         let c;
         if(v < 2)
             c = lerpColor(weak, moderate, map(v,0.5,2,0,1));
-        else
-            c = lerpColor(moderate, strong, extreme, map(v,2,3.5,5,0,1));
+        else if(v < 3.5)
+            c = lerpColor(moderate, strong, map(v,2,3.5,0,1));
+else 
+c = lerpColor(strong, extreme, map(v,3.5,5,0,1));
         colorMode(RGB);
         return c;
     }
