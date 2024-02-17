@@ -1042,12 +1042,12 @@ ENV_DEFS.defaults.SST = {
         let h0 = y/HEIGHT;
         let h1 = (sqrt(h0)+h0)/2;
         let h2 = sqrt(sqrt(h0));
-        let h = map(cos(lerp(PI,0,lerp(h1,h2,sq(w)))),-1,1,0,1);
+        let h = map(cos(lerp(PI,0,lerp(h1,h2,sq(w)))),-1,1,0.2,0.8);
         let ospt = u.modifiers.offSeasonPolarTemp;
         let pspt = u.modifiers.peakSeasonPolarTemp;
         let ostt = u.modifiers.offSeasonTropicsTemp;
         let pstt = u.modifiers.peakSeasonTropicsTemp;
-        let t = lerp(map(s,-1,1,ospt,pspt),map(s,-1,1,ostt,pstt),h * 0.5);
+        let t = lerp(map(s,-0.8,0.8,ospt,pspt),map(s,-0.2,0.2,ostt,pstt),h);
         return t+anom;
     }, 
 
