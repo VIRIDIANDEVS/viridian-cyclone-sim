@@ -335,7 +335,7 @@ class Storm{
 
                     
                 };
-                coneSegment(6);
+           
                 coneSegment(12);
                 coneSegment(24);
                 coneSegment(36);
