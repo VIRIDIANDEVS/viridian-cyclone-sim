@@ -1,6 +1,5 @@
 const TITLE = "Cyclone Simulator";
-const VERSION_NUMBER = "0.4.16";
-
+const VERSION_NUMBER = "0.5.6";
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
 const EARLIEST_COMPATIBLE_FORMAT = 0;
 const ENVDATA_COMPATIBLE_FORMAT = 0;
@@ -16,7 +15,7 @@ const STEP = 30;            // Number of milliseconds in real time a simulation 
 const NHEM_DEFAULT_YEAR = moment.utc().year();
 const SHEM_DEFAULT_YEAR = moment.utc().month() < 6 ? NHEM_DEFAULT_YEAR : NHEM_DEFAULT_YEAR+1;
 const DEPRESSION_LETTER = "H";
-const WINDSPEED_ROUNDING = 5;
+const WINDSPEED_ROUNDING = 1;
 // const MAP_DEFINITION = 2;   // normal scaler for the land map
 const EARTH_SB_IDS = {
     world: 0,
@@ -32,6 +31,7 @@ const EARTH_SB_IDS = {
     arb: 10,
     nioland: 11,
     medi: 12,
+    npac: 13, 
     shem: 128,
     aus: 129,
     jakarta: 130,
@@ -74,8 +74,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         landBiasFactors: [
             1/2,
             0.15,
-            -0.3,
-            -0.3
+            -0.2,
+            -0.7
         ],
         optionPresets: {
             designations: 22
@@ -86,9 +86,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         form: "linear",
         landBiasFactors: [
             1/2,
-            -0.28,
-            -0.28,
-            -0.28
+            -0.08,
+            -0.58,
+            -0.98
         ],
         optionPresets: {
             designations: 22
@@ -102,9 +102,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             1/2,    // Where the north-south center should be (0-1 scale from north to south)
             1/2,    // First control distance (in terms of the geometric mean of the canvas dimensions)
             1,      // Second control distance
-            0.15,   // Bias factor for the center
-            -0.27,   // Bias factor for the first control distance
-            -0.3    // Bias factor for the second control distance and outward
+            0.25,   // Bias factor for the center
+            -0.28,   // Bias factor for the first control distance
+            -0.4    // Bias factor for the second control distance and outward
         ],
         optionPresets: {
             designations: 22
@@ -127,11 +127,11 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         }
     },
     {   
-		label: "Atlantic",
+		label: "Atlantic Ocean",
         form: 'earth',
-        west: -102.67,
-        east: 3,
-        north: 59.45,
+        west: -116,
+        east: 36,
+        north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.atl,
         optionPresets: {
@@ -145,7 +145,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         form: 'earth',
         west: -180,
         east: -74.33,
-        north: 59.45,
+        north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.epac,
         optionPresets: {
@@ -154,14 +154,72 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 1
         }
     },
+{   
+		label: "Northeast Pacific North Atlantic Combo",
+        form: 'earth',
+        west: -180,
+        east: 15,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nhem,
+        optionPresets: {
+            hem: 1,
+            scale: 0,
+            designations: 0
+        }
+    },
+
     {   
 		label: "Western Pacific",
         form: 'earth',
         west: 94.42,
-        east: -159.91,
-        north: 59.45,
+        east: 180,
+        north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.wpac,
+        optionPresets: {
+            hem: 1,
+            scale: 3,
+            designations: 3
+        }
+    },
+ {   
+		label: "Central Pacific",
+        form: 'earth',
+        west: 180,
+        east: -140,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.cpac,
+        optionPresets: {
+            hem: 1,
+            scale: 0,
+            designations: 2
+        }
+    },
+{   
+		label: "Western Pacific and Central Pacific",
+        form: 'earth',
+        west: 94.42,
+        east: -140,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nhem,
+        optionPresets: {
+            hem: 1,
+            scale: 3,
+            designations: 3
+        }
+    },
+
+ {   
+		label: "Entire North Pacific",
+        form: 'earth',
+        west: 94.42,
+        east: -77.29,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nhem,
         optionPresets: {
             hem: 1,
             scale: 3,
@@ -173,7 +231,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         form: 'earth',
         west: 25.95,
         east: 131.62,
-        north: 59.45,
+        north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.nio,
         optionPresets: {
@@ -182,13 +240,43 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 5
         }
     },
+ {   
+		label: "Northern Indian Ocean and Western Pacific",
+        form: 'earth',
+        west: 25.95,
+        east: 180,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nio,
+        optionPresets: {
+            hem: 1,
+            scale: 4,
+            designations: 5
+        }
+    },
+
+ {   
+		label: "Earth Northern Hemisphere",
+        form: 'earth',
+        west: -180,
+        east: 180,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nhem,
+        optionPresets: {
+            hem: 1,
+            scale: 3,
+            designations: 3
+        }
+    },
+
     {   
 		label: "Australian Region",
         form: 'earth',
         west: 82.03,
-        east: -172.29,
+        east: 180,
         north: 0,
-        south: -59.45,
+        south: -70,
         mainSubBasin: EARTH_SB_IDS.aus,
         optionPresets: {
             hem: 2,
@@ -197,12 +285,12 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         }
     },
     {   
-		label: "South Pacific",
+		label: "Entire South Pacific",
         form: 'earth',
-        west: 147.2,
-        east: -107.13,
+        west: 138.2,
+        east: -77.29,
         north: 0,
-        south: -59.45,
+        south: -70,
         mainSubBasin: EARTH_SB_IDS.spac,
         optionPresets: {
             hem: 2,
@@ -214,10 +302,38 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 		label: "South-West Indian Ocean",
         form: 'earth',
         west: 17.25,
-        east: 122.93,
+        east: 136.59,
         north: 0,
-        south: -59.45,
+        south: -70,
         mainSubBasin: EARTH_SB_IDS.swio,
+        optionPresets: {
+            hem: 2,
+            scale: 5,
+            designations: 8
+        }
+    },
+ {   
+		label: "Australian and Southwest Indian Ocean",
+        form: 'earth',
+        west: 17.25,
+        east: 180,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 5,
+            designations: 8
+        }
+    },
+{   
+		label: "South Pacific and Southern Indian Ocean",
+        form: 'earth',
+        west: 17.25,
+        east: -120,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
         optionPresets: {
             hem: 2,
             scale: 5,
@@ -228,9 +344,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 		label: "South Atlantic",
         form: 'earth',
         west: -81.48,
-        east: 24.19,
+        east: 24.2,
         north: 0,
-        south: -59.45,
+        south: -70,
         mainSubBasin: EARTH_SB_IDS.satl,
         optionPresets: {
             hem: 2,
@@ -238,6 +354,36 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             designations: 9
         }
     },
+{   
+		label: "South Atlantic and Indian Oceans",
+        form: 'earth',
+        west: -81.48,
+        east: 136.59,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 0,
+            designations: 9
+        }
+    },
+
+ {   
+		label: "Earth Southern Hemisphere",
+        form: 'earth',
+        west: -180,
+        east: 180,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 0,
+            designations: 9
+        }
+    },
+
     {   
 		label: "Mediterranean",
         form: 'earth',
@@ -264,16 +410,16 @@ const KEY_RIGHT_BRACKET = 221;
 const KEY_F11 = 122;
 const KEY_REPEAT_COOLDOWN = 15;
 const KEY_REPEATER = 5;
-const MAX_SNOW_LAYERS = 2000;
+const MAX_SNOW_LAYERS = 5000;
 const SNOW_SEASON_OFFSET = 4/6;
-const ENV_LAYER_TILE_SIZE = 20;
+const ENV_LAYER_TILE_SIZE = 12;
 const NC_OFFSET_RANDOM_FACTOR = 4096;
 const ACE_WIND_THRESHOLD = 34;
 const ACE_DIVISOR = 10000;
 const DAMAGE_DIVISOR = 1000;
 const ENVDATA_NOT_FOUND_ERROR = "envdata-not-found";
 const LOADED_SEASON_REQUIRED_ERROR = "loaded-season-required";
-const LOAD_MENU_BUTTONS_PER_PAGE = 6;
+const LOAD_MENU_BUTTONS_PER_PAGE = 8;
 const DEFAULT_MAIN_SUBBASIN = 0;
 const DEFAULT_OUTBASIN_SUBBASIN = 255;
 const DESIG_CROSSMODE_ALWAYS = 0;
