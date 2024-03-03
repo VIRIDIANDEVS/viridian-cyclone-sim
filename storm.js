@@ -335,6 +335,9 @@ class Storm{
 
                     
                 };
+coneSegment(1);
+ coneSegment(3);
+                coneSegment(6);
                 coneSegment(12);
                 coneSegment(24);
                 coneSegment(36);
@@ -343,6 +346,12 @@ class Storm{
                 coneSegment(72);
                 coneSegment(96);
                 coneSegment(120);
+coneSegment(144);
+                coneSegment(168);
+                coneSegment(192);
+                coneSegment(216);
+                coneSegment(240);
+
                 
                 forecastTracks.loadPixels();
                 for(let i = 0; i < forecastTracks.pixels.length; i += 4){
