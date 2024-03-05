@@ -344,6 +344,8 @@ class Storm{
                 coneSegment(72);
                 coneSegment(96);
                 coneSegment(120);
+                coneSegment(144);
+                coneSegment(168);
 
                 
                 forecastTracks.loadPixels();
