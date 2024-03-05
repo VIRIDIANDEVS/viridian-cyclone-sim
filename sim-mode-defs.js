@@ -1047,7 +1047,7 @@ ENV_DEFS.defaults.SST = {
         let pspt = u.modifiers.peakSeasonPolarTemp;
         let ostt = u.modifiers.offSeasonTropicsTemp;
         let pstt = u.modifiers.peakSeasonTropicsTemp;
-        let t = lerp(map(s,-0.5,1,ospt,pspt),map(s,-0.75,1,ostt,pstt),h);
+        let t = lerp(map(s,-0.95,0.75,ospt,pspt),map(s,-0.92,0.85,ostt,pstt),h);
         return t+anom;
     }, 
 
