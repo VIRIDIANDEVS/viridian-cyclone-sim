@@ -346,13 +346,14 @@ class Storm{
                 coneSegment(120);
                 coneSegment(144);
                 coneSegment(168);
-                
+                 coneSegment(192);
+                coneSegment(216);
 
                 
                 forecastTracks.loadPixels();
                 for(let i = 0; i < forecastTracks.pixels.length; i += 4){
                     if(forecastTracks.pixels[i + 3] > 0)
-                        forecastTracks.pixels[i + 3] = 512;
+                        forecastTracks.pixels[i + 3] = 1200;
                 }
                 forecastTracks.updatePixels();
 
