@@ -336,11 +336,11 @@ class Storm{
                     
                 };
            
-                coneSegment(6);
                 coneSegment(12);
                 coneSegment(24);
                 coneSegment(36);
                 coneSegment(48);
+                coneSegment(60);
                 coneSegment(72);
                 coneSegment(96);
                 coneSegment(120);
