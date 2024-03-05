@@ -354,7 +354,7 @@ coneSegment(336);
                 forecastTracks.loadPixels();
                 for(let i = 0; i < forecastTracks.pixels.length; i += 4){
                     if(forecastTracks.pixels[i + 3] > 0)
-                        forecastTracks.pixels[i + 3] = 2000;
+                        forecastTracks.pixels[i + 3] = 5000;
                 }
                 forecastTracks.updatePixels();
 
