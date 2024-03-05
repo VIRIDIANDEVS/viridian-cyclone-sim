@@ -332,10 +332,7 @@ class Storm{
                     forecastTracks.vertex(p1.x + rVec.x, p1.y + rVec.y);
                     forecastTracks.endShape();
                     
-
-                    
                 };
-           
                 coneSegment(12);
                 coneSegment(24);
                 coneSegment(36);
@@ -349,8 +346,6 @@ class Storm{
                 coneSegment(192);
                 coneSegment(216);
                 coneSegment(240);
-
-                
                 forecastTracks.loadPixels();
                 for(let i = 0; i < forecastTracks.pixels.length; i += 4){
                     if(forecastTracks.pixels[i + 3] > 0)
