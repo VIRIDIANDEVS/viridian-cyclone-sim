@@ -346,8 +346,6 @@ class Storm{
                 coneSegment(120);
                 coneSegment(144);
                 coneSegment(168);
-                coneSegment(192);
-                coneSegment(210);
                 
 
                 
