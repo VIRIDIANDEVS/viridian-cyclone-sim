@@ -336,16 +336,15 @@ class Storm{
                     
                 };
            
-                coneSegment(12);
                 coneSegment(24);
-                coneSegment(36);
                 coneSegment(48);
-                coneSegment(60);
                 coneSegment(72);
                 coneSegment(96);
                 coneSegment(120);
                 coneSegment(144);
                 coneSegment(168);
+                coneSegment(210);
+                
 
                 
                 forecastTracks.loadPixels();
