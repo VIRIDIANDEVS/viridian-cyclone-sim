@@ -1707,7 +1707,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
 
     sys.depth = lerp(sys.depth,1,(1-tropicalness)*0.02);
     sys.depth = lerp(sys.depth,0,tropicalness*(1-sys.organization)*0.02);
-    sys.depth = lerp(sys.depth,lnd ? 0.5 : map(SST,26,29,0.5,0.75,true),tropicalness*sys.organization*0.025);
+    sys.depth = lerp(sys.depth,lnd ? 0.5 : map(SST,26,32,0.5,1.5,true),tropicalness*sys.organization*0.025);
 
     if(sys.kaboom > 0 && sys.kaboom < 1)
         sys.kaboom = random()<sys.kaboom ? 1 : 0;
@@ -1755,10 +1755,10 @@ STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
             sys.type = sys.lowerWarmCore<0.75 ? EXTROP : ((sys.organization<0.50 && sys.windSpeed<30) || sys.windSpeed<29) ? sys.upperWarmCore<0.55 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.66 ? SUBTROP : TROP;
             break;
         case SUBTROP:
-            sys.type = sys.lowerWarmCore<0.50 ? EXTROP : ((sys.organization<0.35 && sys.windSpeed<30) || sys.windSpeed<29) ? sys.upperWarmCore<0.48 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.55 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.50 ? EXTROP : ((sys.organization<0.35 && sys.windSpeed<30) || sys.windSpeed<29) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.55 ? SUBTROP : TROP;
             break;
         case TROPWAVE:
-            sys.type = sys.lowerWarmCore<0.65 ? EXTROP : (sys.organization<0.25 || sys.windSpeed<20) ? sys.upperWarmCore<0.56 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.65 ? EXTROP : (sys.organization<0.25 || sys.windSpeed<20) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
             break;
         default:
             sys.type = sys.lowerWarmCore<0.35 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.50 ? SUBTROP : TROP;
