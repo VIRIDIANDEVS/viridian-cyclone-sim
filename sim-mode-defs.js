@@ -1642,7 +1642,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
     if(sys.organization<0.3) sys.pressure += random(-2,2.5)*tropicalness;
-    sys.pressure += random(constrain(970-sys.pressure,0,40))*nontropicalness;
+    sys.pressure += random(constrain(900-sys.pressure,0,140))*nontropicalness;
     sys.pressure += 0.5*sys.interaction.shear/(1+map(sys.lowerWarmCore,0,1,4,0));
     sys.pressure += map(jet,0,75,5*pow(1-sys.depth,4),0,true);
 
