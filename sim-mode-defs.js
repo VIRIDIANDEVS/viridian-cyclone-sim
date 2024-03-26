@@ -222,7 +222,7 @@ SPAWN_RULES.defaults.doSpawn = function(b){
     if(random()<0.015*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
-    if(random()<0.07-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+    if(random()<0.03-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 
 // -- Normal Mode -- //
@@ -1755,13 +1755,13 @@ STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
             sys.type = sys.lowerWarmCore<0.75 ? EXTROP : ((sys.organization<0.50 && sys.windSpeed<30) || sys.windSpeed<29) ? sys.upperWarmCore<0.55 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.66 ? SUBTROP : TROP;
             break;
         case SUBTROP:
-            sys.type = sys.lowerWarmCore<0.50 ? EXTROP : ((sys.organization<0.25 && sys.windSpeed<30) || sys.windSpeed<29) ? sys.upperWarmCore<0.48 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.50 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.50 ? EXTROP : ((sys.organization<0.35 && sys.windSpeed<30) || sys.windSpeed<29) ? sys.upperWarmCore<0.48 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.55 ? SUBTROP : TROP;
             break;
         case TROPWAVE:
-            sys.type = sys.lowerWarmCore<0.65 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.56 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.65 ? EXTROP : (sys.organization<0.25 || sys.windSpeed<20) ? sys.upperWarmCore<0.56 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
             break;
         default:
-            sys.type = sys.lowerWarmCore<0.45 ? EXTROP : (sys.organization<0.25 || sys.windSpeed<20) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.50 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.50 ? SUBTROP : TROP;
     }
 };
 
