@@ -903,17 +903,17 @@ ENV_DEFS.defaults.shear = {
     magMap: [0,8,0,25],
     hueMap: (v)=>{
         colorMode(HSB);
-let extreme = color(270,100,100) 
-        let strong = color(0,100,100);
-        let moderate = color(90,100,100);
-        let weak = color(180,100,100);
+let extreme = color(0,100,100) 
+        let strong = color(90,100,100);
+        let moderate = color(180,100,100);
+        let weak = color(270,100,100);
         let c;
-        if(v < 2)
-            c = lerpColor(weak, moderate, map(v,0.5,2,0,1));
-        else if(v < 3.5)
-            c = lerpColor(moderate, strong, map(v,2,3.5,0,1));
+        if(v < 2.5)
+            c = lerpColor(weak, moderate, map(v,1,2.5,0,1));
+        else if(v < 4)
+            c = lerpColor(moderate, strong, map(v,2.5,4,0,1));
 else 
-c = lerpColor(strong, extreme, map(v,3.5,6,0,1));
+c = lerpColor(strong, extreme, map(v,4,6,0,1));
         colorMode(RGB);
         return c;
     }
@@ -1038,7 +1038,7 @@ ENV_DEFS.defaults.SST = {
         if(y<0) return 0;
         let anom = u.field('SSTAnomaly');
         let s = seasonalSine(z);
-        let w = map(cos(map(x,0,WIDTH,0,PI)),-1,1,0,1);
+        let w = map(cos(map(x - PI/2,0,WIDTH,0,PI)),-1,1,0,1);
         let h0 = y/HEIGHT;
         let h1 = (sqrt(h0)+h0)/2;
         let h2 = sqrt(sqrt(h0));
@@ -1646,7 +1646,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.pressure += 0.5*sys.interaction.shear/(1+map(sys.lowerWarmCore,0,1,4,0));
     sys.pressure += map(jet,0,75,5*pow(1-sys.depth,4),0,true);
 
-    let targetWind = map(sys.pressure,1015,900,1,160)*map(sys.lowerWarmCore,1,0,1,0.6);
+    let targetWind = map(sys.pressure,1015,900,15,160)*map(sys.lowerWarmCore,1,0,1,0.6);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.15);
 
     let targetDepth = map(
@@ -1692,7 +1692,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     let hardCeiling = map(SST,20,31,1005,870);
     if(lnd)
         hardCeiling = 990;
-    let softCeiling = map(sys.organization,0.93,0.98,lerp(1010,hardCeiling,0.77),hardCeiling,true);
+    let softCeiling = map(sys.organization,0.93,0.98,lerp(1010,hardCeiling,0.67),hardCeiling,true);
     sys.pressure = lerp(sys.pressure,1013,0.006);
     sys.pressure = lerp(sys.pressure,980,(1-tropicalness)*map(jet,0,75,0.025,0,true));
     sys.pressure = lerp(sys.pressure,softCeiling,tropicalness*sys.organization*0.03);
@@ -1702,7 +1702,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     sys.pressure = lerp(sys.pressure,1020,map(lnd,0.8,0.93,0,0.2,true));
     sys.pressure += random(-1,1);
 
-    let targetWind = map(sys.pressure,1012,900,10,180)*map(sys.lowerWarmCore,1,0,1,0.6);
+    let targetWind = map(sys.pressure,1012,900,20,180)*map(sys.lowerWarmCore,1,0,1,0.6);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.15);
 
     sys.depth = lerp(sys.depth,1,(1-tropicalness)*0.02);
