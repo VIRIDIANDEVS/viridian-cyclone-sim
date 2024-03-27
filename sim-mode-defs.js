@@ -1581,10 +1581,10 @@ STORM_ALGORITHM.defaults.interaction = function(sys0, sys1){
     let r = map(sys1.lowerWarmCore,0,1,150,50);
     if(m<r && m>0){
         v.rotate(sys0.basin.hem(-TAU/4+((3/m)*TAU/16)));
-        v.setMag(map(m,r,0,0,map(constrain(sys1.pressure,990,1030),1030,990,0.2,2.2)));
+        v.setMag(map(m,r,0,0,map(constrain(sys1.pressure,990,1015),1015,990,0.2,2.2)));
         interactionData.fuji = v;
-        interactionData.shear = map(m,r,0,0,map(sys1.pressure,1030,900,0,6));
-        if((m < map(sys0.pressure,1030,1000,r/5,r/15) || m<5) && sys0.pressure > sys1.pressure)
+        interactionData.shear = map(m,r,0,0,map(sys1.pressure,1015,900,0,6));
+        if((m < map(sys0.pressure,1015,1000,r/5,r/15) || m<5) && sys0.pressure > sys1.pressure)
             interactionData.kill = 1;
     }
 
@@ -1625,7 +1625,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-    if(!lnd) sys.organization += sq(map(SST,20,29,0,1,true))*3*tropicalness;
+    if(!lnd) sys.organization += sq(map(SST,20,30,0,2,true))*3*tropicalness;
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
@@ -1646,7 +1646,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.pressure += 0.5*sys.interaction.shear/(1+map(sys.lowerWarmCore,0,1,4,0));
     sys.pressure += map(jet,0,75,5*pow(1-sys.depth,4),0,true);
 
-    let targetWind = map(sys.pressure,1030,900,1,160)*map(sys.lowerWarmCore,1,0,1,0.6);
+    let targetWind = map(sys.pressure,1015,900,1,160)*map(sys.lowerWarmCore,1,0,1,0.6);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.15);
 
     let targetDepth = map(
@@ -1660,7 +1660,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     );
     sys.depth = lerp(sys.depth,targetDepth,0.05);
 
-    if(sys.pressure > 1030 || sys.interaction.kill > 0)
+    if(sys.pressure > 1015 || sys.interaction.kill > 0)
         sys.kill = true;
 };
 
@@ -1689,10 +1689,10 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
         sys.organization = lerp(sys.organization,0,0.03);
     sys.organization = constrain(sys.organization,0,1);
 
-    let hardCeiling = map(SST,21,31,1009,870);
+    let hardCeiling = map(SST,20,31,1005,870);
     if(lnd)
         hardCeiling = 990;
-    let softCeiling = map(sys.organization,0.93,0.98,lerp(1010,hardCeiling,0.7),hardCeiling,true);
+    let softCeiling = map(sys.organization,0.93,0.98,lerp(1010,hardCeiling,0.77),hardCeiling,true);
     sys.pressure = lerp(sys.pressure,1013,0.006);
     sys.pressure = lerp(sys.pressure,980,(1-tropicalness)*map(jet,0,75,0.025,0,true));
     sys.pressure = lerp(sys.pressure,softCeiling,tropicalness*sys.organization*0.03);
@@ -1752,16 +1752,16 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
 STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
     switch(sys.type){
         case TROP:
-            sys.type = sys.lowerWarmCore<0.75 ? EXTROP : ((sys.organization<0.50 && sys.windSpeed<30) || sys.windSpeed<29) ? sys.upperWarmCore<0.55 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.66 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.8 ? EXTROP : ((sys.organization<0.35 && sys.windSpeed<20) || sys.windSpeed<29) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.75 ? SUBTROP : TROP;
             break;
         case SUBTROP:
-            sys.type = sys.lowerWarmCore<0.50 ? EXTROP : ((sys.organization<0.35 && sys.windSpeed<30) || sys.windSpeed<29) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.55 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.40 ? EXTROP : ((sys.organization<0.20 && sys.windSpeed<20) || sys.windSpeed<29) ? sys.upperWarmCore<0.10 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.40 ? SUBTROP : TROP;
             break;
         case TROPWAVE:
-            sys.type = sys.lowerWarmCore<0.65 ? EXTROP : (sys.organization<0.25 || sys.windSpeed<20) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.8 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.7 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.7 ? SUBTROP : TROP;
             break;
         default:
-            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.50 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.30 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.50 ? SUBTROP : TROP;
     }
 };
 
