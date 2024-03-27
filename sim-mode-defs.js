@@ -1615,7 +1615,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     
     let targetWarmCore = (lnd ?
         sys.lowerWarmCore :
-        max(pow(map(SST,20,26,28,0,0.6,1,true),3),sys.lowerWarmCore)
+        max(pow(map(SST,20,29,0,1,true),3),sys.lowerWarmCore)
     )*map(jet,0,75,sq(1-sys.depth),1,true);
     sys.lowerWarmCore = lerp(sys.lowerWarmCore,targetWarmCore,sys.lowerWarmCore>targetWarmCore ? map(jet,0,75,0.4,0.06,true) : 0.04);
     sys.upperWarmCore = lerp(sys.upperWarmCore,sys.lowerWarmCore,sys.lowerWarmCore>sys.upperWarmCore ? 0.05 : 0.4);
@@ -1625,7 +1625,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-    if(!lnd) sys.organization += sq(map(SST,20,28,30,0,1,4,true))*3*tropicalness;
+    if(!lnd) sys.organization += sq(map(SST,20,32,0,2,true))*3*tropicalness;
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
@@ -1637,7 +1637,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.organization = constrain(sys.organization,0,100);
     sys.organization /= 100;
 
-    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,25,30,1,2))/log(1.17);
+    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,25,30,0,1))/log(1.17);
     targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
@@ -1683,7 +1683,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     let tropicalness = (sys.lowerWarmCore+sys.upperWarmCore)/2;
 
     if(!lnd)
-        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,26,31,0,0.05,0.15,true));
+        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,31,0,0.15,true));
     sys.organization = lerp(sys.organization,0,pow(3,shear*(1-moisture)*2.3)*0.0005);
     if(lnd>0.7)
         sys.organization = lerp(sys.organization,0,0.03);
