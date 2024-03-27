@@ -99,10 +99,10 @@ SPAWN_RULES.defaults.archetypes = {
     'tw': {
         x: ()=>random(0,WIDTH-1),
         y: (b)=>b.hemY(random(HEIGHT*0.7,HEIGHT*0.9)),
-        pressure: [995, 1009],
-        windSpeed: [25, 45],
+        pressure: [990,995,1000,1005,1010],
+        windSpeed: [15, 20, 25, 30, 35],
         type: TROPWAVE,
-        organization: [0.3,0.6],
+        organization: [0.1,0.3,0.5,0.7,0.9],
         lowerWarmCore: 1,
         upperWarmCore: 1,
         depth: 0
@@ -110,8 +110,8 @@ SPAWN_RULES.defaults.archetypes = {
     'ex': {
         x: ()=>random(0,WIDTH-1),
         y: (b,x)=>b.hemY(b.env.get("jetstream",x,0,b.tick)+random(-75,75)),
-        pressure: [995, 1008],
-        windSpeed: [25, 40],
+        pressure: [980, 995, 1005, 1010],
+        windSpeed: [15, 30, 45, 60],
         type: EXTROP,
         organization: 0,
         lowerWarmCore: 0,
@@ -120,7 +120,7 @@ SPAWN_RULES.defaults.archetypes = {
     },
     'l': {
         inherit: 'tw',
-        pressure: 1012,
+        pressure: 1007,
         windSpeed: 20,
         organization: 0.2
     },
@@ -142,7 +142,7 @@ SPAWN_RULES.defaults.archetypes = {
         inherit: 'tc',
         type: SUBTROP,
         lowerWarmCore: 0.4,
-        upperWarmCore: 0.3
+        upperWarmCore: 0.1
     },
     'd': {
         inherit: 'tc'
@@ -243,7 +243,7 @@ SPAWN_RULES[SIM_MODE_WILD].archetypes = {
     'tw': {
         x: ()=>random(0,WIDTH-1),
         y: (b)=>b.hemY(random(HEIGHT*0.2,HEIGHT*0.9)),
-        pressure: [1000, 1020],
+        pressure: [1000, 1010],
         windSpeed: [15, 35],
         type: TROPWAVE,
         organization: [0,0.6],
@@ -272,8 +272,8 @@ SPAWN_RULES[SIM_MODE_EXPERIMENTAL].archetypes = {
     'tw': {
         x: ()=>random(0,WIDTH-1),
         y: (b)=>b.hemY(random(HEIGHT*0.7,HEIGHT*0.9)),
-        pressure: [1000, 1020],
-        windSpeed: [15, 35],
+        pressure: [998, 1010],
+        windSpeed: [15, 30],
         type: TROPWAVE,
         organization: [0,0.3],
         lowerWarmCore: 1,
@@ -305,7 +305,7 @@ SPAWN_RULES[SIM_MODE_EXPERIMENTAL].archetypes = {
     },
     'l': {
         inherit: 'tw',
-        pressure: 1015,
+        pressure: 1008,
         windSpeed: 15,
         organization: 0.2,
         kaboom: 0.2
@@ -959,7 +959,7 @@ ENV_DEFS.defaults.SSTAnomaly = {
         v = log(v);
         let r;
         if(u.modifiers.r!==undefined) r = u.modifiers.r;
-        else r = map(y,0,HEIGHT,6,3);
+        else r = map(y,0,HEIGHT,2,3,5,7,10);
         v = -r*v;
         v = v*i;
         if(u.modifiers.bigBlobBase!==undefined && v>u.modifiers.bigBlobExponentThreshold) v += pow(u.modifiers.bigBlobBase,v-u.modifiers.bigBlobExponentThreshold)-1;
@@ -1625,14 +1625,14 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-    if(!lnd) sys.organization += sq(map(SST,20,32,0,2,true))*3*tropicalness;
+    if(!lnd) sys.organization += sq(map(SST,20,29,32,0,1,6,true))*3*tropicalness;
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2);
-    sys.organization -= map(moisture,0,0.8,3,0,true)*shear;
-    sys.organization += sq(map(moisture,0,1,0,1,true))*4;
+    sys.organization -= map(moisture,0,0.9,3,0,true)*shear;
+    sys.organization += sq(map(moisture,0,1,0,6,true))*4;
     sys.organization -= pow(1.3,20-SST)*tropicalness;
     sys.organization = constrain(sys.organization,0,100);
     sys.organization /= 100;
@@ -1683,7 +1683,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     let tropicalness = (sys.lowerWarmCore+sys.upperWarmCore)/2;
 
     if(!lnd)
-        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,31,0,0.15,true));
+        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,31,0,0.35,true));
     sys.organization = lerp(sys.organization,0,pow(3,shear*(1-moisture)*2.3)*0.0005);
     if(lnd>0.7)
         sys.organization = lerp(sys.organization,0,0.03);
@@ -1702,7 +1702,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     sys.pressure = lerp(sys.pressure,1010,map(lnd,0.8,0.93,0,0.2,true));
     sys.pressure += random(-1,1);
 
-    let targetWind = map(sys.pressure,1012,900,20,180)*map(sys.lowerWarmCore,1,0,1,0.6);
+    let targetWind = map(sys.pressure,1010,900,20,180)*map(sys.lowerWarmCore,1,0,1,0.6);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.15);
 
     sys.depth = lerp(sys.depth,1,(1-tropicalness)*0.02);
