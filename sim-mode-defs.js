@@ -1625,13 +1625,13 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-    if(!lnd) sys.organization += sq(map(SST,20,28,30,0,0.5,1,true))*3*tropicalness;
+    if(!lnd) sys.organization += sq(map(SST,20,28,30,0,1,4,true))*3*tropicalness;
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2);
-    sys.organization -= map(moisture,0,1,3,0,true)*shear;
+    sys.organization -= map(moisture,0,2,3,0,true)*shear;
     sys.organization += sq(map(moisture,0,2,0,1,true))*4;
     sys.organization -= pow(1.3,20-SST)*tropicalness;
     sys.organization = constrain(sys.organization,0,100);
@@ -1673,7 +1673,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     let shear = u.f("shear").mag()+sys.interaction.shear;
     
     sys.lowerWarmCore = lerp(sys.lowerWarmCore,0,map(jet,0,75,0.07,0));
-    sys.lowerWarmCore = lerp(sys.lowerWarmCore,1,map(jet,50,100,0,map(SST,20,26,0,0.51,true),true));
+    sys.lowerWarmCore = lerp(sys.lowerWarmCore,1,map(jet,50,100,0,map(SST,20,26,0,0.13,true),true));
     if(sys.upperWarmCore > sys.lowerWarmCore)
         sys.upperWarmCore = sys.lowerWarmCore;
     else
@@ -1692,7 +1692,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     let hardCeiling = map(SST,20,31,990,870);
     if(lnd)
         hardCeiling = 985;
-    let softCeiling = map(sys.organization,0.93,0.98,lerp(1010,hardCeiling,0.72),hardCeiling,true);
+    let softCeiling = map(sys.organization,0.93,0.98,lerp(1007,hardCeiling,0.72),hardCeiling,true);
     sys.pressure = lerp(sys.pressure,1013,0.006);
     sys.pressure = lerp(sys.pressure,980,(1-tropicalness)*map(jet,0,75,0.025,0,true));
     sys.pressure = lerp(sys.pressure,softCeiling,tropicalness*sys.organization*0.03);
@@ -1732,7 +1732,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
             sys.lowerWarmCore = 1;
             if(sys.upperWarmCore < 0.8)
                 sys.upperWarmCore = 0.8;
-            sys.depth = 1.2;
+            sys.depth = 1;
         }
 
         if(lnd && !namedBoom){
@@ -1761,7 +1761,7 @@ STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
             sys.type = sys.lowerWarmCore<0.9 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.7 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.75 ? SUBTROP : TROP;
             break;
         default:
-            sys.type = sys.lowerWarmCore<0.20 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.35 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.20 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.75 ? SUBTROP : TROP;
     }
 };
 
