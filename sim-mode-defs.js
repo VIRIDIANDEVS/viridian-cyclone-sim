@@ -1038,11 +1038,11 @@ ENV_DEFS.defaults.SST = {
         if(y<0) return 0;
         let anom = u.field('SSTAnomaly');
         let s = seasonalSine(z);
-        let w = map(cos(map(x + 3*PI,0,WIDTH,0,PI)),-1,1,0,1);
+        let w = map(cos(map(x - 5,0,WIDTH,0,PI)),-1,1,0,1);
         let h0 = y/HEIGHT;
         let h1 = (sqrt(h0)+h0)/2;
         let h2 = sqrt(sqrt(h0));
-        let h = map(cos(lerp(PI,0,lerp(h1,h2,sq(w)))),-1,1,0,1) - 60 ;
+        let h = map(cos(lerp(PI,0,lerp(h1,h2,sq(w)))),-1,1,0,1) - 1 ;
         let ospt = u.modifiers.offSeasonPolarTemp;
         let pspt = u.modifiers.peakSeasonPolarTemp;
         let ostt = u.modifiers.offSeasonTropicsTemp;
