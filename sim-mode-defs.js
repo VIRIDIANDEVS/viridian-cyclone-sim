@@ -1698,8 +1698,8 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     sys.pressure = lerp(sys.pressure,softCeiling,tropicalness*sys.organization*0.03);
     if(sys.pressure<1000)
         sys.pressure = lerp(sys.pressure,1000,tropicalness*(1-sys.organization)*0.01);
-    sys.pressure = lerp(sys.pressure,1040,map(sys.pos.y,HEIGHT*0.97,HEIGHT,0,0.15,true));
-    sys.pressure = lerp(sys.pressure,1040,map(lnd,0.8,0.93,0,0.2,true));
+    sys.pressure = lerp(sys.pressure,1020,map(sys.pos.y,HEIGHT*0.97,HEIGHT,0,0.15,true));
+    sys.pressure = lerp(sys.pressure,1020,map(lnd,0.8,0.93,0,0.2,true));
     sys.pressure += random(-1,1);
 
     let targetWind = map(sys.pressure,1012,900,10,180)*map(sys.lowerWarmCore,1,0,1,0.6);
@@ -1707,7 +1707,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
 
     sys.depth = lerp(sys.depth,1,(1-tropicalness)*0.02);
     sys.depth = lerp(sys.depth,0,tropicalness*(1-sys.organization)*0.02);
-    sys.depth = lerp(sys.depth,lnd ? 0.5 : map(SST,26,32,0.5,1.5,true),tropicalness*sys.organization*0.025);
+    sys.depth = lerp(sys.depth,lnd ? 0.5 : map(SST,26,32,0.5,4,true),tropicalness*sys.organization*0.025);
 
     if(sys.kaboom > 0 && sys.kaboom < 1)
         sys.kaboom = random()<sys.kaboom ? 1 : 0;
@@ -1761,7 +1761,7 @@ STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
             sys.type = sys.lowerWarmCore<0.8 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.7 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.7 ? SUBTROP : TROP;
             break;
         default:
-            sys.type = sys.lowerWarmCore<0.30 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.50 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.30 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.10 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.35 ? SUBTROP : TROP;
     }
 };
 
