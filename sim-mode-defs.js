@@ -1673,7 +1673,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     let shear = u.f("shear").mag()+sys.interaction.shear;
     
     sys.lowerWarmCore = lerp(sys.lowerWarmCore,0,map(jet,0,75,0.07,0));
-    sys.lowerWarmCore = lerp(sys.lowerWarmCore,1,map(jet,50,100,0,map(SST,20,26,0,0.21,true),true));
+    sys.lowerWarmCore = lerp(sys.lowerWarmCore,1,map(jet,50,100,0,map(SST,20,26,0,0.51,true),true));
     if(sys.upperWarmCore > sys.lowerWarmCore)
         sys.upperWarmCore = sys.lowerWarmCore;
     else
@@ -1683,7 +1683,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     let tropicalness = (sys.lowerWarmCore+sys.upperWarmCore)/2;
 
     if(!lnd)
-        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,21,31,0,0.05,true));
+        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,26,31,0,0.05,0.15,true));
     sys.organization = lerp(sys.organization,0,pow(3,shear*(1-moisture)*2.3)*0.0005);
     if(lnd>0.7)
         sys.organization = lerp(sys.organization,0,0.03);
@@ -1731,7 +1731,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
             sys.organization = 1;
             sys.lowerWarmCore = 1;
             if(sys.upperWarmCore < 0.8)
-                sys.upperWarmCore = 0.7;
+                sys.upperWarmCore = 0.8;
             sys.depth = 1.2;
         }
 
@@ -1755,7 +1755,7 @@ STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
             sys.type = sys.lowerWarmCore<0.9 ? EXTROP : ((sys.organization<0.35 && sys.windSpeed<25) || sys.windSpeed<29) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.65 ? SUBTROP : TROP;
             break;
         case SUBTROP:
-            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : ((sys.organization<0.20 && sys.windSpeed<25) || sys.windSpeed<29) ? sys.upperWarmCore<0.10 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.40 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : ((sys.organization<0.20 && sys.windSpeed<25) || sys.windSpeed<29) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.40 ? SUBTROP : TROP;
             break;
         case TROPWAVE:
             sys.type = sys.lowerWarmCore<0.9 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.7 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.75 ? SUBTROP : TROP;
