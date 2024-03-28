@@ -232,9 +232,9 @@ SPAWN_RULES[SIM_MODE_NORMAL].doSpawn = SPAWN_RULES.defaults.doSpawn;
 // -- Hyper Mode -- //
 
 SPAWN_RULES[SIM_MODE_HYPER].doSpawn = function(b){
-    if(random()<(0.013*sq((seasonalSine(b.tick)+1)/2)+0.002)) b.spawnArchetype('tw');
+    if(random()<(0.012*sq((seasonalSine(b.tick)+1)/2)+0.002)) b.spawnArchetype('tw');
 
-    if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+    if(random()<0.03-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 
 // -- Wild Mode -- //
@@ -328,7 +328,7 @@ SPAWN_RULES[SIM_MODE_SouthAtlantic].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_Mediterranean].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_EasternPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_CentralPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
-SPAWN_RULES[SIM_MODE_WesternPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
+SPAWN_RULES[SIM_MODE_WesternPacific].doSpawn =  SPAWN_RULES[SIM_MODE_HYPER].doSpawn;
 SPAWN_RULES[SIM_MODE_NorthPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_SouthPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_NorthIndianOcean].doSpawn = SPAWN_RULES.defaults.doSpawn;
