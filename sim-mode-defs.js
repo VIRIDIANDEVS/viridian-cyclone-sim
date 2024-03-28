@@ -1625,19 +1625,19 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-    if(!lnd) sys.organization += sq(map(SST,20,29,32,0,1,6,true))*3*tropicalness;
+    if(!lnd) sys.organization += sq(map(SST,20,26,29,32,0,0.3,1,6,true))*3*tropicalness;
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2);
-    sys.organization -= map(moisture,0,0.9,3,0,true)*shear;
+    sys.organization -= map(moisture,0,2.5,3,0,true)*shear;
     sys.organization += sq(map(moisture,0,1,0,6,true))*4;
     sys.organization -= pow(1.3,20-SST)*tropicalness;
     sys.organization = constrain(sys.organization,0,100);
     sys.organization /= 100;
 
-    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,25,30,1,2))/log(1.17);
+    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,25,30,0.4,2))/log(1.17);
     targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
@@ -1683,7 +1683,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     let tropicalness = (sys.lowerWarmCore+sys.upperWarmCore)/2;
 
     if(!lnd)
-        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,31,0,0.35,true));
+        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,26,31,0,0.07,0.35,true));
     sys.organization = lerp(sys.organization,0,pow(3,shear*(1-moisture)*2.3)*0.0005);
     if(lnd>0.7)
         sys.organization = lerp(sys.organization,0,0.03);
@@ -1727,12 +1727,12 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
         if((!lnd || namedBoom) && (sys.organization > 0.8 || sys.kaboom === 2)){
             sys.kaboom = 2;
             if(sys.pressure > 600)
-                sys.pressure -= random(5,10,15,20);
+                sys.pressure -= random(5,10,15,20,25);
             sys.organization = 1;
             sys.lowerWarmCore = 1;
             if(sys.upperWarmCore < 0.8)
                 sys.upperWarmCore = 0.8;
-            sys.depth = 1;
+            sys.depth = 1.5;
         }
 
         if(lnd && !namedBoom){
