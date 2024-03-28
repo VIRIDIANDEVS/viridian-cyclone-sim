@@ -317,6 +317,14 @@ SPAWN_RULES[SIM_MODE_EXPERIMENTAL].archetypes = {
         kaboom: 0.2
     }
 };
+SPAWN_RULES[SIM_MODE_WesternPacific].doSpawn = function(b){
+    // tropical waves
+    if(random()<0.012*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+
+    // extratropical cyclones
+    if(random()<0.03-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+};
+
 
 SPAWN_RULES[SIM_MODE_EXPERIMENTAL].doSpawn = SPAWN_RULES[SIM_MODE_HYPER].doSpawn;
 SPAWN_RULES[SIM_MODE_NorthernHemisphere].doSpawn = SPAWN_RULES.defaults.doSpawn;
@@ -328,7 +336,6 @@ SPAWN_RULES[SIM_MODE_SouthAtlantic].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_Mediterranean].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_EasternPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_CentralPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
-SPAWN_RULES[SIM_MODE_WesternPacific].doSpawn =  SPAWN_RULES[SIM_MODE_HYPER].doSpawn;
 SPAWN_RULES[SIM_MODE_NorthPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_SouthPacific].doSpawn = SPAWN_RULES.defaults.doSpawn;
 SPAWN_RULES[SIM_MODE_NorthIndianOcean].doSpawn = SPAWN_RULES.defaults.doSpawn;
