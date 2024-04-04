@@ -1388,21 +1388,21 @@ ENV_DEFS[SIM_MODE_NorthernHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.38,
         tropicalMoisture: 0.62,
-        mountainMoisture: 0.30
+        mountainMoisture: 0.20
     }
 };
 ENV_DEFS[SIM_MODE_SouthernHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.45,
         tropicalMoisture: 0.62,
-        mountainMoisture: 0.41
+        mountainMoisture: 0.21
     }
 };
 ENV_DEFS[SIM_MODE_WesternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.42,
         tropicalMoisture: 0.62,
-        mountainMoisture: 0.36
+        mountainMoisture: 0.16
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
@@ -1416,105 +1416,105 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.44,
         tropicalMoisture: 0.47,
-        mountainMoisture: 0.30
+        mountainMoisture: 0.22
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.52,
         tropicalMoisture: 0.41,
-        mountainMoisture: 0.42
+        mountainMoisture: 0.22
     }
 };
 ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
     modifiers: {
         polarMoisture: 0.55,
         tropicalMoisture: 0.35,
-        mountainMoisture: 0.21
+        mountainMoisture: 0.10
     }
 };
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.37,
         tropicalMoisture: 0.54,
-        mountainMoisture: 0.35
+        mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
     modifiers: {
         polarMoisture: 0.50,
         tropicalMoisture: 0.51,
-        mountainMoisture: 0.32
+        mountainMoisture: 0.20
     }
 };
 ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.42,
         tropicalMoisture: 0.63,
-        mountainMoisture: 0.34
+        mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.44,
         tropicalMoisture: 0.6,
-        mountainMoisture: 0.35
+        mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.48,
         tropicalMoisture: 0.44,
-        mountainMoisture: 0.25
+        mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.10,
         tropicalMoisture: 0.58,
-        mountainMoisture: 0.37
+        mountainMoisture: 0.07
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.43,
         tropicalMoisture: 0.54,
-        mountainMoisture: 0.31
+        mountainMoisture: 0.13
     }
 };
 ENV_DEFS[SIM_MODE_Australian].moisture = {
     modifiers: {
         polarMoisture: 0.35,
         tropicalMoisture: 0.46,
-        mountainMoisture: 0.28
+        mountainMoisture: 0.11
     }
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
     modifiers: {
         polarMoisture: 0.55,
         tropicalMoisture: 0.60,
-        mountainMoisture: 0.39
+        mountainMoisture: 0.30
     }
 };
 ENV_DEFS[SIM_MODE_PreIndustrial].moisture = {
     modifiers: {
         polarMoisture: 0.33,
         tropicalMoisture: 0.55,
-        mountainMoisture: 0.22
+        mountainMoisture: 0.17
     }
 };
 ENV_DEFS[SIM_MODE_MiniIceAge].moisture = {
     modifiers: {
         polarMoisture: 0.26,
         tropicalMoisture: 0.48,
-        mountainMoisture: 0.14
+        mountainMoisture: 0.04
     }
 };
 ENV_DEFS[SIM_MODE_4C].moisture = {
     modifiers: {
         polarMoisture: 0.66,
         tropicalMoisture: 0.77,
-        mountainMoisture: 0.55
+        mountainMoisture: 0.45
     }
 };
 ENV_DEFS[SIM_MODE_SnowballEarth].moisture = {
@@ -1528,7 +1528,7 @@ ENV_DEFS[SIM_MODE_Drought].moisture = {
     modifiers: {
         polarMoisture: 0.29,
         tropicalMoisture: 0.45,
-        mountainMoisture: 0.08
+        mountainMoisture: 0.02
     }
 };
 ENV_DEFS[SIM_MODE_Deluge].moisture = {
@@ -1692,9 +1692,9 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     if(!lnd)
         sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,26,31,0,0.12,0.35,true));
     sys.organization = lerp(sys.organization,0,pow(3,shear*(1-moisture)*2.3)*0.0005);
-    if(lnd>0.7)
+    if(lnd>0.75)
         sys.organization = lerp(sys.organization,0,0.03);
-    sys.organization = constrain(sys.organization,0,1);
+    sys.organization = constrain(sys.organization,0,0.3);
 
     let hardCeiling = map(SST,20,31,990,870);
     if(lnd)
