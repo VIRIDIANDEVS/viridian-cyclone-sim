@@ -1164,8 +1164,8 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     modifiers: {
         offSeasonPolarTemp: -2.5,
         peakSeasonPolarTemp: 7.2,
-        offSeasonTropicsTemp: 26.8,
-        peakSeasonTropicsTemp: 29.4
+        offSeasonTropicsTemp: 27.1,
+        peakSeasonTropicsTemp: 29.25
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].SST = {
@@ -1192,7 +1192,7 @@ ENV_DEFS[SIM_MODE_EasternPacific].SST = {
         offSeasonPolarTemp: -4,
         peakSeasonPolarTemp: 6,
         offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 29.53
+        peakSeasonTropicsTemp: 29.4
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].SST = {
@@ -1210,7 +1210,7 @@ ENV_DEFS[SIM_MODE_WesternPacific].SST = {
         offSeasonPolarTemp: -4,
         peakSeasonPolarTemp: 2.7,
         offSeasonTropicsTemp: 28.1,
-        peakSeasonTropicsTemp: 30
+        peakSeasonTropicsTemp: 29.7
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].SST = {
@@ -1690,11 +1690,11 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     let tropicalness = (sys.lowerWarmCore+sys.upperWarmCore)/2;
 
     if(!lnd)
-        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,26,31,0,0.12,0.35,true));
+        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,26,31,0,0.1,0.3,true));
     sys.organization = lerp(sys.organization,0,pow(3,shear*(1-moisture)*2.3)*0.0005);
-    if(lnd>0.75)
-        sys.organization = lerp(sys.organization,0,0.03);
-    sys.organization = constrain(sys.organization,0,0.3);
+    if(lnd>0.65)
+        sys.organization = lerp(sys.organization,0,0.01);
+    sys.organization = constrain(sys.organization,0,0.2);
 
     let hardCeiling = map(SST,20,31,990,870);
     if(lnd)
