@@ -1644,7 +1644,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.organization = constrain(sys.organization,0,100);
     sys.organization /= 100;
 
-    let targetPressure = 1010-25*log((lnd||SST<25)?0.92:map(SST,22,30,0.8,2))/log(1.17);
+    let targetPressure = 1010-25*log((lnd||SST<25)?0.9933:map(SST,22,30,0.8,2))/log(1.17);
     targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
@@ -1694,7 +1694,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     sys.organization = lerp(sys.organization,0,pow(3,shear*(1-moisture)*2.3)*0.0005);
     if(lnd>0.65)
         sys.organization = lerp(sys.organization,0,0.01);
-    sys.organization = constrain(sys.organization,0,0.2);
+    sys.organization = constrain(sys.organization,0,0.04);
 
     let hardCeiling = map(SST,20,31,990,870);
     if(lnd)
@@ -1759,7 +1759,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
 STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
     switch(sys.type){
         case TROP:
-            sys.type = sys.lowerWarmCore<0.9 ? EXTROP : ((sys.organization<0.35 && sys.windSpeed<25) || sys.windSpeed<29) ? sys.upperWarmCore<0.40 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.65 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.9 ? EXTROP : ((sys.organization<0.35 && sys.windSpeed<25) || sys.windSpeed<29) ? sys.upperWarmCore<0.35 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.65 ? SUBTROP : TROP;
             break;
         case SUBTROP:
             sys.type = sys.lowerWarmCore<0.25 ? EXTROP : ((sys.organization<0.20 && sys.windSpeed<25) || sys.windSpeed<29) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.50 ? SUBTROP : TROP;
