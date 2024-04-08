@@ -966,7 +966,7 @@ ENV_DEFS.defaults.SSTAnomaly = {
         v = log(v);
         let r;
         if(u.modifiers.r!==undefined) r = u.modifiers.r;
-        else r = map(y,0,HEIGHT,2,3,5,7,10);
+        else r = map(y,0,HEIGHT,1,3,5,7);
         v = -r*v;
         v = v*i;
         if(u.modifiers.bigBlobBase!==undefined && v>u.modifiers.bigBlobExponentThreshold) v += pow(u.modifiers.bigBlobBase,v-u.modifiers.bigBlobExponentThreshold)-1;
@@ -987,8 +987,8 @@ ENV_DEFS.defaults.SSTAnomaly = {
         let cNeutral = color(200,100,100);
         let hNeutral = color(65,100,100);
         let c;
-        if(v<0) c = lerpColor(cold,cNeutral,map(v,-5,0,0,1));
-        else c = lerpColor(hNeutral,hot,map(v,0,5,0,1));
+        if(v<0) c = lerpColor(cold,cNeutral,map(v,-7,0,0,1));
+        else c = lerpColor(hNeutral,hot,map(v,0,7,0,1));
         colorMode(RGB);
         return c;
     },
@@ -1644,7 +1644,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.organization = constrain(sys.organization,0,100);
     sys.organization /= 100;
 
-    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,25,30,0.7,2))/log(1.17);
+    let targetPressure = 1010-25*log((lnd||SST<25)?0.92:map(SST,22,30,0.8,2))/log(1.17);
     targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
