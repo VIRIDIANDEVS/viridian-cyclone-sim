@@ -1415,7 +1415,7 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.47,
-        tropicalMoisture: 0.55,
+        tropicalMoisture: 0.49,
         mountainMoisture: 0.22
     }
 };
@@ -1639,30 +1639,50 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2);
     sys.organization -= map(moisture,0,1.5,3,0,true)*shear;
- if (moisture < 0.2) {
+if (moisture >= 0) {
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 32;
+}
+if (moisture <= 0.1) {
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 16;
+}
+ if (moisture <= 0.2) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 8;
 }
- if (moisture < 0.3) {
+ if (moisture <= 0.3) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 4;
 }
- if (moisture < 0.4) {
+ if (moisture <= 0.4) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2;
-}
-  if (moisture < 0.5) {
+} 
+    if (moisture >= 0.45) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1;
 }
-  if (moisture > 0.5) {
+  if (moisture < 0.5) {
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.5;
+}
+  if (moisture >= 0.5) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.5;
+}
+ if (moisture >= 0.55) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1;
 }
-  if (moisture > 0.6) {
+  if (moisture >= 0.6) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2;
 }
-
- if (moisture > 0.7) {
+ if (moisture >= 0.65) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 4;
 }
-  if (moisture > 0.8) {
+ if (moisture >= 0.7) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 8;
+}
+  if (moisture >= 0.8) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 4;
+}
+if (moisture >= 0.9) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2;
+}
+if (moisture <= 1) {
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1;
 }
     sys.organization -= pow(1.3,23-SST)*tropicalness;
     sys.organization = constrain(sys.organization,0,100);
