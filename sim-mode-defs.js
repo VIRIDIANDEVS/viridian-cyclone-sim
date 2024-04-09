@@ -1622,7 +1622,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     
     let targetWarmCore = (lnd ?
         sys.lowerWarmCore :
-        max(pow(map(SST,20,29,0,1,true),3),sys.lowerWarmCore)
+        max(pow(map(SST,23,29,0,1,true),3),sys.lowerWarmCore)
     )*map(jet,0,75,sq(1-sys.depth),1,true);
     sys.lowerWarmCore = lerp(sys.lowerWarmCore,targetWarmCore,sys.lowerWarmCore>targetWarmCore ? map(jet,0,75,0.4,0.06,true) : 0.04);
     sys.upperWarmCore = lerp(sys.upperWarmCore,sys.lowerWarmCore,sys.lowerWarmCore>sys.upperWarmCore ? 0.05 : 0.4);
@@ -1639,12 +1639,14 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2);
     sys.organization -= map(moisture,0,1.5,3,0,true)*shear;
-    sys.organization += sq(map(moisture,0,1,0,6,true))*4;
-    sys.organization -= pow(1.3,20-SST)*tropicalness;
+  if (moisture > 0.5) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 4;
+}
+    sys.organization -= pow(1.3,23-SST)*tropicalness;
     sys.organization = constrain(sys.organization,0,100);
     sys.organization /= 100;
 
-    let targetPressure = 1010-25*log((lnd||SST<25)?0.9933:map(SST,22,30,0.8,2))/log(1.17);
+    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,23,30,0,2))/log(1.17);
     targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
@@ -1690,16 +1692,24 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     let tropicalness = (sys.lowerWarmCore+sys.upperWarmCore)/2;
 
     if(!lnd)
-        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,26,31,0,0.1,0.3,true));
+        sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,26,31,0,0.2,0.6,true));
     sys.organization = lerp(sys.organization,0,pow(3,shear*(1-moisture)*2.3)*0.0005);
-    if(lnd>0.65)
+if(lnd<0.53)
+        sys.organization = lerp(sys.organization,0.5,0.9);
+    sys.organization = constrain(sys.organization,0,1);
+    if(lnd>0.60)
+        sys.organization = lerp(sys.organization,0,0.3);
+    sys.organization = constrain(sys.organization,0,0.2);
+if(lnd>0.75)
         sys.organization = lerp(sys.organization,0,0.01);
     sys.organization = constrain(sys.organization,0,0.04);
 
-    let hardCeiling = map(SST,20,31,990,870);
+
+
+    let hardCeiling = map(SST,23,31,1000,860);
     if(lnd)
-        hardCeiling = 985;
-    let softCeiling = map(sys.organization,0.93,0.98,lerp(1007,hardCeiling,0.72),hardCeiling,true);
+        hardCeiling = 990;
+    let softCeiling = map(sys.organization,0.93,0.98,lerp(1007,hardCeiling,0.58),hardCeiling,true);
     sys.pressure = lerp(sys.pressure,1013,0.006);
     sys.pressure = lerp(sys.pressure,980,(1-tropicalness)*map(jet,0,75,0.025,0,true));
     sys.pressure = lerp(sys.pressure,softCeiling,tropicalness*sys.organization*0.03);
@@ -1709,7 +1719,7 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     sys.pressure = lerp(sys.pressure,1010,map(lnd,0.8,0.93,0,0.2,true));
     sys.pressure += random(-1,1);
 
-    let targetWind = map(sys.pressure,1010,900,20,180)*map(sys.lowerWarmCore,1,0,1,0.6);
+    let targetWind = map(sys.pressure,1010,900,10,180)*map(sys.lowerWarmCore,1,0,1,0.6);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.15);
 
     sys.depth = lerp(sys.depth,1,(1-tropicalness)*0.02);
