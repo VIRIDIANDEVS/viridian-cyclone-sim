@@ -1754,7 +1754,7 @@ if(lnd<=0.53)
     if(lnd >= 0.53&& lnd<=0.64)
         sys.organization = lerp(sys.organization,0.1,0.5);
     sys.organization = constrain(sys.organization,0,0.5);
-  if(lnd >= 0.64&& lnd<=0.75)
+  if(lnd >= 0.65&& lnd<=0.75)
         sys.organization = lerp(sys.organization,0.05,0.2);
     sys.organization = constrain(sys.organization,0,0.15);
 if(lnd>=0.75)
