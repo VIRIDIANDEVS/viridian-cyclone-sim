@@ -1639,18 +1639,36 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2);
     sys.organization -= map(moisture,0,1.5,3,0,true)*shear;
-  if (moisture > 0.5) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 4;
+ if (moisture < 0.2) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * -8;
 }
- if (moisture > 0.7) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 6;
+ if (moisture < 0.3) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * -4;
+}
+ if (moisture < 0.4) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * -2;
+}
+  if (moisture < 0.5) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * -1;
+}
+  if (moisture > 0.5) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1;
+}
+  if (moisture > 0.6) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2;
 }
 
+ if (moisture > 0.7) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 4;
+}
+  if (moisture > 0.8) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 8;
+}
     sys.organization -= pow(1.3,23-SST)*tropicalness;
     sys.organization = constrain(sys.organization,0,100);
     sys.organization /= 100;
 
-    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,23,30,0,2))/log(1.17);
+    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,23,29,0,2))/log(1.17);
     targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
