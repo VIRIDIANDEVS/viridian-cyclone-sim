@@ -966,7 +966,7 @@ ENV_DEFS.defaults.SSTAnomaly = {
         v = log(v);
         let r;
         if(u.modifiers.r!==undefined) r = u.modifiers.r;
-        else r = map(y,0,HEIGHT,1,3,5,7);
+        else r = map(y,0,HEIGHT,2,4);
         v = -r*v;
         v = v*i;
         if(u.modifiers.bigBlobBase!==undefined && v>u.modifiers.bigBlobExponentThreshold) v += pow(u.modifiers.bigBlobBase,v-u.modifiers.bigBlobExponentThreshold)-1;
