@@ -1640,16 +1640,16 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2);
     sys.organization -= map(moisture,0,1.5,3,0,true)*shear;
  if (moisture < 0.2) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * -8;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 8;
 }
  if (moisture < 0.3) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * -4;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 4;
 }
  if (moisture < 0.4) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * -2;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2;
 }
   if (moisture < 0.5) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * -1;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1;
 }
   if (moisture > 0.5) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1;
