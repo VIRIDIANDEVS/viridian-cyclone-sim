@@ -1632,8 +1632,22 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-    if(!lnd) sys.organization += sq(map(SST,20,26,28,30,0,0.5,1,6,true))*3*tropicalness;
+    if(!lnd) sys.organization += sq(map(SST,20,26,28,30,0,0.5,1,4,true))*3*tropicalness;
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
+if(lnd<=0.53)
+        sys.organization = lerp(sys.organization,0.5,0.9);
+    sys.organization = constrain(sys.organization,0,1);
+    if(lnd >= 0.53&& lnd<=0.64)
+        sys.organization = lerp(sys.organization,0.1,0.5);
+    sys.organization = constrain(sys.organization,0,0.5);
+  if(lnd >= 0.64&& lnd<=0.75)
+        sys.organization = lerp(sys.organization,0.05,0.2);
+    sys.organization = constrain(sys.organization,0,0.15);
+if(lnd>=0.75)
+        sys.organization = lerp(sys.organization,0,0.01);
+    sys.organization = constrain(sys.organization,0,0.04);
+
+
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
@@ -1748,13 +1762,16 @@ STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].core = function(sys,u){
     if(!lnd)
         sys.organization = lerp(sys.organization,1,sq(tropicalness)*map(SST,20,26,30,0,0.35,0.7,true));
     sys.organization = lerp(sys.organization,0,pow(3,shear*(1-moisture)*2.3)*0.0005);
-if(lnd<0.53)
+if(lnd<=0.53)
         sys.organization = lerp(sys.organization,0.5,0.9);
     sys.organization = constrain(sys.organization,0,1);
-    if(lnd>0.60)
+    if(lnd >= 0.53&& lnd<=0.64)
         sys.organization = lerp(sys.organization,0.1,0.5);
     sys.organization = constrain(sys.organization,0,0.5);
-if(lnd>0.75)
+  if(lnd >= 0.64&& lnd<=0.75)
+        sys.organization = lerp(sys.organization,0.05,0.2);
+    sys.organization = constrain(sys.organization,0,0.15);
+if(lnd>=0.75)
         sys.organization = lerp(sys.organization,0,0.01);
     sys.organization = constrain(sys.organization,0,0.04);
 
