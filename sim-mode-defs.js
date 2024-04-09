@@ -1660,13 +1660,13 @@ if (moisture >= 0.11 && moisture <= 0.2) {
   if (moisture >= 0.48 && moisture <= 0.5) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.25;
 }
-  if (moisture >= 0.5 && moisture <= 0.52) {
+  if (moisture >= 0.51 && moisture <= 0.52) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.25;
 }
  if (moisture >= 0.53 && moisture <= 0.55) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.5;
 }
-  if (moisture >= 0.55 && moisture <= 0.6) {
+  if (moisture >= 0.56 && moisture <= 0.6) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1;
 }
  if (moisture >= 0.61 && moisture <= 0.65) {
