@@ -1666,7 +1666,7 @@ else if (moisture >= 0.7 && moisture <0.8) {
 else if (moisture >= 0.8 && moisture <0.9) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2;
 }
-else (moisture >= 0.9) {
+else if (moisture >= 0.9) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.5;
 }
     sys.organization -= pow(1.3,23-SST)*tropicalness;
