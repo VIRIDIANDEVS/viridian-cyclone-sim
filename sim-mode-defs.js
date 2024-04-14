@@ -1386,44 +1386,44 @@ ENV_DEFS[SIM_MODE_MEGABLOBS].moisture = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].moisture = {};
 ENV_DEFS[SIM_MODE_NorthernHemisphere].moisture = {
     modifiers: {
-        polarMoisture: 0.38,
+        polarMoisture: 0.31,
         tropicalMoisture: 0.62,
         mountainMoisture: 0.20
     }
 };
 ENV_DEFS[SIM_MODE_SouthernHemisphere].moisture = {
     modifiers: {
-        polarMoisture: 0.45,
+        polarMoisture: 0.1,
         tropicalMoisture: 0.62,
         mountainMoisture: 0.21
     }
 };
 ENV_DEFS[SIM_MODE_WesternHemisphere].moisture = {
     modifiers: {
-        polarMoisture: 0.42,
+        polarMoisture: 0.31,
         tropicalMoisture: 0.62,
         mountainMoisture: 0.16
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
     modifiers: {
-        polarMoisture: 0.39,
+        polarMoisture: 0.31,
         tropicalMoisture: 0.62,
         mountainMoisture: 0.24
     }
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
-        polarMoisture: 0.47,
-        tropicalMoisture: 0.49,
-        mountainMoisture: 0.22
+        polarMoisture: 0.25,
+        tropicalMoisture: 0.5,
+        mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
     modifiers: {
-        polarMoisture: 0.52,
+        polarMoisture: 0.22,
         tropicalMoisture: 0.41,
-        mountainMoisture: 0.22
+        mountainMoisture: 0.1
     }
 };
 ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
@@ -1435,36 +1435,36 @@ ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
 };
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
-        polarMoisture: 0.37,
+        polarMoisture: 0.27,
         tropicalMoisture: 0.54,
         mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
     modifiers: {
-        polarMoisture: 0.50,
+        polarMoisture: 0.30,
         tropicalMoisture: 0.51,
         mountainMoisture: 0.20
     }
 };
 ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
-        polarMoisture: 0.42,
+        polarMoisture: 0.32,
         tropicalMoisture: 0.63,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
     modifiers: {
-        polarMoisture: 0.44,
+        polarMoisture: 0.35,
         tropicalMoisture: 0.6,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
     modifiers: {
-        polarMoisture: 0.48,
-        tropicalMoisture: 0.44,
+        polarMoisture: 0.38,
+        tropicalMoisture: 0.54,
         mountainMoisture: 0.15
     }
 };
@@ -1477,7 +1477,7 @@ ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
     modifiers: {
-        polarMoisture: 0.43,
+        polarMoisture: 0.33,
         tropicalMoisture: 0.54,
         mountainMoisture: 0.13
     }
@@ -1491,28 +1491,28 @@ ENV_DEFS[SIM_MODE_Australian].moisture = {
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
     modifiers: {
-        polarMoisture: 0.55,
+        polarMoisture: 0.45,
         tropicalMoisture: 0.60,
         mountainMoisture: 0.30
     }
 };
 ENV_DEFS[SIM_MODE_PreIndustrial].moisture = {
     modifiers: {
-        polarMoisture: 0.33,
+        polarMoisture: 0.25,
         tropicalMoisture: 0.55,
         mountainMoisture: 0.17
     }
 };
 ENV_DEFS[SIM_MODE_MiniIceAge].moisture = {
     modifiers: {
-        polarMoisture: 0.26,
+        polarMoisture: 0.17,
         tropicalMoisture: 0.48,
         mountainMoisture: 0.04
     }
 };
 ENV_DEFS[SIM_MODE_4C].moisture = {
     modifiers: {
-        polarMoisture: 0.66,
+        polarMoisture: 0.46,
         tropicalMoisture: 0.77,
         mountainMoisture: 0.45
     }
@@ -1526,14 +1526,14 @@ ENV_DEFS[SIM_MODE_SnowballEarth].moisture = {
 };
 ENV_DEFS[SIM_MODE_Drought].moisture = {
     modifiers: {
-        polarMoisture: 0.29,
+        polarMoisture: 0.22,
         tropicalMoisture: 0.45,
         mountainMoisture: 0.02
     }
 };
 ENV_DEFS[SIM_MODE_Deluge].moisture = {
     modifiers: {
-        polarMoisture: 0.58,
+        polarMoisture: 0.41,
         tropicalMoisture: 0.75,
         mountainMoisture: 0.49
     }
