@@ -1,5 +1,5 @@
-const TITLE = "Cyclone Simulator";
-const VERSION_NUMBER = "0.5.9";
+const TITLE = "Tropical Cyclone Simulator";
+const VERSION_NUMBER = "0.6.1";
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
 const EARLIEST_COMPATIBLE_FORMAT = 0;
 const ENVDATA_COMPATIBLE_FORMAT = 0;
@@ -412,7 +412,7 @@ const KEY_REPEAT_COOLDOWN = 15;
 const KEY_REPEATER = 5;
 const MAX_SNOW_LAYERS = 100;
 const SNOW_SEASON_OFFSET = 5/6;
-const ENV_LAYER_TILE_SIZE = 18;
+const ENV_LAYER_TILE_SIZE = 15;
 const NC_OFFSET_RANDOM_FACTOR = 4096;
 const ACE_WIND_THRESHOLD = 34;
 const ACE_DIVISOR = 10000;
