@@ -1639,62 +1639,11 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2);
     sys.organization -= map(moisture,0,1.5,3,0,true)*shear;
-if (moisture <=0.1) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 32;
-}
-else if (moisture >0.1 && moisture <= 0.2) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 8;
-}
-else if (moisture > 0.21 && moisture <= 0.3) {
+ if (moisture < 0.5) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 4;
 }
- else if (moisture >0.31 && moisture <= 0.4) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2;
-}
-else if (moisture > 0.41 && moisture <= 0.45) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1;
-} 
-  else  if (moisture > 0.46 && moisture <= 0.48) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.5;
-}
- else if (moisture > 0.48 && moisture <= 0.5) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.25;
-}
-  else if (moisture > 0.5 && moisture <= 0.52) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.25;
-}
- else if (moisture > 0.52 && moisture <= 0.55) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.5;
-}
- else if (moisture > 0.55 && moisture <= 0.6) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1;
-}
-else if (moisture > 0.6 && moisture <= 0.65) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.5;
-}
-else if (moisture > 0.65 && moisture <= 0.7) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.2;
-}
- else if (moisture > 0.7 && moisture <= 0.73) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 4:
-}
-else if (moisture > 0.73 && moisture <= 0.76) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.5;
-}
-else if (moisture > 0.76 && moisture <= 0.78) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.7;
-}
-else if (moisture > 0.78 && moisture <= 0.81) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.2;
-}
-if (moisture > 0.81 && moisture <= 0.86) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1;
-}
-else if (moisture > 0.86 && moisture <= 0.9) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.5;
-}
-else if (moisture > 0.9) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.1;
+ if (moisture > 0.5) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 4;
 }
     sys.organization -= pow(1.3,23-SST)*tropicalness;
     sys.organization = constrain(sys.organization,0,100);
