@@ -611,7 +611,7 @@ modifiers: {
         antiPeakRange: 0.42
     }
 };
-ENV_DEFS[SIM_MODE_4C].jetstream = {
+ENV_DEFS[SIM_MODE_4CEarth].jetstream = {
 modifiers: {
         peakLat: 0.12,
         antiPeakLat: 0.35,
@@ -619,7 +619,6 @@ modifiers: {
         antiPeakRange: 0.4
     }
 };
-
 ENV_DEFS[SIM_MODE_SnowballEarth].jetstream = {
 modifiers: {
         peakLat: 0.50,
