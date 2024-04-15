@@ -319,7 +319,7 @@ SPAWN_RULES[SIM_MODE_EXPERIMENTAL].archetypes = {
 };
 SPAWN_RULES[SIM_MODE_WesternPacific].doSpawn = function(b){
     // tropical waves
-    if(random()<0.018*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.016*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.03-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -611,6 +611,15 @@ modifiers: {
         antiPeakRange: 0.42
     }
 };
+ENV_DEFS[SIM_MODE_4C].jetstream = {
+modifiers: {
+        peakLat: 0.12,
+        antiPeakLat: 0.35,
+        peakRange: 0.26,
+        antiPeakRange: 0.4
+    }
+};
+
 ENV_DEFS[SIM_MODE_SnowballEarth].jetstream = {
 modifiers: {
         peakLat: 0.50,
