@@ -499,10 +499,10 @@ function defineColors(){    // Since p5 color() function doesn't work until setu
     COLORS.land = [];
     COLORS.land.push([0.85, color(110,115,110)]);
     COLORS.land.push([0.8, color(163, 82, 22)]);
-    COLORS.land.push([0.75, color(230, 180, 61)]);
-    COLORS.land.push([0.7, color(255, 241, 0)]);
-    COLORS.land.push([0.65, color(185, 242, 21)]);
-    COLORS.land.push([0.6, color(150,245,150)]);
+    COLORS.land.push([0.75, color(191, 140, 17)]);
+    COLORS.land.push([0.7, color(212, 201, 8)]);
+    COLORS.land.push([0.65, color(147, 191, 13)]);
+    COLORS.land.push([0.6, color(89, 168, 89)]);
     COLORS.land.push([0.55, color(77, 189, 60)]);
     COLORS.land.push([0.53, color(8,207,25)]);
  COLORS.land.push([0.515, color(1, 87, 15)]);
