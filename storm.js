@@ -341,17 +341,10 @@ class Storm{
                 coneSegment(72);
                 coneSegment(96);
                 coneSegment(120);
-                forecastTracks.loadPixels();
-                for(let i = 0; i < forecastTracks.pixels.length; i += 4){
-                    if(forecastTracks.pixels[i + 3] > 0)
-                        forecastTracks.pixels[i + 3] = 100;
-                }
-                forecastTracks.updatePixels();
-
-                    // Use this instead after upgrading to p5.js 1.9.1
-                // forecastTracks.erase(128, 0);
-                // forecastTracks.rect(0, 0, WIDTH, HEIGHT);
-                // forecastTracks.noErase();
+    
+                 forecastTracks.erase(128, 0);
+             forecastTracks.rect(0, 0, WIDTH, HEIGHT);
+                 forecastTracks.noErase();
             }
         }
     }
