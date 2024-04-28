@@ -1065,7 +1065,7 @@ let HH = map(cos(lerp(PI,0,lerp(h1,h2,sq(WW)))),-1,1,0,1);
         let ostt = u.modifiers.offSeasonTropicsTemp;
         let pstt = u.modifiers.peakSeasonTropicsTemp;
         let t = lerp(map(s,-1,1,ospt,pspt),h);
-let TT = lerp(map(s,-1,1,ostt,pstt),h);
+let TT = lerp(map(s,-1,1,ostt,pstt),HH);
         return t+anom;
 return TT+anom;
     }, 
