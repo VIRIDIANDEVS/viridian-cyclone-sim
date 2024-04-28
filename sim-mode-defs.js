@@ -1053,7 +1053,7 @@ ENV_DEFS.defaults.SST = {
         if(y<0) return 0;
         let anom = u.field('SSTAnomaly');
         let s = seasonalSine(z);
-        let w = map(cos(map(x,0,WIDTH,-PI/2, PI/2)),-1,1,0,1);
+        let w = map(cos(map(x,0,WIDTH,-PI/2, 3*PI/2)),-1,1,0,1);
         let h0 = y/HEIGHT;
         let h1 = (sqrt(h0)+h0)/2;
         let h2 = sqrt(sqrt(h0));
@@ -1171,7 +1171,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -2.5,
-        peakSeasonPolarTemp: 7.2,
+        peakSeasonPolarTemp: 1.8,
         offSeasonTropicsTemp: 27.1,
         peakSeasonTropicsTemp: 29.25
     }
