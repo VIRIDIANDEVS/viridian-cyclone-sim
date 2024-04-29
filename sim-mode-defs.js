@@ -1156,7 +1156,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -1.6,
-        peakSeasonPolarTemp: 3.2,
+        peakSeasonPolarTemp: 6.2,
         offSeasonTropicsTemp: 27.1,
         peakSeasonTropicsTemp: 29.4
     }
