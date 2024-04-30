@@ -974,7 +974,7 @@ ENV_DEFS.defaults.SSTAnomaly = {
         v = log(v);
         let r;
         if(u.modifiers.r!==undefined) r = u.modifiers.r;
-        else r = map(y,0,HEIGHT,2,4);
+        else r = map(y,0,HEIGHT,1.5,3.8);
         v = -r*v;
         v = v*i;
         if(u.modifiers.bigBlobBase!==undefined && v>u.modifiers.bigBlobExponentThreshold) v += pow(u.modifiers.bigBlobBase,v-u.modifiers.bigBlobExponentThreshold)-1;
@@ -1172,8 +1172,8 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -5,
-        peakSeasonPolarTemp: 5,
-        offSeasonTropicsTemp: 27.3,
+        peakSeasonPolarTemp: 6.5,
+        offSeasonTropicsTemp: 27.2,
         peakSeasonTropicsTemp: 29.75
     }
 };
