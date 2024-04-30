@@ -1138,7 +1138,7 @@ ENV_DEFS[SIM_MODE_NorthernHemisphere].SST = {
         offSeasonPolarTemp: -13,
         peakSeasonPolarTemp: 3,
         offSeasonTropicsTemp: 27.4,
-        peakSeasonTropicsTemp: 29.3
+        peakSeasonTropicsTemp: 29.4
     }
 };
 ENV_DEFS[SIM_MODE_SouthernHemisphere].SST = {
@@ -1147,7 +1147,7 @@ ENV_DEFS[SIM_MODE_SouthernHemisphere].SST = {
         offSeasonPolarTemp: -13,
         peakSeasonPolarTemp: -8,
         offSeasonTropicsTemp: 26.8,
-        peakSeasonTropicsTemp: 29.2
+        peakSeasonTropicsTemp: 29.25
     }
 };
 ENV_DEFS[SIM_MODE_WesternHemisphere].SST = {
@@ -1156,7 +1156,7 @@ ENV_DEFS[SIM_MODE_WesternHemisphere].SST = {
         offSeasonPolarTemp: -10,
         peakSeasonPolarTemp: 5,
         offSeasonTropicsTemp: 27.2,
-        peakSeasonTropicsTemp: 29.4
+        peakSeasonTropicsTemp: 29.6
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].SST = {
@@ -1165,7 +1165,7 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].SST = {
         offSeasonPolarTemp: -13,
         peakSeasonPolarTemp: 3,
         offSeasonTropicsTemp: 27.7,
-        peakSeasonTropicsTemp: 29.5
+        peakSeasonTropicsTemp: 29.8
     }
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
@@ -1174,7 +1174,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
         offSeasonPolarTemp: -5,
         peakSeasonPolarTemp: 5,
         offSeasonTropicsTemp: 27.3,
-        peakSeasonTropicsTemp: 29.35
+        peakSeasonTropicsTemp: 29.75
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].SST = {
@@ -1183,7 +1183,7 @@ ENV_DEFS[SIM_MODE_SouthAtlantic].SST = {
         offSeasonPolarTemp: -9,
         peakSeasonPolarTemp: -3,
         offSeasonTropicsTemp: 26.2,
-        peakSeasonTropicsTemp: 28.6
+        peakSeasonTropicsTemp: 28.9
     }
 };
 ENV_DEFS[SIM_MODE_Mediterranean].SST = {
@@ -1201,7 +1201,7 @@ ENV_DEFS[SIM_MODE_EasternPacific].SST = {
         offSeasonPolarTemp: -4,
         peakSeasonPolarTemp: 6,
         offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 29.4
+        peakSeasonTropicsTemp: 29.6
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].SST = {
@@ -1219,7 +1219,7 @@ ENV_DEFS[SIM_MODE_WesternPacific].SST = {
         offSeasonPolarTemp: -4,
         peakSeasonPolarTemp: 2.7,
         offSeasonTropicsTemp: 28.1,
-        peakSeasonTropicsTemp: 29.7
+        peakSeasonTropicsTemp: 29.9
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].SST = {
@@ -1237,7 +1237,7 @@ ENV_DEFS[SIM_MODE_SouthPacific].SST = {
         offSeasonPolarTemp: -10,
         peakSeasonPolarTemp: -4,
         offSeasonTropicsTemp: 26.4,
-        peakSeasonTropicsTemp: 29.1
+        peakSeasonTropicsTemp: 29.3
     }
 };
 ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
@@ -1246,7 +1246,7 @@ ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
         offSeasonPolarTemp: -5,
         peakSeasonPolarTemp: 2,
         offSeasonTropicsTemp: 28.3,
-        peakSeasonTropicsTemp: 29.6
+        peakSeasonTropicsTemp: 29.7
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
@@ -1255,7 +1255,7 @@ ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
         offSeasonPolarTemp: -8,
         peakSeasonPolarTemp: -3.5,
         offSeasonTropicsTemp: 27.5,
-        peakSeasonTropicsTemp: 29.4
+        peakSeasonTropicsTemp: 29.6
     }
 };
 ENV_DEFS[SIM_MODE_Australian].SST = {
@@ -1641,7 +1641,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-    if(!lnd) sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.4,0.65,1,2,true))*3*tropicalness;
+    if(!lnd) sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.3,0.6,1,2,true))*3*tropicalness;
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
@@ -1809,7 +1809,7 @@ else if (moisture >= 1) {
     sys.organization = constrain(sys.organization,0,100);
     sys.organization /= 100;
 
-    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,23,30,0,2))/log(1.17);
+    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,23,29.5,0,2))/log(1.17);
     targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
