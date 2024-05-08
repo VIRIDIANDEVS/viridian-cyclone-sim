@@ -1342,7 +1342,7 @@ ENV_DEFS.defaults.moisture = {
         let pm = u.modifiers.polarMoisture;
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
-        let m = map(l,0.55,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
+        let m = map(l,0.62,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
         m += map(s,-1,1,-0.08,0.08);
         m += map(v,0,1,-0.3,0.3);
         m = constrain(m,0,1);
@@ -1726,19 +1726,19 @@ else if (moisture >= 0.4 && moisture < 0.415) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.52;
 }
 else if (moisture >= 0.43 && moisture < 0.45) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.35;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.26;
 }
 else if (moisture >= 0.45 && moisture < 0.465) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.98;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.68;
 }
 else if (moisture >= 0.465 && moisture < 0.48) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.75;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.15;
 }
 else if (moisture >= 0.48 && moisture < 0.5) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.6;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.6;
 }
 else if (moisture >= 0.5 && moisture < 0.53) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.95;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.35;
 }
 else if (moisture >= 0.53 && moisture < 0.56) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.25;
