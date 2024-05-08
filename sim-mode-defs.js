@@ -102,7 +102,7 @@ SPAWN_RULES.defaults.archetypes = {
         pressure: [990,995,1000,1005,1010],
         windSpeed: [15, 20, 25, 30, 35],
         type: TROPWAVE,
-        organization: [0.1,0.3,0.5,0.7,0.9],
+        organization: [0.5,1.0,1.5,2.0,2.5],
         lowerWarmCore: 1,
         upperWarmCore: 1,
         depth: 0
