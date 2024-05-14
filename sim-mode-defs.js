@@ -222,7 +222,7 @@ SPAWN_RULES.defaults.doSpawn = function(b){
     if(random()<0.010*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
-    if(random()<0.03-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+    if(random()<0.017-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 
 // -- Normal Mode -- //
@@ -503,7 +503,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].jetstream = {
 modifiers: {
         peakLat: 0.28,
         antiPeakLat: 0.50,
-        peakRange: 0.38,
+        peakRange: 0.40,
         antiPeakRange: 0.50
     }
 };
@@ -693,7 +693,7 @@ ENV_DEFS.defaults.LLSteering = {
         westerlyMax: 20,
         ridgingJetstreamEffectRange: 0.35,
         tradesRidgingEffectRange: 0.4,
-        tradesMax: 2,
+        tradesMax: 2.25,
         tradesAngleEquator: 17*Math.PI/16,
         tradesAngle: 511*Math.PI/512,
         noiseBase: 1.6,
@@ -1053,7 +1053,7 @@ ENV_DEFS.defaults.SST = {
         if(y<0) return 0;
         let anom = u.field('SSTAnomaly');
         let s = seasonalSine(z);
-        let w = map(cos(map(x,0,WIDTH, 5*-PI/4, 3*PI/2)),-1,1,0.30,0.70);
+        let w = map(cos(map(x,0,WIDTH, 7*-PI/8, 3*PI/2)),-1,1,0.30,0.70);
         let h0 = y/HEIGHT;
         let h1 = (sqrt(h0)+h0)/2;
         let h2 = sqrt(sqrt(h0));
@@ -1641,15 +1641,13 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-    if(!lnd) sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.3,0.6,1,2,true))*3*tropicalness;
+    if(!lnd) sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.3,0.6,1,1.5,true))*3*tropicalness;
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2);
-if (shear > 1) {
     sys.organization -= map(moisture,0,1.5,3,0,true)*shear;
-}
 if (moisture <= 0) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 25;
 }
@@ -1807,11 +1805,11 @@ else if (moisture >= 1) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.01;
 }
 
-    sys.organization -= pow(1.3,23-SST)*tropicalness;
+    sys.organization -= pow(1.3,25-SST)*tropicalness;
     sys.organization = constrain(sys.organization,0,100);
     sys.organization /= 100;
 
-    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,23,29.5,0,2))/log(1.17);
+    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,20,30,0,2))/log(1.17);
     targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
