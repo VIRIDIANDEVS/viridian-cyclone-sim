@@ -1823,16 +1823,16 @@ else if (moisture >= 1) {
 else if (moisture >= 0.51 && < 0.55) {
 sys.windSpeed <= 50);
 }
- else  if (moisture >= 0.55 && < 0.59) {
+ else  if (moisture >= 0.55 && moisture < 0.59) {
 sys.windSpeed <= 70);
 }
-else if (moisture >= 0.59 && < 0.63) {
+else if (moisture >= 0.59 && moisture < 0.63) {
 sys.windSpeed <= 91);
 }
-else if (moisture >= 0.63 && < 0.67) {
+else if (moisture >= 0.63 && moisture < 0.67) {
 sys.windSpeed <= 112);
 }
-else if (moisture >= 0.67 && < 0.7) {
+else if (moisture >= 0.67 && moisture < 0.7) {
 sys.windSpeed <= 130);
 }
 else if (moisture >= 0.7 ) {
