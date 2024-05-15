@@ -1423,8 +1423,8 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
-        polarMoisture: 0.25,
-        tropicalMoisture: 0.5,
+        polarMoisture: 0.35,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.15
     }
 };
@@ -1445,7 +1445,7 @@ ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.27,
-        tropicalMoisture: 0.54,
+        tropicalMoisture: 0.64,
         mountainMoisture: 0.15
     }
 };
@@ -1458,8 +1458,8 @@ ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
 };
 ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
-        polarMoisture: 0.32,
-        tropicalMoisture: 0.63,
+        polarMoisture: 0.3,
+        tropicalMoisture: 0.73,
         mountainMoisture: 0.08
     }
 };
@@ -1473,35 +1473,35 @@ ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
 ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.38,
-        tropicalMoisture: 0.54,
+        tropicalMoisture: 0.59,
         mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.10,
-        tropicalMoisture: 0.58,
+        tropicalMoisture: 0.68,
         mountainMoisture: 0.07
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.33,
-        tropicalMoisture: 0.54,
+        tropicalMoisture: 0.64,
         mountainMoisture: 0.13
     }
 };
 ENV_DEFS[SIM_MODE_Australian].moisture = {
     modifiers: {
         polarMoisture: 0.35,
-        tropicalMoisture: 0.46,
+        tropicalMoisture: 0.62,
         mountainMoisture: 0.11
     }
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
     modifiers: {
         polarMoisture: 0.45,
-        tropicalMoisture: 0.60,
+        tropicalMoisture: 0.70,
         mountainMoisture: 0.30
     }
 };
@@ -1820,6 +1820,25 @@ else if (moisture >= 1) {
 
     let targetWind = map(sys.pressure,1013,920,5,135)*map(sys.lowerWarmCore,1,0,1,0.6);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.15);
+else if (moisture >= 0.51 && < 0.55) {
+sys.windSpeed <= 50)
+}
+ else  if (moisture >= 0.55 && < 0.59) {
+sys.windSpeed <= 70)
+}
+else if (moisture >= 0.59 && < 0.63) {
+sys.windSpeed <= 91)
+}
+else if (moisture >= 0.63 && < 0.67) {
+sys.windSpeed <= 112)
+}
+else if (moisture >= 0.67 && < 0.7) {
+sys.windSpeed <= 130)
+}
+else if (moisture >= 0.7 ) {
+sys.windSpeed >= 135)
+}
+
 
     let targetDepth = map(
         sys.upperWarmCore,
