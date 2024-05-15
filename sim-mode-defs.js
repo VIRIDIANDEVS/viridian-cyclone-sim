@@ -1820,24 +1820,7 @@ else if (moisture >= 1) {
 
     let targetWind = map(sys.pressure,1013,920,5,135)*map(sys.lowerWarmCore,1,0,1,0.6);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.15);
-else if (moisture >= 0.51 && < 0.55) {
-sys.windSpeed <= 50);
-}
- else  if (moisture >= 0.55 && moisture < 0.59) {
-sys.windSpeed <= 70);
-}
-else if (moisture >= 0.59 && moisture < 0.63) {
-sys.windSpeed <= 91);
-}
-else if (moisture >= 0.63 && moisture < 0.67) {
-sys.windSpeed <= 112);
-}
-else if (moisture >= 0.67 && moisture < 0.7) {
-sys.windSpeed <= 130);
-}
-else if (moisture >= 0.7 ) {
-sys.windSpeed >= 135);
-}
+
 
 
     let targetDepth = map(
