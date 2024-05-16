@@ -1343,7 +1343,7 @@ ENV_DEFS.defaults.moisture = {
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
         let m = map(l,0.62,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
-        m += map(s,-1,1,-0.08,0.08);
+        m += map(s,-1.4,1,-0.08,0.08);
         m += map(v,0,1,-0.3,0.3);
         m = constrain(m,0,1);
         return m;
