@@ -467,7 +467,7 @@ ENV_DEFS[SIM_MODE_EXPERIMENTAL].jetstream = {};
 
 ENV_DEFS[SIM_MODE_NorthernHemisphere].jetstream = {
 modifiers: {
-        peakLat: 0.26,
+        peakLat: 0.31,
         antiPeakLat: 0.53,
         peakRange: 0.38,
         antiPeakRange: 0.55
@@ -484,7 +484,7 @@ modifiers: {
 
 ENV_DEFS[SIM_MODE_WesternHemisphere].jetstream = {
 modifiers: {
-        peakLat: 0.28,
+        peakLat: 0.31,
         antiPeakLat: 0.52,
         peakRange: 0.4,
         antiPeakRange: 0.55
@@ -501,9 +501,9 @@ modifiers: {
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].jetstream = {
 modifiers: {
-        peakLat: 0.28,
-        antiPeakLat: 0.50,
-        peakRange: 0.40,
+        peakLat: 0.31,
+        antiPeakLat: 0.55,
+        peakRange: 0.35,
         antiPeakRange: 0.50
     }
 };
@@ -549,7 +549,7 @@ modifiers: {
 };
 ENV_DEFS[SIM_MODE_NorthPacific].jetstream = {
 modifiers: {
-        peakLat: 0.28,
+        peakLat: 0.30,
         antiPeakLat: 0.51,
         peakRange: 0.25,
         antiPeakRange: 0.40
@@ -557,7 +557,7 @@ modifiers: {
 };
 ENV_DEFS[SIM_MODE_SouthPacific].jetstream = {
 modifiers: {
-        peakLat: 0.31,
+        peakLat: 0.34,
         antiPeakLat: 0.50,
         peakRange: 0.32,
         antiPeakRange: 0.51
