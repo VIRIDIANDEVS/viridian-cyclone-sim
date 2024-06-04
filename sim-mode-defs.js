@@ -1491,7 +1491,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
 ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.22,
-        tropicalMoisture: 0.41,
+        tropicalMoisture: 0.55,
         mountainMoisture: 0.1
     }
 };
