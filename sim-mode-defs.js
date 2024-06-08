@@ -753,7 +753,7 @@ ENV_DEFS.defaults.LLSteering = {
         westerlyMax: 20,
         ridgingJetstreamEffectRange: 0.35,
         tradesRidgingEffectRange: 0.4,
-        tradesMax: 2.25,
+        tradesMax: 3.25,
         tradesAngleEquator: 17*Math.PI/16,
         tradesAngle: 511*Math.PI/512,
         noiseBase: 1.6,
