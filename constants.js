@@ -258,8 +258,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
  {   
 		label: "Earth Northern Hemisphere",
         form: 'earth',
-        west: -180,
-        east: 180,
+        west: -0,
+        east: 0,
         north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.nhem,
