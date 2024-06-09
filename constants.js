@@ -137,7 +137,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 0,
-            designations: 0
+            designations: 0,
+SIMULATION_MODES : 9
+
         }
     },
     {   
@@ -151,7 +153,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 0,
-            designations: 1
+            designations: 1,
+SIMULATION_MODES : 12
         }
     },
 {   
@@ -165,7 +168,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 0,
-            designations: 0
+            designations: 0,
+SIMULATION_MODES : 9
+
         }
     },
 
@@ -180,7 +185,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 3,
-            designations: 3
+            designations: 3,
+SIMULATION_MODES : 14
+
         }
     },
  {   
@@ -194,7 +201,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 0,
-            designations: 2
+            designations: 2,
+SIMULATION_MODES : 13
+
         }
     },
 {   
@@ -208,7 +217,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 3,
-            designations: 3
+            designations: 3,
+SIMULATION_MODES : 15
+
         }
     },
 
@@ -223,7 +234,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 3,
-            designations: 3
+            designations: 3,
+SIMULATION_MODES : 13
+
         }
     },
     {   
@@ -237,7 +250,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 4,
-            designations: 5
+            designations: 5,
+SIMULATION_MODES : 17
+
         }
     },
  {   
@@ -251,7 +266,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 4,
-            designations: 5
+            designations: 5,
+SIMULATION_MODES : 17
+
         }
     },
 
@@ -266,7 +283,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 3,
-            designations: 3
+            designations: 3,
+SIMULATION_MODES : 5
+
         }
     },
 
@@ -281,7 +300,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 2,
             scale: 2,
-            designations: 6
+            designations: 6,
+SIMULATION_MODES : 19
+
         }
     },
     {   
@@ -295,7 +316,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 2,
             scale: 2,
-            designations: 7
+            designations: 7,
+SIMULATION_MODES : 16
+
         }
     },
     {   
@@ -309,7 +332,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 2,
             scale: 5,
-            designations: 8
+            designations: 8,
+SIMULATION_MODES : 18
+
         }
     },
  {   
@@ -323,7 +348,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 2,
             scale: 5,
-            designations: 8
+            designations: 8,
+SIMULATION_MODES : 18
+
         }
     },
 {   
@@ -337,7 +364,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 2,
             scale: 5,
-            designations: 8
+            designations: 8,
+SIMULATION_MODES : 6
+
         }
     },
     {   
@@ -351,7 +380,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 2,
             scale: 0,
-            designations: 9
+            designations: 9,
+SIMULATION_MODES : 10
+
         }
     },
 {   
@@ -365,7 +396,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 2,
             scale: 0,
-            designations: 9
+            designations: 9,
+SIMULATION_MODES : 6
+
         }
     },
 
@@ -380,7 +413,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 2,
             scale: 0,
-            designations: 9
+            designations: 9,
+SIMULATION_MODES : 6
+
         }
     },
 
@@ -395,7 +430,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 0,
-            designations: 10
+            designations: 10,
+SIMULATION_MODES : 11
+
         }
     }
 ];
