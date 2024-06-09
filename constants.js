@@ -258,7 +258,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
  {   
 		label: "Earth Northern Hemisphere",
         form: 'earth',
-        west: 0,
+        west: 0.01,
         east: 0,
         north: 70,
         south: 0,
