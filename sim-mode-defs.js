@@ -1483,9 +1483,9 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
-        polarMoisture: 0.35,
-        tropicalMoisture: 0.7,
-        mountainMoisture: 0.10
+        polarMoisture: 0.34,
+        tropicalMoisture: 0.68,
+        mountainMoisture: 0.06
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
@@ -1504,8 +1504,8 @@ ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
 };
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
-        polarMoisture: 0.37,
-        tropicalMoisture: 0.74,
+        polarMoisture: 0.35,
+        tropicalMoisture: 0.7,
         mountainMoisture: 0.15
     }
 };
@@ -1525,15 +1525,15 @@ ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
 };
 ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
     modifiers: {
-        polarMoisture: 0.35,
-        tropicalMoisture: 0.7,
+        polarMoisture: 0.34,
+        tropicalMoisture: 0.68,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
     modifiers: {
-        polarMoisture: 0.34,
-        tropicalMoisture: 0.68,
+        polarMoisture: 0.33,
+        tropicalMoisture: 0.66,
         mountainMoisture: 0.15
     }
 };
@@ -1546,16 +1546,16 @@ ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
     modifiers: {
-        polarMoisture: 0.32,
-        tropicalMoisture: 0.64,
-        mountainMoisture: 0.13
+        polarMoisture: 0.35,
+        tropicalMoisture: 0.7,
+        mountainMoisture: 0.1
     }
 };
 ENV_DEFS[SIM_MODE_Australian].moisture = {
     modifiers: {
         polarMoisture: 0.36,
         tropicalMoisture: 0.72,
-        mountainMoisture: 0.11
+        mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
@@ -1701,7 +1701,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-    if(!lnd && moisture > 0.40) sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.3,0.6,1,1.5,true))*3*tropicalness;
+    if(!lnd && moisture > 0.55) sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.3,0.6,1,1.5,true))*3*tropicalness;
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
