@@ -437,7 +437,7 @@ DesignationSystem.easternPacific = new DesignationSystem({
     mainLists: [
         ["Andres","Blanca","Carlos","Dolores","Enrique","Felicia","Guillermo","Hilda","Ignacio","Jimena","Kevin","Linda","Marty","Nora","Olaf","Pamela","Rick","Sandra","Terry","Vivian","Waldo","Xina","York","Zelda"],
         ["Agatha","Blas","Celia","Darby","Estelle","Frank","Georgette","Howard","Ivette","Javier","Kay","Lester","Madeline","Newton","Orlene","Paine","Roslyn","Seymour","Tina","Virgil","Winifred","Xavier","Yolanda","Zeke"],
-        ["Adrian","Beatriz","Calvin","Dora","Eugene","Fernanda","Greg","Hilary","Irwin","Jova","Kenneth","Lidia","Max","Norma","Otis","Pilar","Ramon","Selma","Todd","Veronica","Wiley","Xina","York","Zelda"],
+        ["Adrian","Beatriz","Calvin","Debora","Eugene","Fernanda","Greg","Hilary","Irwin","Jova","Kenneth","Lidia","Max","Norma","Otilio","Pilar","Ramon","Selma","Todd","Veronica","Wiley","Xina","York","Zelda"],
         ["Aletta","Bud","Carlotta","Daniel","Emilia","Fabio","Gilma","Hector","Ileana","John","Kristy","Lane","Miriam","Norman","Olivia","Paul","Rosa","Sergio","Tara","Vicente","Willa","Xavier","Yolanda","Zeke"],
         ["Alvin","Barbara","Cosme","Dalila","Erick","Flossie","Gil","Henriette","Ivo","Juliette","Kiko","Lorena","Mario","Narda","Octave","Priscilla","Raymond","Sonia","Tico","Velma","Wallis","Xina","York","Zelda"],
         ["Amanda","Boris","Cristina","Douglas","Elida","Fausto","Genevieve","Hernan","Iselle","Julio","Karina","Lowell","Marie","Norbert","Odalys","Polo","Rachel","Simon","Trudy","Vance","Winnie","Xavier","Yolanda","Zeke"]
@@ -462,7 +462,7 @@ DesignationSystem.westernPacific = new DesignationSystem({
     displayName: 'Western Pacific',
     suffix: 'W',
     mainLists: [    // names marked with empty comments are retired and will be replaced when replacement names are announced
-        ["Damrey","Haikui","Kirogi","Yun-yeung","Koinu","Bolaven","Sanba","Jelawat","Ewiniar","Maliksi","Gaemi","Prapiroon","Maria","Son-Tinh","Ampil","Wukong","Jongdari","Shanshan","Yagi","Leepi","Bebinca","Pulasan","Soulik","Cimaron","Jebi","Krathon","Barijat","Trami"],
+        ["Damrey","Haikui"/**/,"Kirogi","Yun-yeung","Koinu","Bolaven","Sanba","Jelawat","Ewiniar","Maliksi","Gaemi","Prapiroon","Maria","Son-Tinh","Ampil","Wukong","Jongdari","Shanshan","Yagi","Leepi","Bebinca","Pulasan","Soulik","Cimaron","Jebi","Krathon","Barijat","Trami"],
         ["Kong-rey","Yinxing","Toraji","Man-yi","Usagi","Pabuk","Wutip","Sepat","Mun","Danas","Nari","Wipha","Francisco","Co-May","Krosa","Bailu","Podul","Lingling","Kajiki","Nongfa","Peipah","Tapah","Mitag","Ragasa","Neoguri","Bualoi","Matmo","Halong"],
         ["Nakri","Fengshen","Kalmaegi","Fung-wong","Koto","Nokaen","Penha","Nuri","Sinlaku","Hagupit","Jangmi","Mekkhala","Higos","Bavi","Maysak","Haishen","Noul","Dolphin","Kujira","Chan-hom","Peilou","Nangka","Saudel","Narra","Gaenari","Atsani","Etau","Bang-lang"],
         ["Krovanh","Dujuan","Surigae","Choi-wan","Koguma","Champi","In-fa","Cempaka","Nepartak","Lupit","Mirinae","Nida","Omais","Luc-binh","Chanthu","Dianmu","Mindulle","Lionrock","Tokei","Namtheun","Malou","Nyatoh","Sarbul","Amuyao","Gosari","Chaba","Aere","Songda"],
