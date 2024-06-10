@@ -528,7 +528,7 @@ ENV_DEFS[SIM_MODE_EXPERIMENTAL].jetstream = {};
 ENV_DEFS[SIM_MODE_NorthernHemisphere].jetstream = {
 modifiers: {
         peakLat: 0.31,
-        antiPeakLat: 0.53,
+        antiPeakLat: 0.5,
         peakRange: 0.38,
         antiPeakRange: 0.55
     }
@@ -561,10 +561,10 @@ modifiers: {
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].jetstream = {
 modifiers: {
-        peakLat: 0.31,
-        antiPeakLat: 0.55,
-        peakRange: 0.35,
-        antiPeakRange: 0.50
+        peakLat: 0.30,
+        antiPeakLat: 0.5,
+        peakRange: 0.3,
+        antiPeakRange: 0.40
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].jetstream = {
@@ -984,9 +984,9 @@ let extreme = color(0,100,100)
         let weak = color(270,100,100);
         let c;
         if(v < 2.5)
-            c = lerpColor(weak, moderate, map(v,1,2.5,0,1));
+            c = lerpColor(weak, moderate, map(v,1,2,0,1));
         else if(v < 4)
-            c = lerpColor(moderate, strong, map(v,2.5,4,0,1));
+            c = lerpColor(moderate, strong, map(v,2,4,0,1));
 else 
 c = lerpColor(strong, extreme, map(v,4,6,0,1));
         colorMode(RGB);
@@ -1403,7 +1403,7 @@ ENV_DEFS.defaults.moisture = {
         let pm = u.modifiers.polarMoisture;
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
-        let m = map(l,0.62,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
+        let m = map(l,0.6,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
         m += map(s,-1.4,1,-0.08,0.08);
         m += map(v,0,1,-0.3,0.3);
         m = constrain(m,0,1);
@@ -1702,10 +1702,32 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-if(!lnd && moisture > 0.5) sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.3,0.6,1,1.5,true))*3*tropicalness;
-    if(!lnd && sys.organization<40) {
-    sys.organization += lerp(0,3,nontropicalness);
-    }
+if (!lnd && moisture >= 0.8) {
+      sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.5,0.75,1,1.5,true))*3*tropicalness;
+  }
+else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
+sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.25,0.5,0.7,1,true))*3*tropicalness;
+}
+else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
+sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.12,0.25,0.5,0.7,true))*3*tropicalness;
+}
+else if (!lnd && moisture >= 0.5 && moisture < 0.6) {
+sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.01,0.12,0.25,0.35,true))*3*tropicalness;
+}
+else if (!lnd && moisture >= 0.4 && moisture < 0.5) {
+sys.organization += sq(map(SST,20,26,28,29.5,31,0,0,0.01,0.07,0.14,true))*3*tropicalness;
+}
+else if (!lnd && moisture < 0.4) {
+sys.organization += sq(map(SST,20,26,28,29.5,31,0,0,0.0,0.01,0.07,true))*3*tropicalness;
+}
+    if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
+
+
+    if (lnd < 0.6 && sys.organization < 5 && moisture >= 0.5) {
+     if (!(sys.pressure >= 1013)) {
+         sys.pressure <= 1012; // Or any value below 1013 that you want to set it to
+     }
+ }
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
@@ -1867,6 +1889,7 @@ else if (moisture >= 0.98 && moisture <1) {
 else if (moisture >= 1) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 3.6;
 }
+
     let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,20,30,0,2))/log(1.17);
     targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
