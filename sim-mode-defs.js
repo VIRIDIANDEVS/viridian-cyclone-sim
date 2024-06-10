@@ -1721,8 +1721,6 @@ else if (!lnd && moisture < 0.4) {
 sys.organization += sq(map(SST,20,26,28,29.5,31,0,0,0.0,0.01,0.07,true))*3*tropicalness;
 }
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
-
-
     if (lnd < 0.6 && sys.organization < 5 && moisture >= 0.5) {
      if (!(sys.pressure >= 1013)) {
          sys.pressure <= 1012; // Or any value below 1013 that you want to set it to
