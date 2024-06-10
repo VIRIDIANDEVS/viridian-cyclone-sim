@@ -1714,7 +1714,7 @@ else if (!lnd && moisture >= 0.5 && moisture < 0.6) {
 sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.01,0.12,0.25,0.35,true))*3*tropicalness;
 }
 else if (!lnd && moisture >= 0.4 && moisture < 0.5) {
-sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.005,0.01,0.07,0.15,true))*3*tropicalness;
+sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.005,0.01,0.07,0.12,true))*3*tropicalness;
 }
 else if (!lnd && moisture < 0.4) {
 sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.001,0.005,0.01,0.07,true))*3*tropicalness;
@@ -1722,10 +1722,9 @@ sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.001,0.005,0.01,0.07,true))*3
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
 if (lnd < 0.65 && sys.organization < 5 && moisture >= 0.5) {
     if (!(sys.pressure >= 1013)) {
-        sys.pressure <= 1012; // Or any value below 1013 that you want to set it to
+        sys.pressure = 1012; // Or any value below 1013 that you want to set it to
     }
 }
-
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
