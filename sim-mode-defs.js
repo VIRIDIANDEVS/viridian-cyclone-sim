@@ -1883,7 +1883,18 @@ else if (moisture >= 0.98 && moisture <1) {
 else if (moisture >= 1) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 3.6;
 }
-
+if(lnd<0.53)
+        sys.organization = lerp(sys.organization,0.5,0.9);
+    sys.organization = constrain(sys.organization,0,1);
+    if(lnd >= 0.53 && lnd<0.65)
+        sys.organization = lerp(sys.organization,0.1,0.5);
+    sys.organization = constrain(sys.organization,0,0.5);
+  if(lnd >= 0.65 && lnd<0.75)
+        sys.organization = lerp(sys.organization,0.05,0.2);
+    sys.organization = constrain(sys.organization,0,0.15);
+if(lnd>=0.75)
+        sys.organization = lerp(sys.organization,0,0.01);
+    sys.organization = constrain(sys.organization,0,0.04);
     sys.organization -= pow(1.3,25-SST)*tropicalness;
     sys.organization = constrain(sys.organization,0,100);
     sys.organization /= 100;
