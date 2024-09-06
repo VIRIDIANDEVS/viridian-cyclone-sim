@@ -735,6 +735,19 @@ DesignationSystem.periodicTable = new DesignationSystem({
     ]
 });
 
+DesignationSystem.nzoExclusion = new DesignationSystem({
+    displayName: 'Northern Zone of Exclusion',
+    suffix: 'X',
+    mainLists: [
+        ["Absolution","Bliss","Consola","Desola","Elysium","Furlough","Grace","Haven","Illumina","Jerran","Kismet","Liras","Mirage","Notara","Oasis","Pastora","Respite","Solace","Tranquility","Valium","Willow"],
+        ["Asriel","Bob","Cade","Dynah","Evan","FCX","Geo","Hina","Irene","Jax","Kleo","Lexy","Matriel","Nemo","Oil","Proxima","Rkenar","Selix","Turkiye","Vegas","Wiley"],
+        ["Aria","Bontu","Cytheria","Diarmit","Euandros","Feroze","Gobban","Herald","Iilyas","Jura","Khalia","Lena","Mecislovas","Noble","Oxum","Payam","Rozika","Shawkat","Tomila","Vinzenz","Whimsy"],
+        ["Antonio","Briggs","Cove","Damian","Eber","Faraji","Geraldo","Halime","Iunia","Josef","Katarina","Lusech","Malfrid","Naobile","Odalys","Priscilla","Rosabla","Suada","Tahuba","Vitold","Wulfa"],
+        ["Asimov","Baker","Cashmere","David","Eden","Frederick","Gregory","Henry","Isabella","Jericho","Kevin","Leigh","Madeline","Natasha","Ophelia","Phoenix","Ren","Stephen","Tolkien","Vector","Winchester"],
+        ["Aurora","Bertram","Christine","Draga","Espinoza","Faust","Granuaile","Halycon","Idelle","Juni","Kichiro","Lysandra","Masquernya","Nieset","Olivie","Panjaka","Rudite","Styoko","Tycho","Veznan","Wendell"]
+    ]
+});
+
 DesignationSystem.periodicTableAnnual = DesignationSystem.periodicTable.clone();
 DesignationSystem.periodicTableAnnual.naming.annual = true;
 DesignationSystem.periodicTableAnnual.displayName = 'Periodic Table (Annual)';
@@ -763,5 +776,6 @@ DesignationSystem.presetDesignationSystems = [
     DesignationSystem.easternPacific1978,
     DesignationSystem.easternPacific1979,
     DesignationSystem.periodicTable,
-    DesignationSystem.periodicTableAnnual
+    DesignationSystem.periodicTableAnnual,
+    DesignationSystem.nzoExclusion
 ];
